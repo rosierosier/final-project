@@ -9,7 +9,7 @@ var SingleModel = Backbone.Model.extend({
 
 var ModelCollection = Backbone.Collection.extend({
   model: SingleModel,
-  url: 'http://myrealtorapp.herokuapp.com/rosierealtorproject',
+  url: 'http://tiy-gvl-demo-day.herokuapp.com/rosiefinalproject',
 });
 
 module.exports = {
