@@ -165,7 +165,7 @@ $(function(){
     Parse.User
       .logIn($('#login-email').val(), $('#login-user-password').val(), {
         success: function(user) {
-          console.log(user);
+          console.log("login", user);
             // ##############
             // then, display test page
             // ##############
@@ -175,7 +175,16 @@ $(function(){
         }
       });
   });
-  console.log(Parse.User.current());
+
+  $('#logout').on('submit', function(event){
+    event.preventDefault();
+    console.log("logout clicked", Parse.User.current());
+
+    Parse.User.logOutInBackground(Parse.User.current());
+    Parse.User.current();
+    console.log('logged out:', (Parse.User.current()));
+  });
+  console.log('final log:', (Parse.User.current()));
 });
 
 },{"./components/form.jsx":1,"./components/listing.jsx":2,"./models/model":4,"backbone":21,"backbone-react-component":20,"jquery":120,"parse":121,"react":293,"react-dom":164}],4:[function(require,module,exports){
