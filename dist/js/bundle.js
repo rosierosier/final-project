@@ -109,6 +109,8 @@ module.exports = ImageListing;
 },{"../models/model":4,"./form.jsx":1,"backbone":21,"backbone-react-component":20,"jquery":120,"react":293,"react-dom":164}],3:[function(require,module,exports){
 "use strict";
 console.log('Hello World!');
+var $ = require('jquery');
+var Parse = require('parse');
 var Backbone = require('backbone');
 var React = require('react');
 var ReactDOM = require('react-dom');
@@ -127,12 +129,16 @@ var models = require('./models/model')
 
 // newImageCollection.fetch();
 
-var $ = require('jquery');
-var Parse = require('parse');
 
 $(function(){
   Parse.initialize("final_project");
   Parse.serverURL = 'http://tiy-gvl-demo-day.herokuapp.com/';
+
+  // var TestObject = Parse.Object.extend("TestObject");
+  // var testObject = new TestObject();
+  // testObject.save({foo: "bar"}).then(function(object) {
+  //   alert("yay! it worked");
+  // });
 
   // var TestObject = Parse.Object.extend("TestObject");
   // var testObject = new TestObject();

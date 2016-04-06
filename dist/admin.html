@@ -3,8 +3,9 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
-    <title>final project</title>
+    <title>final project admin view</title>
     <link rel="stylesheet" href="css/app.css">
+
     <!-- <title>Frontend Playground</title> -->
     <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/codemirror/CodeMirror/master/lib/codemirror.css">
     <script type="text/javascript" src="https://cdn.rawgit.com/codemirror/CodeMirror/master/lib/codemirror.js"></script>
@@ -13,7 +14,6 @@
     <script type="text/javascript" src="https://cdn.rawgit.com/carlo/jquery-base64/master/jquery.base64.min.js"></script>
   </head>
   <body>
-
     <div id="app">
     </div>
 
@@ -24,7 +24,7 @@
 
     <div class="container-fluid">
       <div class="row welcome">
-        <h1>Welcome!</h1>
+        <h1>Welcome Admin!</h1>
         <p>User interface testing is essential to providing a user-friendly web design.</p>
         <p>Thank you for participating in this study.</p>
         <p>Please sign-up using your email address and password!</p>
@@ -55,18 +55,15 @@
       <div class="row footer text-center">
         <p>copyright line here</p>
       </div>
-
-      <div class="row editor">
-          <!-- <textarea id="editor"></textarea>
-          <button onclick="submit_html();">Submit</button> -->
-          <iframe frameborder="0" border="0" id="result"></iframe>
-      </div>
-      
     </div>
 
 
-
-    <!-- <script>
+    <div class="editor">
+        <textarea id="editor"></textarea>
+        <button onclick="submit_html();">Submit</button>
+        <iframe id="result"></iframe>
+    </div>
+    <script>
         var editor = CodeMirror.fromTextArea(document.getElementById("editor"), {
             lineNumbers: true,
             mode:  "xml"
@@ -79,7 +76,7 @@
             var data_url = "data:text/html;charset=utf-8;base64," + $.base64.encode(code);
             document.getElementById("result").src = data_url;
         }
-    </script> -->
+    </script>
 
     <script src="js/bundle.js"></script>
   </body>

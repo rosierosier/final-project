@@ -1,4 +1,6 @@
 console.log('Hello World!');
+var $ = require('jquery');
+var Parse = require('parse');
 var Backbone = require('backbone');
 var React = require('react');
 var ReactDOM = require('react-dom');
@@ -17,8 +19,6 @@ var models = require('./models/model')
 
 // newImageCollection.fetch();
 
-var $ = require('jquery');
-var Parse = require('parse');
 
 $(function(){
   Parse.initialize("final_project");

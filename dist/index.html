@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
     <title>final project</title>
     <link rel="stylesheet" href="css/app.css">
+    <!-- <title>Frontend Playground</title> -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/codemirror/CodeMirror/master/lib/codemirror.css">
+    <script type="text/javascript" src="https://cdn.rawgit.com/codemirror/CodeMirror/master/lib/codemirror.js"></script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/codemirror/CodeMirror/master/mode/xml/xml.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/carlo/jquery-base64/master/jquery.base64.min.js"></script>
   </head>
   <body>
 
@@ -12,6 +18,8 @@
     </div>
 
     <div class="row header">
+      <a href="index.html" role="button">Assessment</a>
+      <a href="admin.html" role="button">Admin</a>
     </div>
 
     <div class="container-fluid">
@@ -40,14 +48,38 @@
           <input type="submit" id="logout-button" value="LOG OUT"/>
         </form>
       </div>
-      
+
       <div class="test">
       </div>
 
-      <div class="row footer">
+      <div class="row footer text-center">
         <p>copyright line here</p>
       </div>
+
+      <div class="row editor">
+          <!-- <textarea id="editor"></textarea>
+          <button onclick="submit_html();">Submit</button> -->
+          <iframe frameborder="0" border="0" id="result"></iframe>
+      </div>
+      
     </div>
+
+
+
+    <!-- <script>
+        var editor = CodeMirror.fromTextArea(document.getElementById("editor"), {
+            lineNumbers: true,
+            mode:  "xml"
+        });
+
+        function submit_html()
+        {
+            editor.save();
+            var code = document.getElementById("editor").value;
+            var data_url = "data:text/html;charset=utf-8;base64," + $.base64.encode(code);
+            document.getElementById("result").src = data_url;
+        }
+    </script> -->
 
     <script src="js/bundle.js"></script>
   </body>
