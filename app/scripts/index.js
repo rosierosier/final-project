@@ -82,3 +82,17 @@ $(function(){
   });
   console.log('final log:', (Parse.User.current()));
 });
+
+
+var TextEditor = Parse.Object.extend("TextEditor");
+var textEditor = new TextEditor();
+textEditor.set("data", data_url);
+textEditor.save(null, {
+  success: function(textEditor){
+    // Execute any logic that should take place after the object is saved.
+    alert('New object created with objectID: ' + textEditor.id);
+  },
+  error: function(textEditor, error){
+    alert('Failed to create new object, with error code: ' + error.message);
+  }
+});

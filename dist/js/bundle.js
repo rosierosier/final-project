@@ -193,6 +193,20 @@ $(function(){
   console.log('final log:', (Parse.User.current()));
 });
 
+
+var TextEditor = Parse.Object.extend("TextEditor");
+var textEditor = new TextEditor();
+textEditor.set("data", data_url);
+textEditor.save(null, {
+  success: function(textEditor){
+    // Execute any logic that should take place after the object is saved.
+    alert('New object created with objectID: ' + textEditor.id);
+  },
+  error: function(textEditor, error){
+    alert('Failed to create new object, with error code: ' + error.message);
+  }
+});
+
 },{"./components/form.jsx":1,"./components/listing.jsx":2,"./models/model":4,"backbone":21,"backbone-react-component":20,"jquery":120,"parse":121,"react":293,"react-dom":164}],4:[function(require,module,exports){
 "use strict";
 var Backbone = require('backbone');
