@@ -5847,18 +5847,18 @@ p {
   color: #282c34;
   background-color: #f3f3f3; }
 
-.user-begin {
+#user-signup {
   margin-top: 15px;
-  padding-top: 75px;
+  padding-top: 25px;
   text-align: center;
-  padding-bottom: 100px;
+  padding-bottom: 50px;
   background-color: #fff;
   margin-bottom: 15px; }
 
 #user-login {
   margin-top: 15px;
-  padding-top: 75px;
-  padding-bottom: 100px;
+  padding-top: 25px;
+  padding-bottom: 50px;
   display: block;
   margin-bottom: 15px; }
 
@@ -5936,6 +5936,17 @@ p {
   height: 50px;
   padding: 15px 20px;
   margin: 10px;
+  display: inline-block; }
+
+#submit-survey-button {
+  border-radius: 4px;
+  background-color: #f0ad4e;
+  border: none;
+  color: #fff;
+  height: 50px;
+  padding: 15px 20px;
+  margin: 10px;
+  margin-left: 0;
   display: inline-block; }
 
 #log-in-header {

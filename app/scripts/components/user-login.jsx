@@ -1,4 +1,4 @@
-console.log('Hello Sign Up');
+console.log('Hello Log In');
 var Backbone = require('backbone');
 var React = require('react');
 var ReactDOM = require('react-dom');

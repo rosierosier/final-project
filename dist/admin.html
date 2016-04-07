@@ -43,9 +43,9 @@
     </div><!--end of container-->
 
 
-    <div class="editor">
-        <textarea id="editor"></textarea>
-        <button id="submit-text" onclick="submit_html();">Submit</button>
+    <div id="text-editor">
+        <!-- <textarea id="editor"></textarea>
+        <button id="submit-text" onclick="submit_html();">Submit</button> -->
         <iframe id="result"></iframe>
     </div>
 
@@ -53,7 +53,7 @@
       <p>copyright line here</p>
     </div>
 
-    <script>
+    <!-- <script>
         var editor = CodeMirror.fromTextArea(document.getElementById("editor"), {
             lineNumbers: true,
             mode: "xml"
@@ -66,7 +66,7 @@
             var data_url = "data:text/html;charset=utf-8;base64," + $.base64.encode(code);
             document.getElementById("result").src = data_url;
         }
-    </script>
+    </script> -->
 
     <script src="js/bundle.js"></script>
   </body>

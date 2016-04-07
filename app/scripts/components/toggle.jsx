@@ -6,8 +6,9 @@ var $ = require('jquery');
 
 var models = require('../models/model');
 var UserSignupComponent = require('./user-signup.jsx');
+var SurveyComponent = require('./survey.jsx');
 
-console.log('Hello Login');
+console.log('Hello Toggle');
 
 var ToggleComponent = React.createClass({
   mixins: [Backbone.React.Component.mixin],
@@ -28,4 +29,4 @@ var ToggleComponent = React.createClass({
   }
 });
 
-module.exports = ToggleComponent;
+module.exports = ToggleComponent

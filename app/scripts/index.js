@@ -10,6 +10,8 @@ var UserSignupComponent = require('./components/user-signup.jsx');
 var UserLoginComponent = require('./components/user-login.jsx');
 var ToggleComponent = require('./components/toggle.jsx');
 var UserIframeComponent = require('./components/user-iframe.jsx');
+var SurveyComponent = require('./components/survey.jsx');
+var EditorComponent = require('./components/editor.jsx');
 var models = require('./models/model')
 
 ReactDOM.render(
@@ -32,6 +34,16 @@ ReactDOM.render(
   <UserIframeComponent />,
   document.getElementById('display-iframe')
 );
+
+ReactDOM.render(
+  <SurveyComponent />,
+  document.getElementById('survey')
+);
+
+// ReactDOM.render(
+//   <EditorComponent />
+//   document.getElementById('text-editor')
+// );
 
 
 $(function(){
