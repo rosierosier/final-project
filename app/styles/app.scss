@@ -33,7 +33,7 @@ p {
 }
 
 .header {
-  padding: 15px;
+  // padding: 15px;
 }
 
 .header a {
@@ -41,7 +41,7 @@ p {
   padding-left: 10px;
   text-decoration: none;
   color: #fff;
-  margin-top: 0;
+  margin-top: 15px;
 }
 
 .header a:hover {
@@ -80,17 +80,23 @@ p {
 //
 // }
 
-#user-begin {
+.user-begin {
+  margin-top: 15px;
   padding-top: 75px;
-  text-align: right;
+  text-align: center;
   padding-bottom: 100px;
   background-color: #fff;
   margin-bottom: 15px;
+  // position: absolute;
 }
 
-#signup {
+#user-login {
   margin-top: 15px;
+  padding-top: 75px;
+  padding-bottom: 100px;
+  display: block;
   margin-bottom: 15px;
+  // position: relative;
 }
 
 #email,
@@ -123,31 +129,80 @@ p {
   height: 50px;
   padding: 15px 20px;
   margin-left: 5px;
+  margin-right: 5px;
   display: inline-block;
 }
 
 #sign-up-button {
-  margin-right: 10%;
+  margin-right: 5px;
   border-radius: 4px;
   background-color: #17aa56;
   border: none;
   color: #fff;
   height: 50px;
   padding: 15px 20px;
-  margin-left: 5px;
+  // margin-left: 5px;
   display: inline-block;
 }
 
+#header-login {
+  display: inline-block;
+  float: right;
+  margin-right: 10px;
+  height: 50px;
+}
+
 #log-in-button {
-  margin-right: 10%;
+  margin-right: 5px;
   border-radius: 4px;
   background-color: #476c99;
   border: none;
   color: #fff;
   height: 50px;
   padding: 15px 20px;
-  margin-left: 5px;
+  // margin-left: 5px;
   display: inline-block;
+}
+
+#feedback-button {
+  margin-right: 5px;
+  border-radius: 4px;
+  background-color: #f0ad4e;
+  border: none;
+  color: #fff;
+  height: 50px;
+  padding: 15px 20px;
+  // margin-left: 5px;
+  float: right;
+  display: inline-block;
+}
+
+#submit-text {
+  // margin-right: 5px;
+  border-radius: 4px;
+  background-color: #f0ad4e;
+  border: none;
+  color: #fff;
+  height: 50px;
+  padding: 15px 20px;
+  margin: 10px;
+  // margin-left: 5px;
+  // float: left;
+  display: inline-block;
+}
+
+#log-in-header {
+  margin-right: 0;
+  border-radius: 4px;
+  background-color: #476c99;
+  color: #fff;
+  border: none;
+  height: 50px;
+  padding: 15px 20px;
+  // margin-left: 5px;
+  display: inline-block;
+  float: right;
+  // vertical-align: middle;
 }
 
 .footer {
@@ -172,4 +227,15 @@ iframe {
   min-height: 650px;
   // margin-right: 5%;
   // margin-left: 5%;
+}
+
+.invisible {
+  display: none;
+  position: absolute;
+  padding: 0;
+  margin: 0 auto;
+}
+
+.visible {
+  position: absolute;
 }

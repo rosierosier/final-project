@@ -5,7 +5,7 @@ require('backbone-react-component');
 var $ = require('jquery');
 
 var models = require('../models/model');
-var FormComponent = require('./form.jsx');
+// var FormComponent = require('./form.jsx');
 
 console.log('Hello Listing');
 

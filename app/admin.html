@@ -29,40 +29,30 @@
         <p>Thank you for participating in this study.</p>
         <p>Please sign-up using your email address and password!</p>
       </div>
-      <div class="row user-begin text-center">
-        <form id="signup">
-          <input type="email" name="email" placeholder="Email Address" id="email" className=""/><br/>
-          <input type="password" name="user-password" placeholder="Password" id="user-password" className=""/><br/>
-          <input type="reset" id="cancel-button" value="CANCEL"/>
-          <input type="submit" id="sign-up-button" value="SIGN UP"/>
-        </form>
-
-        <form id="login">
-          <input type="email" name="login-email" placeholder="Email Address" id="login-email" className=""/><br/>
-          <input type="password" name="login-user-password" placeholder="Password" id="login-user-password" className=""/><br/>
-          <input type="reset" id="cancel-button" value="CANCEL"/>
-          <input type="submit" id="log-in-button" value="LOG IN"/>
-        </form>
-
-        <form id="logout">
+      <div id="user-signup" class="row user-begin text-center">
+        <!-- <form id="logout">
           <input type="submit" id="logout-button" value="LOG OUT"/>
-        </form>
+        </form> -->
+      </div>
+      <div id="user-login" class="row invisible text-center">
       </div>
 
       <div class="test">
       </div>
 
-      <div class="row footer text-center">
-        <p>copyright line here</p>
-      </div>
-    </div>
+    </div><!--end of container-->
 
 
     <div class="editor">
         <textarea id="editor"></textarea>
-        <button onclick="submit_html();">Submit</button>
+        <button id="submit-text" onclick="submit_html();">Submit</button>
         <iframe id="result"></iframe>
     </div>
+
+    <div class="row footer text-center">
+      <p>copyright line here</p>
+    </div>
+
     <script>
         var editor = CodeMirror.fromTextArea(document.getElementById("editor"), {
             lineNumbers: true,

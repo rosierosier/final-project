@@ -17,9 +17,11 @@
     <div id="app">
     </div>
 
-    <div class="row header">
+    <div id="header" class="row header">
       <a href="index.html" role="button">Assessment</a>
       <a href="admin.html" role="button">Admin</a>
+      <div id="header-login">
+      </div>
     </div>
 
     <div class="container-fluid">
@@ -29,57 +31,29 @@
         <p>Thank you for participating in this study.</p>
         <p>Please sign-up using your email address and password!</p>
       </div>
-      <div class="row user-begin text-center">
-        <form id="signup">
-          <input type="email" name="email" placeholder="Email Address" id="email" className=""/><br/>
-          <input type="password" name="user-password" placeholder="Password" id="user-password" className=""/><br/>
-          <input type="reset" id="cancel-button" value="CANCEL"/>
-          <input type="submit" id="sign-up-button" value="SIGN UP"/>
-        </form>
-
-        <form id="login">
-          <input type="email" name="login-email" placeholder="Email Address" id="login-email" className=""/><br/>
-          <input type="password" name="login-user-password" placeholder="Password" id="login-user-password" className=""/><br/>
-          <input type="reset" id="cancel-button" value="CANCEL"/>
-          <input type="submit" id="log-in-button" value="LOG IN"/>
-        </form>
-
-        <form id="logout">
+      <div id="user-signup" class="row user-begin text-center">
+        <!-- <form id="logout">
           <input type="submit" id="logout-button" value="LOG OUT"/>
-        </form>
+        </form> -->
+      </div>
+      <div id="user-login" class="row invisible text-center">
       </div>
 
       <div class="test">
       </div>
 
-      <div class="row footer text-center">
-        <p>copyright line here</p>
-      </div>
 
-      <div class="row editor">
+      <div id="display-iframe" class="row editor">
           <!-- <textarea id="editor"></textarea>
           <button onclick="submit_html();">Submit</button> -->
-          <iframe frameborder="0" border="0" id="result"></iframe>
+          <!-- <iframe frameborder="0" border="0" id="result"></iframe> -->
       </div>
-      
+
+    </div>
+    <div class="footer text-center">
+      <p>copyright line here</p>
     </div>
 
-
-
-    <!-- <script>
-        var editor = CodeMirror.fromTextArea(document.getElementById("editor"), {
-            lineNumbers: true,
-            mode:  "xml"
-        });
-
-        function submit_html()
-        {
-            editor.save();
-            var code = document.getElementById("editor").value;
-            var data_url = "data:text/html;charset=utf-8;base64," + $.base64.encode(code);
-            document.getElementById("result").src = data_url;
-        }
-    </script> -->
 
     <script src="js/bundle.js"></script>
   </body>

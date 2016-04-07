@@ -5,19 +5,33 @@ var Backbone = require('backbone');
 var React = require('react');
 var ReactDOM = require('react-dom');
 require('backbone-react-component');
-var ImageListing = require('./components/listing.jsx');
-var FormComponent = require('./components/form.jsx');
+// var ImageListing = require('./components/listing.jsx');
+var UserSignupComponent = require('./components/user-signup.jsx');
+var UserLoginComponent = require('./components/user-login.jsx');
+var ToggleComponent = require('./components/toggle.jsx');
+var UserIframeComponent = require('./components/user-iframe.jsx');
 var models = require('./models/model')
 
-// var newModelCollection = new models.ModelCollection();
-//
-//
-// ReactDOM.render(
-//   <ImageListing collection={newImageCollection}/>,
-//   document.getElementById('app')
-// );
+ReactDOM.render(
+  <UserSignupComponent />,
+  document.getElementById('user-signup')
+);
 
-// newImageCollection.fetch();
+ReactDOM.render(
+  <ToggleComponent />,
+  // $(#header).apend(<UserLoginComponent />)
+  document.getElementById('header-login')
+);
+
+ReactDOM.render(
+  <UserLoginComponent />,
+  document.getElementById('user-login')
+);
+
+ReactDOM.render(
+  <UserIframeComponent />,
+  document.getElementById('display-iframe')
+);
 
 
 $(function(){
@@ -30,15 +44,10 @@ $(function(){
   //   alert("yay! it worked");
   // });
 
-  // var TestObject = Parse.Object.extend("TestObject");
-  // var testObject = new TestObject();
-  // testObject.save({foo: "bar"}).then(function(object) {
-  //   alert("yay! it worked");
-  // });
-
   $('#signup').on('submit', function(event){
     event.preventDefault();
 
+    console.log('index submit working');
     var user = new Parse.User();
     user.set({'username': $('#email').val(), 'password': $('#user-password').val()});
 
