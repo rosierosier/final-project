@@ -12,7 +12,11 @@ var ModelCollection = Backbone.Collection.extend({
   url: 'http://tiy-gvl-demo-day.herokuapp.com/rosiefinalproject',
 });
 
+var TextEditor = Parse.Object.extend("TextEditor");
+
+
 module.exports = {
   'SingleModel': SingleModel,
-  'ModelCollection': ModelCollection
+  'ModelCollection': ModelCollection,
+  'TextEditor': TextEditor
 };
