@@ -12,20 +12,20 @@ var UserSignupComponent = React.createClass({
   handleSubmit: function(e){
     e.preventDefault();
     console.log('signup submit working');
-    
-    var user = new Parse.User();
-    user.set({'username': $('#email').val(), 'password': $('#user-password').val()});
-    user.signUp(null, {
-      'success': function(results){
-        console.log("results: ", results);
-        // ##############
-        // then, display test page
-        // ##############
-      },
-      'error': function(user, error){
-        console.log(user, error);
-      }
-    });
+
+    // var user = new Parse.User();
+    // user.set({'username': $('#email').val(), 'password': $('#user-password').val()});
+    // user.signUp(null, {
+    //   'success': function(results){
+    //     console.log("results: ", results);
+    //     // ##############
+    //     // then, display test page
+    //     // ##############
+    //   },
+    //   'error': function(user, error){
+    //     console.log(user, error);
+    //   }
+    // });
   },
 
   render: function(){

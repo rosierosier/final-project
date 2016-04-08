@@ -21,9 +21,9 @@ var UserIframeComponent = React.createClass({
     return (
       <div id="wrapper">
         <div id="button" onClick={this.displaySurvey}>
-          <input type="submit" id="feedback-button" value="GIVE FEEDBACK"/>
+          <input type="submit" id="feedback-button" className="invisible" value="GIVE FEEDBACK"/>
         </div>
-        <iframe frameBorder="0" border="0" id="result"></iframe>
+        <iframe frameBorder="0" border="0" id="result" className="invisible"></iframe>
       </div>
     );
   }

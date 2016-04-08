@@ -40,10 +40,11 @@ ReactDOM.render(
   document.getElementById('survey')
 );
 
-ReactDOM.render(
-  <EditorComponent />
-  document.getElementById('text-editor')
-);
+// window.onload = function(){
+//   ReactDOM.render(
+//   <EditorComponent />
+//   document.find('text-editor')
+// )};
 
 
 $(function(){

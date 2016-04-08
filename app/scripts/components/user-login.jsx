@@ -12,6 +12,9 @@ var UserLoginComponent = React.createClass({
   handleSubmit: function(e){
     e.preventDefault();
     console.log('submit working');
+    $('#result').removeClass('invisible');
+    $('#feedback-button').removeClass('invisible');
+    $('#user-login').addClass('invisible');
   },
 
   render: function(){
