@@ -285,7 +285,7 @@ ReactDOM.render(
 // window.onload = function(){
 //   ReactDOM.render(
 //   <EditorComponent />
-//   document.find('text-editor')
+//   document.getElementById('text-editor')
 // )};
 
 
