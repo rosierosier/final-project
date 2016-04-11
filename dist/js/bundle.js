@@ -7,6 +7,12 @@ var ReactDOM = require('react-dom');
 require('backbone-react-component');
 var $ = require('jquery');
 
+// <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/codemirror/CodeMirror/master/lib/codemirror.css">
+// <script type="text/javascript" src="https://cdn.rawgit.com/codemirror/CodeMirror/master/lib/codemirror.js"></script>
+// <script type="text/javascript" src="https://cdn.rawgit.com/codemirror/CodeMirror/master/mode/xml/xml.js"></script>
+// <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+// <script type="text/javascript" src="https://cdn.rawgit.com/carlo/jquery-base64/master/jquery.base64.min.js"></script>
+
 var models = require('../models/model')
 
 var EditorComponent = React.createClass({displayName: "EditorComponent",
@@ -14,7 +20,7 @@ var EditorComponent = React.createClass({displayName: "EditorComponent",
 
   handleSubmit: function(e){
     e.preventDefault();
-    console.log('editor submit working; mrosier also here');
+    console.log('editor submit working');
 
     this.editor.save();
     var code = document.getElementById("editor").value;
@@ -44,7 +50,8 @@ var EditorComponent = React.createClass({displayName: "EditorComponent",
     return (
       React.createElement("div", {onClick: this.handleSubmit, className: "wrapper"}, 
         React.createElement("textarea", {id: "editor"}), 
-        React.createElement("input", {type: "submit", id: "submit-text", value: "SUBMIT"})
+        React.createElement("input", {type: "submit", id: "submit-text", value: "SUBMIT"}), 
+        React.createElement("iframe", {frameborder: "0", border: "0", id: "result"})
       )
     );
   }
