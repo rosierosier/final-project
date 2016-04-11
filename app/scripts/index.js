@@ -5,6 +5,11 @@ var Backbone = require('backbone');
 var React = require('react');
 var ReactDOM = require('react-dom');
 require('backbone-react-component');
+
+var isAdmin = ("" + window.location.href).indexOf("/admin.html") > 0;
+var isIndex = !isAdmin;
+// alert("" + window.location.href + "\n\nisAdmin: " + isAdmin);
+
 // var ImageListing = require('./components/listing.jsx');
 var UserSignupComponent = require('./components/user-signup.jsx');
 var UserLoginComponent = require('./components/user-login.jsx');
@@ -12,33 +17,42 @@ var ToggleComponent = require('./components/toggle.jsx');
 var UserIframeComponent = require('./components/user-iframe.jsx');
 var SurveyComponent = require('./components/survey.jsx');
 var EditorComponent = require('./components/editor.jsx');
-var models = require('./models/model')
+var models = require('./models/model');
 
-ReactDOM.render(
-  <UserSignupComponent />,
-  document.getElementById('user-signup')
-);
+if (isIndex) {
+  ReactDOM.render(
+    <UserSignupComponent />,
+    document.getElementById('user-signup')
+  );
 
-ReactDOM.render(
-  <ToggleComponent />,
-  // $(#header).apend(<UserLoginComponent />)
-  document.getElementById('header-login')
-);
+  ReactDOM.render(
+    <ToggleComponent />,
+    // $(#header).apend(<UserLoginComponent />)
+    document.getElementById('header-login')
+  );
 
-ReactDOM.render(
-  <UserLoginComponent />,
-  document.getElementById('user-login')
-);
+  ReactDOM.render(
+    <UserLoginComponent />,
+    document.getElementById('user-login')
+  );
 
-ReactDOM.render(
-  <UserIframeComponent />,
-  document.getElementById('display-iframe')
-);
+  ReactDOM.render(
+    <UserIframeComponent />,
+    document.getElementById('display-iframe')
+  );
 
-ReactDOM.render(
-  <SurveyComponent />,
-  document.getElementById('survey')
-);
+  ReactDOM.render(
+    <SurveyComponent />,
+    document.getElementById('survey')
+  );
+}
+
+if (isAdmin) {
+  ReactDOM.render(
+    <EditorComponent />,
+    document.getElementById('text-editor')
+  );
+}
 
 // window.onload = function(){
 //   ReactDOM.render(

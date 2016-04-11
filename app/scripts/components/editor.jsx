@@ -12,15 +12,16 @@ var EditorComponent = React.createClass({
 
   handleSubmit: function(e){
     e.preventDefault();
-    console.log('editor submit working');
+    console.log('editor submit working; mrosier also here');
 
     this.editor.save();
     var code = document.getElementById("editor").value;
-    var data_url = "data:text/html;charset=utf-8;base64," + $.base64.encode(code);
-    document.getElementById("result").src = data_url;
+    // var data_url = "data:text/html;charset=utf-8;base64," + $.base64.encode(code);
+    // document.getElementById("result").src = data_url;
 
     var textEditor = new models.TextEditor();
-    textEditor.set("data", data_url);
+    console.log("preparing to save : ", code);
+    textEditor.set("data", code);
     textEditor.save(null, {
       success: function(textEditor){
         // Execute any logic that should take place after the object is saved.
@@ -38,6 +39,13 @@ var EditorComponent = React.createClass({
     });
   },
 
+  // render: function(){
+  //   return (
+  //     <div class="wrapper">
+  //       Hello text-editor reactor world.
+  //     </div>
+  //   );
+  // }
   render: function(){
     return (
       <div onClick={this.handleSubmit} class="wrapper">

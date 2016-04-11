@@ -14,15 +14,16 @@ var EditorComponent = React.createClass({displayName: "EditorComponent",
 
   handleSubmit: function(e){
     e.preventDefault();
-    console.log('editor submit working');
+    console.log('editor submit working; mrosier also here');
 
     this.editor.save();
     var code = document.getElementById("editor").value;
-    var data_url = "data:text/html;charset=utf-8;base64," + $.base64.encode(code);
-    document.getElementById("result").src = data_url;
+    // var data_url = "data:text/html;charset=utf-8;base64," + $.base64.encode(code);
+    // document.getElementById("result").src = data_url;
 
     var textEditor = new models.TextEditor();
-    textEditor.set("data", data_url);
+    console.log("preparing to save : ", code);
+    textEditor.set("data", code);
     textEditor.save(null, {
       success: function(textEditor){
         // Execute any logic that should take place after the object is saved.
@@ -40,6 +41,13 @@ var EditorComponent = React.createClass({displayName: "EditorComponent",
     });
   },
 
+  // render: function(){
+  //   return (
+  //     <div class="wrapper">
+  //       Hello text-editor reactor world.
+  //     </div>
+  //   );
+  // }
   render: function(){
     return (
       React.createElement("div", {onClick: this.handleSubmit, class: "wrapper"}, 
@@ -247,6 +255,11 @@ var Backbone = require('backbone');
 var React = require('react');
 var ReactDOM = require('react-dom');
 require('backbone-react-component');
+
+var isAdmin = ("" + window.location.href).indexOf("/admin.html") > 0;
+var isIndex = !isAdmin;
+// alert("" + window.location.href + "\n\nisAdmin: " + isAdmin);
+
 // var ImageListing = require('./components/listing.jsx');
 var UserSignupComponent = require('./components/user-signup.jsx');
 var UserLoginComponent = require('./components/user-login.jsx');
@@ -254,33 +267,42 @@ var ToggleComponent = require('./components/toggle.jsx');
 var UserIframeComponent = require('./components/user-iframe.jsx');
 var SurveyComponent = require('./components/survey.jsx');
 var EditorComponent = require('./components/editor.jsx');
-var models = require('./models/model')
+var models = require('./models/model');
 
-ReactDOM.render(
-  React.createElement(UserSignupComponent, null),
-  document.getElementById('user-signup')
-);
+if (isIndex) {
+  ReactDOM.render(
+    React.createElement(UserSignupComponent, null),
+    document.getElementById('user-signup')
+  );
 
-ReactDOM.render(
-  React.createElement(ToggleComponent, null),
-  // $(#header).apend(<UserLoginComponent />)
-  document.getElementById('header-login')
-);
+  ReactDOM.render(
+    React.createElement(ToggleComponent, null),
+    // $(#header).apend(<UserLoginComponent />)
+    document.getElementById('header-login')
+  );
 
-ReactDOM.render(
-  React.createElement(UserLoginComponent, null),
-  document.getElementById('user-login')
-);
+  ReactDOM.render(
+    React.createElement(UserLoginComponent, null),
+    document.getElementById('user-login')
+  );
 
-ReactDOM.render(
-  React.createElement(UserIframeComponent, null),
-  document.getElementById('display-iframe')
-);
+  ReactDOM.render(
+    React.createElement(UserIframeComponent, null),
+    document.getElementById('display-iframe')
+  );
 
-ReactDOM.render(
-  React.createElement(SurveyComponent, null),
-  document.getElementById('survey')
-);
+  ReactDOM.render(
+    React.createElement(SurveyComponent, null),
+    document.getElementById('survey')
+  );
+}
+
+if (isAdmin) {
+  ReactDOM.render(
+    React.createElement(EditorComponent, null),
+    document.getElementById('text-editor')
+  );
+}
 
 // window.onload = function(){
 //   ReactDOM.render(
@@ -350,6 +372,7 @@ $(function(){
 },{"./components/editor.jsx":1,"./components/survey.jsx":2,"./components/toggle.jsx":3,"./components/user-iframe.jsx":4,"./components/user-login.jsx":5,"./components/user-signup.jsx":6,"./models/model":8,"backbone":25,"backbone-react-component":24,"jquery":124,"parse":125,"react":297,"react-dom":168}],8:[function(require,module,exports){
 "use strict";
 var Backbone = require('backbone');
+var Parse = require('parse');
 var React = require('react');
 var ReactDOM = require('react-dom');
 require('backbone-react-component');
@@ -363,16 +386,16 @@ var ModelCollection = Backbone.Collection.extend({
   url: 'http://tiy-gvl-demo-day.herokuapp.com/rosiefinalproject',
 });
 
-// var TextEditor = Parse.Object.extend("TextEditor");
+var TextEditor = Parse.Object.extend("TextEditor");
 
 
 module.exports = {
   'SingleModel': SingleModel,
   'ModelCollection': ModelCollection,
-  // 'TextEditor': TextEditor
+  'TextEditor': TextEditor
 };
 
-},{"backbone":25,"backbone-react-component":24,"react":297,"react-dom":168}],9:[function(require,module,exports){
+},{"backbone":25,"backbone-react-component":24,"parse":125,"react":297,"react-dom":168}],9:[function(require,module,exports){
 module.exports = { "default": require("core-js/library/fn/get-iterator"), __esModule: true };
 },{"core-js/library/fn/get-iterator":26}],10:[function(require,module,exports){
 module.exports = { "default": require("core-js/library/fn/map"), __esModule: true };
