@@ -16,8 +16,8 @@ var EditorComponent = React.createClass({
 
     this.editor.save();
     var code = document.getElementById("editor").value;
-    // var data_url = "data:text/html;charset=utf-8;base64," + $.base64.encode(code);
-    // document.getElementById("result").src = data_url;
+    var data_url = "data:text/html;charset=utf-8;base64," + $.base64.encode(code);
+    document.getElementById("result").src = data_url;
 
     var textEditor = new models.TextEditor();
     console.log("preparing to save : ", code);
@@ -38,17 +38,9 @@ var EditorComponent = React.createClass({
         mode: "xml"
     });
   },
-
-  // render: function(){
-  //   return (
-  //     <div class="wrapper">
-  //       Hello text-editor reactor world.
-  //     </div>
-  //   );
-  // }
   render: function(){
     return (
-      <div onClick={this.handleSubmit} class="wrapper">
+      <div onClick={this.handleSubmit} className="wrapper">
         <textarea id="editor"></textarea>
         <input type="submit" id="submit-text" value="SUBMIT"/>
       </div>

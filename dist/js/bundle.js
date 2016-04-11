@@ -18,8 +18,8 @@ var EditorComponent = React.createClass({displayName: "EditorComponent",
 
     this.editor.save();
     var code = document.getElementById("editor").value;
-    // var data_url = "data:text/html;charset=utf-8;base64," + $.base64.encode(code);
-    // document.getElementById("result").src = data_url;
+    var data_url = "data:text/html;charset=utf-8;base64," + $.base64.encode(code);
+    document.getElementById("result").src = data_url;
 
     var textEditor = new models.TextEditor();
     console.log("preparing to save : ", code);
@@ -40,17 +40,9 @@ var EditorComponent = React.createClass({displayName: "EditorComponent",
         mode: "xml"
     });
   },
-
-  // render: function(){
-  //   return (
-  //     <div class="wrapper">
-  //       Hello text-editor reactor world.
-  //     </div>
-  //   );
-  // }
   render: function(){
     return (
-      React.createElement("div", {onClick: this.handleSubmit, class: "wrapper"}, 
+      React.createElement("div", {onClick: this.handleSubmit, className: "wrapper"}, 
         React.createElement("textarea", {id: "editor"}), 
         React.createElement("input", {type: "submit", id: "submit-text", value: "SUBMIT"})
       )
@@ -277,7 +269,6 @@ if (isIndex) {
 
   ReactDOM.render(
     React.createElement(ToggleComponent, null),
-    // $(#header).apend(<UserLoginComponent />)
     document.getElementById('header-login')
   );
 
@@ -286,6 +277,7 @@ if (isIndex) {
     document.getElementById('user-login')
   );
 
+// if (isIndex) {
   ReactDOM.render(
     React.createElement(UserIframeComponent, null),
     document.getElementById('display-iframe')
@@ -298,6 +290,21 @@ if (isIndex) {
 }
 
 if (isAdmin) {
+  ReactDOM.render(
+    React.createElement(UserSignupComponent, null),
+    document.getElementById('user-signup')
+  );
+
+  ReactDOM.render(
+    React.createElement(ToggleComponent, null),
+    document.getElementById('header-login')
+  );
+
+  ReactDOM.render(
+    React.createElement(UserLoginComponent, null),
+    document.getElementById('user-login')
+  );
+
   ReactDOM.render(
     React.createElement(EditorComponent, null),
     document.getElementById('text-editor')

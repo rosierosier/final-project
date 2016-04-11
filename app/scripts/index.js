@@ -27,7 +27,6 @@ if (isIndex) {
 
   ReactDOM.render(
     <ToggleComponent />,
-    // $(#header).apend(<UserLoginComponent />)
     document.getElementById('header-login')
   );
 
@@ -36,6 +35,7 @@ if (isIndex) {
     document.getElementById('user-login')
   );
 
+// if (isIndex) {
   ReactDOM.render(
     <UserIframeComponent />,
     document.getElementById('display-iframe')
@@ -48,6 +48,21 @@ if (isIndex) {
 }
 
 if (isAdmin) {
+  ReactDOM.render(
+    <UserSignupComponent />,
+    document.getElementById('user-signup')
+  );
+
+  ReactDOM.render(
+    <ToggleComponent />,
+    document.getElementById('header-login')
+  );
+
+  ReactDOM.render(
+    <UserLoginComponent />,
+    document.getElementById('user-login')
+  );
+
   ReactDOM.render(
     <EditorComponent />,
     document.getElementById('text-editor')
