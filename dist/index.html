@@ -39,8 +39,30 @@
       <div id="user-login" class="row invisible text-center">
       </div>
 
-      <div id="test" class="test">
-      </div>
+      <!-- <div id="test" class="test">
+        <form id="profile" action="/dist/admin.html" method="POST" enctype="multipart/form-data"> method="POST" affects my query string(which changes my address bar)
+          method="POST" puts the form data into form data instead of sending it in the address
+          <input type="text" id="name" name="name"/><br/>
+          <input type="file" id="pic" name="profile-pic"/><br/>
+          <input type="submit">
+        </form>
+        <script>
+        $(function(){
+          $('#profile').on('submit', function(event){
+            event.preventDefault();
+            var picture = $("#pic")[0].files[0];
+            console.log(picture);
+
+            var formData = new FormData();
+            formData.append("name", $("#name").val());
+            formData.append("picture", picture);
+            $.post('/dist/', formData).then(function(){
+              alert('upload complete!');
+            });
+          });
+        });
+        </script>
+      </div> -->
 
 
       <div id="display-iframe" class="row editor">

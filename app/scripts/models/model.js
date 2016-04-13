@@ -15,9 +15,12 @@ var ModelCollection = Backbone.Collection.extend({
 
 var TextEditor = Parse.Object.extend("TextEditor");
 
+var SurveyData = Parse.Object.extend("SurveyData");
+
 
 module.exports = {
   'SingleModel': SingleModel,
   'ModelCollection': ModelCollection,
-  'TextEditor': TextEditor
+  'TextEditor': TextEditor,
+  'SurveyData': SurveyData
 };

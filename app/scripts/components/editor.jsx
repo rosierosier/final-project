@@ -37,6 +37,8 @@ var EditorComponent = React.createClass({
         alert('Failed to create new object, with error code: ' + error.message);
       }
     });
+    var textData = textEditor.get("data");
+    console.log("this is textData:", textData);
   },
   componentDidMount: function(){
     this.editor = CodeMirror.fromTextArea(document.getElementById("editor"), {
@@ -49,7 +51,7 @@ var EditorComponent = React.createClass({
       <div onClick={this.handleSubmit} className="wrapper">
         <textarea id="editor"></textarea>
         <input type="submit" id="submit-text" value="SUBMIT"/>
-        <iframe frameborder="0" border="0" id="result"></iframe>
+        <iframe frameBorder="0" border="0" id="result"></iframe>
       </div>
     );
   }

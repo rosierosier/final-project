@@ -17,6 +17,7 @@ var ToggleComponent = require('./components/toggle.jsx');
 var UserIframeComponent = require('./components/user-iframe.jsx');
 var SurveyComponent = require('./components/survey.jsx');
 var EditorComponent = require('./components/editor.jsx');
+var AdminResultsComponent = require('./components/admin-results.jsx');
 var models = require('./models/model');
 
 if (isIndex) {
@@ -66,6 +67,11 @@ if (isAdmin) {
   ReactDOM.render(
     <EditorComponent />,
     document.getElementById('text-editor')
+  );
+
+  ReactDOM.render(
+    <AdminResultsComponent />,
+    document.getElementById('admin-results')
   );
 }
 
