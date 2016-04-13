@@ -14,12 +14,10 @@
   </head>
   <body>
 
-    <div id="app">
-    </div>
-
     <div id="header" class="row header">
       <a href="index.html" role="button">Assessment</a>
       <a href="admin.html" role="button">Admin</a>
+
       <div id="header-login">
       </div>
     </div>
@@ -31,50 +29,20 @@
         <p>Thank you for participating in this study.</p>
         <p>Please sign-up using your email address and password!</p>
       </div>
-      <div id="user-signup" class="row user-begin text-center">
+
+      <div id="user-signup" class="row user-begin text-center"></div>
         <!-- <form id="logout">
           <input type="submit" id="logout-button" value="LOG OUT"/>
         </form> -->
-      </div>
-      <div id="user-login" class="row invisible text-center">
-      </div>
 
-      <!-- <div id="test" class="test">
-        <form id="profile" action="/dist/admin.html" method="POST" enctype="multipart/form-data"> method="POST" affects my query string(which changes my address bar)
-          method="POST" puts the form data into form data instead of sending it in the address
-          <input type="text" id="name" name="name"/><br/>
-          <input type="file" id="pic" name="profile-pic"/><br/>
-          <input type="submit">
-        </form>
-        <script>
-        $(function(){
-          $('#profile').on('submit', function(event){
-            event.preventDefault();
-            var picture = $("#pic")[0].files[0];
-            console.log(picture);
+      <div id="user-login" class="row invisible text-center"></div>
 
-            var formData = new FormData();
-            formData.append("name", $("#name").val());
-            formData.append("picture", picture);
-            $.post('/dist/', formData).then(function(){
-              alert('upload complete!');
-            });
-          });
-        });
-        </script>
-      </div> -->
+      <div id="display-iframe" class="row editor"></div>
 
-
-      <div id="display-iframe" class="row editor">
-          <!-- <textarea id="editor"></textarea>
-          <button onclick="submit_html();">Submit</button> -->
-          <!-- <iframe frameborder="0" border="0" id="result"></iframe> -->
-      </div>
-
-      <div id="survey" class="row invisible">
-      </div>
+      <div id="survey" class="row invisible"></div>
 
     </div><!--end of container-->
+
     <div class="footer text-center">
       <p>copyright line here</p>
     </div>

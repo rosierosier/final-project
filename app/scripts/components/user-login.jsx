@@ -1,4 +1,5 @@
 console.log('Hello Log In');
+var Parse = require('parse');
 var Backbone = require('backbone');
 var React = require('react');
 var ReactDOM = require('react-dom');
@@ -12,9 +13,18 @@ var UserLoginComponent = React.createClass({
   handleSubmit: function(e){
     e.preventDefault();
     console.log('submit working');
-    $('#result').removeClass('invisible');
-    $('#feedback-button').removeClass('invisible');
-    $('#user-login').addClass('invisible');
+    Parse.User
+      .logIn($('#login-email').val(), $('#login-user-password').val(), {
+        success: function(user) {
+          console.log("login", user);
+          $('#result').removeClass('invisible');
+          $('#feedback-button').removeClass('invisible');
+          $('#user-login').addClass('invisible');
+        },
+        error: function(user, error) {
+          // The login failed. Check error to see why.
+        }
+      });
   },
 
   render: function(){

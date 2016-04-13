@@ -15,14 +15,10 @@ var AdminResultsComponent = React.createClass({displayName: "AdminResultsCompone
   handleSubmit: function(e){
     e.preventDefault();
     console.log('results view submit working');
-    // var surveyInput = {
-    //   'text': hello world!
-    // };
     var SurveyData = new models.SurveyData();
     var query = new Parse.Query(SurveyData);
     query.find({
       success: function(results){
-        // alert('New object created with objectID: ' + surveyData.id);
         for (var i = 0; i < results.length; i++){
           var surveyData = results[i];
           console.log("received result:", i, surveyData);
@@ -40,13 +36,13 @@ var AdminResultsComponent = React.createClass({displayName: "AdminResultsCompone
   render: function(){
     return (
       React.createElement("form", {onSubmit: this.handleSubmit}, 
+        React.createElement("input", {type: "submit", id: "admin-results-button", value: "VIEW RESULTS"}), React.createElement("br", null), 
         React.createElement("label", {htmlFor: "question1"}, "Would you recommend our product (website) to a friend?"), React.createElement("br", null), 
         React.createElement("input", {type: "text", name: "answer1", placeholder: "Answer 1 here", id: "answer1", className: ""}), React.createElement("br", null), 
         React.createElement("label", {htmlFor: "question2"}, "How easy is our product (website) to use?"), React.createElement("br", null), 
         React.createElement("input", {type: "text", name: "answer2", placeholder: "Answer 2 here", id: "answer2", className: ""}), React.createElement("br", null), 
-          React.createElement("label", {htmlFor: "question3"}, "What do you like least about our product (website)?"), React.createElement("br", null), 
-          React.createElement("input", {type: "text", name: "answer3", placeholder: "Answer 3 here", id: "answer3", className: ""}), React.createElement("br", null), 
-        React.createElement("input", {type: "submit", id: "admin-results-button", value: "SUBMIT"})
+        React.createElement("label", {htmlFor: "question3"}, "What do you like least about our product (website)?"), React.createElement("br", null), 
+        React.createElement("input", {type: "text", name: "answer3", placeholder: "Answer 3 here", id: "answer3", className: ""}), React.createElement("br", null)
       )
     );
   }
@@ -57,6 +53,7 @@ module.exports = AdminResultsComponent;
 },{"../models/model":9,"backbone":26,"backbone-react-component":25,"jquery":125,"parse":126,"react":298,"react-dom":169}],2:[function(require,module,exports){
 "use strict";
 console.log('Hello Editor');
+var Parse = require('parse');
 var Backbone = require('backbone');
 var React = require('react');
 var ReactDOM = require('react-dom');
@@ -80,8 +77,8 @@ var EditorComponent = React.createClass({displayName: "EditorComponent",
 
     this.editor.save();
     var code = document.getElementById("editor").value;
-    var data_url = "data:text/html;charset=utf-8;base64," + $.base64.encode(code);
-    document.getElementById("result").src = data_url;
+    // var data_url = "data:text/html;charset=utf-8;base64," + $.base64.encode(code);
+    // document.getElementById("result").src = data_url;
 
     var textEditor = new models.TextEditor();
     console.log("preparing to save : ", code);
@@ -95,8 +92,6 @@ var EditorComponent = React.createClass({displayName: "EditorComponent",
         alert('Failed to create new object, with error code: ' + error.message);
       }
     });
-    var textData = textEditor.get("data");
-    console.log("this is textData:", textData);
   },
   componentDidMount: function(){
     this.editor = CodeMirror.fromTextArea(document.getElementById("editor"), {
@@ -104,12 +99,34 @@ var EditorComponent = React.createClass({displayName: "EditorComponent",
         mode: "xml"
     });
   },
+  handleLink: function(e){
+    e.preventDefault();
+    console.log("admin post link working");
+    var adminUrl = document.getElementById("admin-link").value;
+    var adminLink = new models.AdminLink();
+    adminLink.set("url", adminUrl);
+    adminLink.save({
+      success: function(adminLink){
+        alert('New object created for admin link');
+      },
+      error: function(adminLink, error){
+        alert('Failed to create new object, with error code: ' + error.message);
+      }
+    });
+  },
   render: function(){
     return (
-      React.createElement("div", {onClick: this.handleSubmit, className: "wrapper"}, 
-        React.createElement("textarea", {id: "editor"}), 
-        React.createElement("input", {type: "submit", id: "submit-text", value: "SUBMIT"}), 
-        React.createElement("iframe", {frameBorder: "0", border: "0", id: "result"})
+      React.createElement("div", {className: "wrapper"}, 
+        React.createElement("div", {onSubmit: this.handleLink}, 
+          React.createElement("label", {htmlFor: "embed-link"}), React.createElement("br", null), 
+          React.createElement("input", {type: "text", name: "admin-link", placeholder: "Embed link here", id: "admin-link", className: ""}), React.createElement("br", null), 
+          React.createElement("input", {type: "submit", id: "submit-url", value: "POST LINK"})
+        ), 
+        React.createElement("div", {onSubmit: this.handleSubmit}, 
+          React.createElement("textarea", {id: "editor"}), 
+          React.createElement("input", {type: "submit", id: "submit-text", value: "SUBMIT"}), 
+          React.createElement("iframe", {frameBorder: "0", border: "0", id: "result"})
+        )
       )
     );
   }
@@ -117,7 +134,7 @@ var EditorComponent = React.createClass({displayName: "EditorComponent",
 
 module.exports = EditorComponent;
 
-},{"../models/model":9,"backbone":26,"backbone-react-component":25,"jquery":125,"react":298,"react-dom":169}],3:[function(require,module,exports){
+},{"../models/model":9,"backbone":26,"backbone-react-component":25,"jquery":125,"parse":126,"react":298,"react-dom":169}],3:[function(require,module,exports){
 "use strict";
 console.log('Hello Survey');
 var Backbone = require('backbone');
@@ -143,18 +160,13 @@ var SurveyComponent = React.createClass({displayName: "SurveyComponent",
     surveyData.save(null, {
       success: function(surveyData){
         // Execute any logic that should take place after the object is saved.
-        alert('New object created with objectID: ' + surveyData.id);
+        alert('Thank you for completing this survey!');
+        $('#survey').addClass('invisible');
       },
       error: function(surveyData, error){
         alert('Failed to create new object, with error code: ' + error.message);
       }
     });
-    // var surveyForm = {
-    //   'question1': surveyData.get("answer1"),
-    //   'question2': surveyData.get("answer2"),
-    //   'question3': surveyData.get("answer3")
-    // };
-    // console.log("this is surveyData:", surveyForm);
   },
 
   render: function(){
@@ -247,6 +259,7 @@ module.exports = UserIframeComponent;
 },{"../models/model":9,"backbone":26,"backbone-react-component":25,"jquery":125,"react":298,"react-dom":169}],6:[function(require,module,exports){
 "use strict";
 console.log('Hello Log In');
+var Parse = require('parse');
 var Backbone = require('backbone');
 var React = require('react');
 var ReactDOM = require('react-dom');
@@ -260,9 +273,18 @@ var UserLoginComponent = React.createClass({displayName: "UserLoginComponent",
   handleSubmit: function(e){
     e.preventDefault();
     console.log('submit working');
-    $('#result').removeClass('invisible');
-    $('#feedback-button').removeClass('invisible');
-    $('#user-login').addClass('invisible');
+    Parse.User
+      .logIn($('#login-email').val(), $('#login-user-password').val(), {
+        success: function(user) {
+          console.log("login", user);
+          $('#result').removeClass('invisible');
+          $('#feedback-button').removeClass('invisible');
+          $('#user-login').addClass('invisible');
+        },
+        error: function(user, error) {
+          // The login failed. Check error to see why.
+        }
+      });
   },
 
   render: function(){
@@ -279,9 +301,10 @@ var UserLoginComponent = React.createClass({displayName: "UserLoginComponent",
 
 module.exports = UserLoginComponent;
 
-},{"../models/model":9,"backbone":26,"backbone-react-component":25,"jquery":125,"react":298,"react-dom":169}],7:[function(require,module,exports){
+},{"../models/model":9,"backbone":26,"backbone-react-component":25,"jquery":125,"parse":126,"react":298,"react-dom":169}],7:[function(require,module,exports){
 "use strict";
 console.log('Hello Sign Up');
+var Parse = require('parse');
 var Backbone = require('backbone');
 var React = require('react');
 var ReactDOM = require('react-dom');
@@ -296,19 +319,19 @@ var UserSignupComponent = React.createClass({displayName: "UserSignupComponent",
     e.preventDefault();
     console.log('signup submit working');
 
-    // var user = new Parse.User();
-    // user.set({'username': $('#email').val(), 'password': $('#user-password').val()});
-    // user.signUp(null, {
-    //   'success': function(results){
-    //     console.log("results: ", results);
-    //     // ##############
-    //     // then, display test page
-    //     // ##############
-    //   },
-    //   'error': function(user, error){
-    //     console.log(user, error);
-    //   }
-    // });
+    var user = new Parse.User();
+    user.set({'username': $('#email').val(), 'password': $('#user-password').val()});
+
+    user.signUp(null, {
+      'success': function(results){
+        console.log("results: ", results);
+        $('#user-signup').addClass('invisible');
+        $('#user-login').removeClass('invisible');
+      },
+      'error': function(user, error){
+        console.log(user, error);
+      }
+    });
   },
 
   render: function(){
@@ -325,7 +348,7 @@ var UserSignupComponent = React.createClass({displayName: "UserSignupComponent",
 
 module.exports = UserSignupComponent;
 
-},{"../models/model":9,"backbone":26,"backbone-react-component":25,"jquery":125,"react":298,"react-dom":169}],8:[function(require,module,exports){
+},{"../models/model":9,"backbone":26,"backbone-react-component":25,"jquery":125,"parse":126,"react":298,"react-dom":169}],8:[function(require,module,exports){
 "use strict";
 console.log('Hello World!');
 var $ = require('jquery');
@@ -365,7 +388,6 @@ if (isIndex) {
     document.getElementById('user-login')
   );
 
-// if (isIndex) {
   ReactDOM.render(
     React.createElement(UserIframeComponent, null),
     document.getElementById('display-iframe')
@@ -404,12 +426,6 @@ if (isAdmin) {
   );
 }
 
-// window.onload = function(){
-//   ReactDOM.render(
-//   <EditorComponent />
-//   document.getElementById('text-editor')
-// )};
-
 
 $(function(){
   Parse.initialize("final_project");
@@ -421,42 +437,33 @@ $(function(){
   //   alert("yay! it worked");
   // });
 
-  $('#signup').on('submit', function(event){
-    event.preventDefault();
+  // $('#signup').on('submit', function(event){
+  //   event.preventDefault();
+  //   console.log('index submit working');
+  //   var user = new Parse.User();
+  //   user.set({'username': $('#email').val(), 'password': $('#user-password').val()});
+  //   user.signUp(null, {
+  //     'success': function(results){
+  //       console.log("results: ", results);
+  //     },
+  //     'error': function(user, error){
+  //       console.log(user, error);
+  //     }
+  //   });
+  // });
 
-    console.log('index submit working');
-    var user = new Parse.User();
-    user.set({'username': $('#email').val(), 'password': $('#user-password').val()});
-
-    user.signUp(null, {
-      'success': function(results){
-        console.log("results: ", results);
-        // ##############
-        // then, display test page
-        // ##############
-      },
-      'error': function(user, error){
-        console.log(user, error);
-      }
-    });
-  });
-
-  $('#login').on('submit', function(event){
-    event.preventDefault();
-
-    Parse.User
-      .logIn($('#login-email').val(), $('#login-user-password').val(), {
-        success: function(user) {
-          console.log("login", user);
-            // ##############
-            // then, display test page
-            // ##############
-        },
-        error: function(user, error) {
-          // The login failed. Check error to see why.
-        }
-      });
-  });
+  // $('#login').on('submit', function(event){
+  //   event.preventDefault();
+  //   Parse.User
+  //     .logIn($('#login-email').val(), $('#login-user-password').val(), {
+  //       success: function(user) {
+  //         console.log("login", user);
+  //       },
+  //       error: function(user, error) {
+  //         // The login failed. Check error to see why.
+  //       }
+  //     });
+  // });
 
   $('#logout').on('submit', function(event){
     event.preventDefault();
@@ -490,12 +497,14 @@ var TextEditor = Parse.Object.extend("TextEditor");
 
 var SurveyData = Parse.Object.extend("SurveyData");
 
+var AdminLink = Parse.Object.extend("AdminLink");
 
 module.exports = {
   'SingleModel': SingleModel,
   'ModelCollection': ModelCollection,
   'TextEditor': TextEditor,
-  'SurveyData': SurveyData
+  'SurveyData': SurveyData,
+  'AdminLink': AdminLink
 };
 
 },{"backbone":26,"backbone-react-component":25,"parse":126,"react":298,"react-dom":169}],10:[function(require,module,exports){

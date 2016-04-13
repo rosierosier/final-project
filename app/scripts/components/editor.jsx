@@ -1,4 +1,5 @@
 console.log('Hello Editor');
+var Parse = require('parse');
 var Backbone = require('backbone');
 var React = require('react');
 var ReactDOM = require('react-dom');
@@ -22,8 +23,8 @@ var EditorComponent = React.createClass({
 
     this.editor.save();
     var code = document.getElementById("editor").value;
-    var data_url = "data:text/html;charset=utf-8;base64," + $.base64.encode(code);
-    document.getElementById("result").src = data_url;
+    // var data_url = "data:text/html;charset=utf-8;base64," + $.base64.encode(code);
+    // document.getElementById("result").src = data_url;
 
     var textEditor = new models.TextEditor();
     console.log("preparing to save : ", code);
@@ -37,8 +38,6 @@ var EditorComponent = React.createClass({
         alert('Failed to create new object, with error code: ' + error.message);
       }
     });
-    var textData = textEditor.get("data");
-    console.log("this is textData:", textData);
   },
   componentDidMount: function(){
     this.editor = CodeMirror.fromTextArea(document.getElementById("editor"), {
@@ -46,12 +45,34 @@ var EditorComponent = React.createClass({
         mode: "xml"
     });
   },
+  handleLink: function(e){
+    e.preventDefault();
+    console.log("admin post link working");
+    var adminUrl = document.getElementById("admin-link").value;
+    var adminLink = new models.AdminLink();
+    adminLink.set("url", adminUrl);
+    adminLink.save({
+      success: function(adminLink){
+        alert('New object created for admin link');
+      },
+      error: function(adminLink, error){
+        alert('Failed to create new object, with error code: ' + error.message);
+      }
+    });
+  },
   render: function(){
     return (
-      <div onClick={this.handleSubmit} className="wrapper">
-        <textarea id="editor"></textarea>
-        <input type="submit" id="submit-text" value="SUBMIT"/>
-        <iframe frameBorder="0" border="0" id="result"></iframe>
+      <div className="wrapper">
+        <div onSubmit={this.handleLink}>
+          <label htmlFor="embed-link"></label><br/>
+          <input type="text" name="admin-link" placeholder="Embed link here" id="admin-link" className=""/><br/>
+          <input type="submit" id="submit-url" value="POST LINK"/>
+        </div>
+        <div onSubmit={this.handleSubmit}>
+          <textarea id="editor"></textarea>
+          <input type="submit" id="submit-text" value="SUBMIT"/>
+          <iframe frameBorder="0" border="0" id="result"></iframe>
+        </div>
       </div>
     );
   }

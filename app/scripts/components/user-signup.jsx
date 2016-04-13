@@ -1,4 +1,5 @@
 console.log('Hello Sign Up');
+var Parse = require('parse');
 var Backbone = require('backbone');
 var React = require('react');
 var ReactDOM = require('react-dom');
@@ -13,19 +14,19 @@ var UserSignupComponent = React.createClass({
     e.preventDefault();
     console.log('signup submit working');
 
-    // var user = new Parse.User();
-    // user.set({'username': $('#email').val(), 'password': $('#user-password').val()});
-    // user.signUp(null, {
-    //   'success': function(results){
-    //     console.log("results: ", results);
-    //     // ##############
-    //     // then, display test page
-    //     // ##############
-    //   },
-    //   'error': function(user, error){
-    //     console.log(user, error);
-    //   }
-    // });
+    var user = new Parse.User();
+    user.set({'username': $('#email').val(), 'password': $('#user-password').val()});
+
+    user.signUp(null, {
+      'success': function(results){
+        console.log("results: ", results);
+        $('#user-signup').addClass('invisible');
+        $('#user-login').removeClass('invisible');
+      },
+      'error': function(user, error){
+        console.log(user, error);
+      }
+    });
   },
 
   render: function(){

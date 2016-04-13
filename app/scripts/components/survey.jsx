@@ -22,18 +22,13 @@ var SurveyComponent = React.createClass({
     surveyData.save(null, {
       success: function(surveyData){
         // Execute any logic that should take place after the object is saved.
-        alert('New object created with objectID: ' + surveyData.id);
+        alert('Thank you for completing this survey!');
+        $('#survey').addClass('invisible');
       },
       error: function(surveyData, error){
         alert('Failed to create new object, with error code: ' + error.message);
       }
     });
-    // var surveyForm = {
-    //   'question1': surveyData.get("answer1"),
-    //   'question2': surveyData.get("answer2"),
-    //   'question3': surveyData.get("answer3")
-    // };
-    // console.log("this is surveyData:", surveyForm);
   },
 
   render: function(){

@@ -36,7 +36,6 @@ if (isIndex) {
     document.getElementById('user-login')
   );
 
-// if (isIndex) {
   ReactDOM.render(
     <UserIframeComponent />,
     document.getElementById('display-iframe')
@@ -75,12 +74,6 @@ if (isAdmin) {
   );
 }
 
-// window.onload = function(){
-//   ReactDOM.render(
-//   <EditorComponent />
-//   document.getElementById('text-editor')
-// )};
-
 
 $(function(){
   Parse.initialize("final_project");
@@ -92,42 +85,33 @@ $(function(){
   //   alert("yay! it worked");
   // });
 
-  $('#signup').on('submit', function(event){
-    event.preventDefault();
+  // $('#signup').on('submit', function(event){
+  //   event.preventDefault();
+  //   console.log('index submit working');
+  //   var user = new Parse.User();
+  //   user.set({'username': $('#email').val(), 'password': $('#user-password').val()});
+  //   user.signUp(null, {
+  //     'success': function(results){
+  //       console.log("results: ", results);
+  //     },
+  //     'error': function(user, error){
+  //       console.log(user, error);
+  //     }
+  //   });
+  // });
 
-    console.log('index submit working');
-    var user = new Parse.User();
-    user.set({'username': $('#email').val(), 'password': $('#user-password').val()});
-
-    user.signUp(null, {
-      'success': function(results){
-        console.log("results: ", results);
-        // ##############
-        // then, display test page
-        // ##############
-      },
-      'error': function(user, error){
-        console.log(user, error);
-      }
-    });
-  });
-
-  $('#login').on('submit', function(event){
-    event.preventDefault();
-
-    Parse.User
-      .logIn($('#login-email').val(), $('#login-user-password').val(), {
-        success: function(user) {
-          console.log("login", user);
-            // ##############
-            // then, display test page
-            // ##############
-        },
-        error: function(user, error) {
-          // The login failed. Check error to see why.
-        }
-      });
-  });
+  // $('#login').on('submit', function(event){
+  //   event.preventDefault();
+  //   Parse.User
+  //     .logIn($('#login-email').val(), $('#login-user-password').val(), {
+  //       success: function(user) {
+  //         console.log("login", user);
+  //       },
+  //       error: function(user, error) {
+  //         // The login failed. Check error to see why.
+  //       }
+  //     });
+  // });
 
   $('#logout').on('submit', function(event){
     event.preventDefault();
