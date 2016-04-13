@@ -17,6 +17,7 @@ var ToggleComponent = require('./components/toggle.jsx');
 var UserIframeComponent = require('./components/user-iframe.jsx');
 var SurveyComponent = require('./components/survey.jsx');
 var EditorComponent = require('./components/editor.jsx');
+var EditorLinkComponent = require('./components/admin-submit-link.jsx');
 var AdminResultsComponent = require('./components/admin-results.jsx');
 var models = require('./models/model');
 
@@ -69,6 +70,11 @@ if (isAdmin) {
   );
 
   ReactDOM.render(
+    <EditorLinkComponent />,
+    document.getElementById('admin-display-link')
+  );
+
+  ReactDOM.render(
     <AdminResultsComponent />,
     document.getElementById('admin-results')
   );
@@ -83,34 +89,6 @@ $(function(){
   // var testObject = new TestObject();
   // testObject.save({foo: "bar"}).then(function(object) {
   //   alert("yay! it worked");
-  // });
-
-  // $('#signup').on('submit', function(event){
-  //   event.preventDefault();
-  //   console.log('index submit working');
-  //   var user = new Parse.User();
-  //   user.set({'username': $('#email').val(), 'password': $('#user-password').val()});
-  //   user.signUp(null, {
-  //     'success': function(results){
-  //       console.log("results: ", results);
-  //     },
-  //     'error': function(user, error){
-  //       console.log(user, error);
-  //     }
-  //   });
-  // });
-
-  // $('#login').on('submit', function(event){
-  //   event.preventDefault();
-  //   Parse.User
-  //     .logIn($('#login-email').val(), $('#login-user-password').val(), {
-  //       success: function(user) {
-  //         console.log("login", user);
-  //       },
-  //       error: function(user, error) {
-  //         // The login failed. Check error to see why.
-  //       }
-  //     });
   // });
 
   $('#logout').on('submit', function(event){
