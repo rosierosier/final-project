@@ -21,6 +21,7 @@ var SurveyComponent = require('./components/survey.jsx');
 var EditorLinkComponent = require('./components/admin-submit-link.jsx');
 var AdminResultsComponent = require('./components/admin-results.jsx');
 var WelcomeComponent = require('./components/welcome.jsx');
+var NewProjectComponent = require('./components/designer-new-post.jsx');
 var models = require('./models/model');
 
 if (isIndex) {
@@ -55,6 +56,10 @@ if (isAdmin) {
   //   <EditorComponent />,
   //   document.getElementById('text-editor')
   // );
+  ReactDOM.render(
+    <NewProjectComponent />,
+    document.getElementById('start-fresh')
+  );
   ReactDOM.render(
     <EditorLinkComponent />,
     document.getElementById('admin-display-link')

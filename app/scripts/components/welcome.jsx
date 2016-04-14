@@ -8,10 +8,6 @@ var models = require('../models/model')
 
 var WelcomeComponent = React.createClass({
   mixins: [Backbone.React.Component.mixin],
-  handleSubmit: function(e){
-    e.preventDefault();
-    console.log('welcome submit working');
-  },
 
   render: function(){
     return (
