@@ -19,6 +19,7 @@ var SurveyComponent = React.createClass({
     surveyData.set("answer1", document.getElementById("answer1").value);
     surveyData.set("answer2", document.getElementById("answer2").value);
     surveyData.set("answer3", document.getElementById("answer3").value);
+    // surveyData.set("username",)
     surveyData.save(null, {
       success: function(surveyData){
         // Execute any logic that should take place after the object is saved.

@@ -17,13 +17,58 @@ var AdminResultsComponent = React.createClass({
     var query = new Parse.Query(SurveyData);
     query.find({
       success: function(results){
-        for (var i = 0; i < results.length; i++){
-          var surveyData = results[i];
-          console.log("received result:", i, surveyData);
-          document.getElementById("answer1").value = surveyData.get("answer1");
-          document.getElementById("answer2").value = surveyData.get("answer2");
-          document.getElementById("answer3").value = surveyData.get("answer3");
+        function oneToThreeFromAnswer(textResponse) {
+          if (textResponse == "1") {
+            return 1;
+          } else if (textResponse == "2") {
+            return 2;
+          } else if (textResponse == "3") {
+            return 3;
+          } else {
+            return 0
+          }
+        };
+        // for (var i = 0; i < results.length; i++){
+        //   var surveyData = results[i];
+        //   document.getElementById("answer1").value = surveyData.get("answer1");
+        //   document.getElementById("answer2").value = surveyData.get("answer2");
+        //   document.getElementById("answer3").value = surveyData.get("answer3");
+        // }
+        var surveyAnswers = $("#admin-results");
+
+
+        for (var parseResultIndex = 0; parseResultIndex < results.length; parseResultIndex++) {
+          var parseCriticResponse = results[parseResultIndex];
+            console.log("received result:", parseResultIndex, parseCriticResponse);
+
+          var criticHeaderAndResponse = surveyAnswers.append("<div class=\"criticHeaderAndResponse\"></div>");
+          criticHeaderAndResponse.append("<div class=\"criticHeader\"></div>").text(parseCriticResponse.get("username"));
+
+          var criticResponse = criticHeaderAndResponse.append("<div class=\"criticResponse\"></div>");
+
+          var numericFunctionality = oneToThreeFromAnswer(parseCriticResponse.get("answer1"));
+          var numericAttractiveness = oneToThreeFromAnswer(parseCriticResponse.get("answer2"));
+          var numericUsability = oneToThreeFromAnswer(parseCriticResponse.get("answer3"));
+
+          criticResponse.append("<div class=\"criticQuestionsAndAnswers\"><table><tr><td class=\"criticQuestion\">Functionality</td><td class=\"criticAnswer\">" + numericFunctionality + "</td></tr>"
+          + "<tr><td class=\"criticQuestion\">Attractiveness</td><td class=\"criticAnswer\">" + numericAttractiveness + "</td></tr>"
+          + "<tr><td class=\"criticQuestion\">Usability</td><td class=\"criticAnswer\">" + numericUsability + "</td></tr></table></div>");
+
+          //TODO: better handling for when answers are incomplete or unexpected values
+          var functionalityConclusion = Math.floor(numericFunctionality);// + (0.5 * numericUsability));
+          var attractivenessConclusion = Math.floor(numericAttractiveness);// + (0.5 * numericUsability));
+
+          criticResponse.append("<div class=\"criticSummary functionality" + functionalityConclusion + " attractiveness" + attractivenessConclusion + "\"></div>");
+
+          criticResponse.append("<div style=\"clear: both;\"></div>");
         }
+
+
+
+
+
+
+
       },
       error: function(results, error){
         alert('Failed to create new object, with error code: ' + error.message);
@@ -35,13 +80,8 @@ var AdminResultsComponent = React.createClass({
     return (
       <form onSubmit={this.handleSubmit}>
         <input type="submit" id="admin-results-button" value="VIEW RESULTS"/><br/>
-        <label htmlFor="question1">Would you recommend our product (website) to a friend?</label><br/>
-        <input type="text" name="answer1" placeholder="Answer 1 here" id="answer1" className=""/><br/>
-        <label htmlFor="question2">How easy is our product (website) to use?</label><br/>
-        <input type="text" name="answer2" placeholder="Answer 2 here" id="answer2" className=""/><br/>
-        <label htmlFor="question3">What do you like least about our product (website)?</label><br/>
-        <input type="text" name="answer3" placeholder="Answer 3 here" id="answer3" className=""/><br/>
       </form>
+
     );
   }
 });

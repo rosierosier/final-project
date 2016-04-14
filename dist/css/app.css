@@ -6052,6 +6052,41 @@ iframe {
 #admin-results {
   margin-bottom: 15px; }
 
+.criticHeaderAndResponse {
+  margin-bottom: 10px; }
+
+.criticQuestionsAndAnswers,
+.criticSummary {
+  float: left; }
+
+.criticSummary.functionality0 {
+  background-image: url("../images/DC_Emoji_Sad.png");
+  height: 50px;
+  width: 50px;
+  background-position: center center;
+  background-size: cover; }
+
+.criticSummary.functionality1 {
+  background-image: url("../images/DC_Emoji_Happy.png");
+  height: 50px;
+  width: 50px;
+  background-position: center center;
+  background-size: cover; }
+
+.criticSummary.functionality2 {
+  background-image: url("../images/DC_Emoji_Blah.png");
+  height: 50px;
+  width: 50px;
+  background-position: center center;
+  background-size: cover; }
+
+.criticSummary.functionality3 {
+  background-image: url("../images/DC_Emoji_Happy.png");
+  height: 50px;
+  width: 50px;
+  background-position: center center;
+  background-size: cover; }
+
 .invisible {
   display: none;
   position: absolute;

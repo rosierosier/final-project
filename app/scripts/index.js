@@ -19,9 +19,15 @@ var SurveyComponent = require('./components/survey.jsx');
 var EditorComponent = require('./components/editor.jsx');
 var EditorLinkComponent = require('./components/admin-submit-link.jsx');
 var AdminResultsComponent = require('./components/admin-results.jsx');
+var WelcomeComponent = require('./components/welcome.jsx');
 var models = require('./models/model');
 
 if (isIndex) {
+  ReactDOM.render(
+    <WelcomeComponent />,
+    document.getElementById('welcome-packet')
+  );
+
   ReactDOM.render(
     <UserSignupComponent />,
     document.getElementById('user-signup')
