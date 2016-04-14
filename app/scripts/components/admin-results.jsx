@@ -62,12 +62,6 @@ var AdminResultsComponent = React.createClass({
           criticResponse.append("<div style=\"clear: both;\"></div>");
         }
 
-
-
-
-
-
-
       },
       error: function(results, error){
         alert('Failed to create new object, with error code: ' + error.message);

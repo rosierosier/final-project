@@ -3,9 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
-    <title>final project</title>
+    <title>final project critic view</title>
     <link rel="stylesheet" href="css/app.css">
     <link href='https://fonts.googleapis.com/css?family=Quicksand:400,700,300' rel='stylesheet' type='text/css'>
+
     <!-- <title>Frontend Playground</title> -->
     <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/codemirror/CodeMirror/master/lib/codemirror.css">
     <script type="text/javascript" src="https://cdn.rawgit.com/codemirror/CodeMirror/master/lib/codemirror.js"></script>
@@ -15,37 +16,25 @@
   </head>
   <body>
 
+    <div class="row header">
+      <div class="header-logo">
+      </div>
+      <a href="index.html" role="button">Home</a>
+      <a href="admin.html" role="button">Admin</a>
+      <div id="header-login">
+      </div>
+    </div>
+
     <div class="container-fluid">
-      <div id="header" class="row header">
-
-        <div id="logo" class="col-md-4 col-sm-4 col-xs-12">
+      <div class="row welcome-admin">
+        <div id="critic-signup-left" class="col-md-6 col-sm-6 col-xs-12 text-center">
+          <p class="box-heading">Hello Critic!</p>
+          <p>Please sign up using your email address.</p>
+          <p>Let's get started!</p>
         </div>
-
-        <div class="col-md-5 col-sm-5 col-xs-12 welcome text-center">
-          <h1>Welcome!</h1>
-          <p>User interface testing is essential to providing a user-friendly web design!
-          If you have an eye for design and enjoy evaluations then Design Critic is the place for you!
-          Designers, head on over to the "get feedback" side, and let's get started!</p>
-        </div>
-
-        <div id="home-header-login" class="col-md-2 col-sm-2 col-xs-12 text-center">
-        </div>
+        <div id="user-signup" class="col-md-6 col-sm-6 col-xs-12 text-center"></div>
+        <div id="user-login" class="col-md-6 col-sm-6 col-xs-12 text-center invisible"></div>
       </div>
-
-      <div style="clear: both"></div>
-
-      <div id="welcome-packet"></div>
-
-      <div class="row feedback-loop">
-      </div>
-
-
-      <!-- <div id="user-signup" class="row user-begin text-center"></div> -->
-        <!-- <form id="logout">
-          <input type="submit" id="logout-button" value="LOG OUT"/>
-        </form> -->
-
-      <!-- <div id="user-login" class="row invisible text-center"></div> -->
 
       <div id="display-iframe" class="row editor"></div>
 
@@ -53,10 +42,9 @@
 
     </div><!--end of container-->
 
-    <div class="footer text-center">
+    <div class="row footer text-center">
       <p>copyright Design Critic 2016. graphics by HalSmithStudio.</p>
     </div>
-
 
     <script src="js/bundle.js"></script>
   </body>

@@ -1,3 +1,4 @@
+var Parse = require('parse');
 var Backbone = require('backbone');
 var React = require('react');
 var ReactDOM = require('react-dom');
@@ -6,7 +7,7 @@ var $ = require('jquery');
 
 var models = require('../models/model')
 
-var WelcomeComponent = React.createClass({
+var AdminDashComponent = React.createClass({
   mixins: [Backbone.React.Component.mixin],
   handleSubmit: function(e){
     e.preventDefault();
@@ -34,4 +35,4 @@ var WelcomeComponent = React.createClass({
   }
 });
 
-module.exports = WelcomeComponent;
+module.exports = AdminDashComponent;

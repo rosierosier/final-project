@@ -84,11 +84,29 @@ p {
   margin-bottom: 15px;
 }
 
+.welcome h1 {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: normal;
+}
+
+.welcome p {
+  font-family: 'Garamond', serif;
+  font-size: 18px;
+}
+
+#home-header-login {
+  display: inline-block;
+  // width: 5%;
+  float: right;
+  // margin-right: 10px;
+  height: 50px;
+}
+
 #header-login {
   display: inline-block;
-  width: 5%;
+  // width: 5%;
   float: right;
-  margin-right: 10px;
+  // margin-right: 10px;
   height: 50px;
 }
 
@@ -118,6 +136,19 @@ p {
   padding: 15px;
 }
 
+.welcome-admin {
+  margin-bottom: 15px;
+}
+
+#welcome-admin-photo {
+  margin-top: 15px;
+  height: 200px;
+  background-image: url("../images/picjumbo.com_HNCK8984.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
 #admin-signup-left {
   min-height: 200px;
   background-color: #000;
@@ -125,10 +156,24 @@ p {
   padding: 15px;
 }
 
-#admin-signup-left h1 {
-  padding-top: 15px;
+.box-heading {
+  padding-top: 25px;
   font-family: 'Quicksand', sans-serif;
   font-weight: normal;
+  font-size: 36px;
+}
+
+#critic-signup-left {
+  min-height: 200px;
+  background-color: #000;
+  color: #fff;
+  padding: 15px;
+}
+
+#admin-signup {
+  margin-top: 15px;
+  padding-top: 25px;
+  text-align: center;
 }
 
 .slogan p,
@@ -149,15 +194,13 @@ p {
 #user-login {
   margin-top: 15px;
   padding-top: 25px;
-  padding-bottom: 50px;
   display: block;
-  margin-bottom: 15px;
 }
 
 #email,
 #login-email {
-  margin-left: 10%;
-  margin-right: 10%;
+  margin-left: 5%;
+  margin-right: 5%;
   width: 80%;
   margin-bottom: 10px;
   padding: 10px;
@@ -168,8 +211,8 @@ p {
 #user-password,
 #login-user-password {
   margin-bottom: 10px;
-  margin-left: 10%;
-  margin-right: 10%;
+  margin-left: 5%;
+  margin-right: 5%;
   width: 80%;
   padding: 10px;
   display: inline-block;
@@ -202,7 +245,7 @@ p {
 #log-in-button {
   margin-right: 5px;
   border-radius: 4px;
-  background-color: #028482;
+  background-color: #000;
   border: none;
   color: #fff;
   height: 50px;
@@ -218,6 +261,7 @@ p {
   padding: 15px 20px;
   border: none;
   box-shadow: none;
+  display: inline-block;
 }
 
 #get-feedback {
@@ -240,7 +284,7 @@ p {
   margin-right: 5px;
   margin-top: 15px;
   border-radius: 4px;
-  background-color: #f0ad4e;
+  background-color: #ff3388;
   border: none;
   color: #fff;
   height: 50px;
@@ -251,7 +295,7 @@ p {
 
 #submit-text {
   border-radius: 4px;
-  background-color: #f0ad4e;
+  background-color: #ff3388;
   border: none;
   color: #fff;
   height: 50px;
@@ -264,7 +308,7 @@ p {
 #admin-results-button,
 #submit-url {
   border-radius: 4px;
-  background-color: #f0ad4e;
+  background-color: #ff3388;
   border: none;
   color: #fff;
   height: 50px;
@@ -275,7 +319,7 @@ p {
 }
 
 #log-in-header {
-  margin-right: 0;
+  margin-right: 10px;
   border-radius: 4px;
   background-color: #000;
   color: #fff;
@@ -301,7 +345,7 @@ p {
 }
 
 .footer p {
-  color: #fff;
+  color: #000;
   text-align: center;
 }
 

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
     <title>final project admin view</title>
     <link rel="stylesheet" href="css/app.css">
+    <link href='https://fonts.googleapis.com/css?family=Quicksand:400,700,300' rel='stylesheet' type='text/css'>
 
     <!-- <title>Frontend Playground</title> -->
     <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/codemirror/CodeMirror/master/lib/codemirror.css">
@@ -18,29 +19,32 @@
     <div class="row header">
       <div class="header-logo">
       </div>
-      <a href="index.html" role="button">Assessment</a>
-      <a href="admin.html" role="button">Admin</a>
+      <a href="index.html" role="button">Home</a>
+      <a href="critic.html" role="button">Critic</a>
       <div id="header-login">
       </div>
     </div>
 
     <div class="container-fluid">
       <div class="row welcome-admin">
-        <div id="admin-signup-left" class="col-md-6 col-sm-6 col-xs-6 text-center">
-          <h1>Hello Designer!</h1>
+        <div id="admin-signup-left" class="col-md-6 col-sm-6 col-xs-12 text-center">
+          <p class="box-heading">Hello Designer!</p>
           <p>Please sign up using your email address.</p>
           <p>Let's get started!</p>
         </div>
-        <div id="user-signup" class="user-begin text-center col-md-6 col-sm-6 col-xs-6"></div>
+        <div id="admin-signup" class="col-md-6 col-sm-6 col-xs-12 text-center"></div>
+        <div id="user-login" class="col-md-6 col-sm-6 col-xs-12 text-center invisible"></div>
+        <div style="clear: both"></div>
+
+        <div id="welcome-admin-photo"></div>
       </div>
         <!-- <form id="logout">
           <input type="submit" id="logout-button" value="LOG OUT"/>
         </form> -->
-      <div id="user-login" class="row invisible text-center"></div>
 
-      <div id="admin-results"></div>
+      <div id="admin-results" class="invisible"></div>
 
-      <div id="admin-display-link"></div>
+      <div id="admin-display-link" class="invisible"></div>
 
       <div id="display-iframe" class="row editor">
           <!-- <textarea id="editor"></textarea>
@@ -58,7 +62,7 @@
     </div>
 
     <div class="row footer text-center">
-      <p>copyright line here</p>
+      <p>copyright Design Critic 2016. graphics by HalSmithStudio.</p>
     </div>
 
     <!-- <script>

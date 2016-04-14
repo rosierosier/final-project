@@ -7,7 +7,8 @@ var ReactDOM = require('react-dom');
 require('backbone-react-component');
 
 var isAdmin = ("" + window.location.href).indexOf("/admin.html") > 0;
-var isIndex = !isAdmin;
+var isCritic = ("" + window.location.href).indexOf("/critic.html") > 0;
+var isIndex = ("" + window.location.href).indexOf("/index.html") > 0;
 // alert("" + window.location.href + "\n\nisAdmin: " + isAdmin);
 
 // var ImageListing = require('./components/listing.jsx');
@@ -16,7 +17,7 @@ var UserLoginComponent = require('./components/user-login.jsx');
 var ToggleComponent = require('./components/toggle.jsx');
 var UserIframeComponent = require('./components/user-iframe.jsx');
 var SurveyComponent = require('./components/survey.jsx');
-var EditorComponent = require('./components/editor.jsx');
+// var EditorComponent = require('./components/editor.jsx');
 var EditorLinkComponent = require('./components/admin-submit-link.jsx');
 var AdminResultsComponent = require('./components/admin-results.jsx');
 var WelcomeComponent = require('./components/welcome.jsx');
@@ -28,6 +29,65 @@ if (isIndex) {
     document.getElementById('welcome-packet')
   );
 
+  // ReactDOM.render(
+  //   <UserSignupComponent />,
+  //   document.getElementById('user-signup')
+  // );
+
+  // ReactDOM.render(
+  //   <ToggleComponent />,
+  //   document.getElementById('home-header-login')
+  // );
+
+  ReactDOM.render(
+    <UserLoginComponent />,
+    document.getElementById('user-login')
+  );
+
+  // ReactDOM.render(
+  //   <UserIframeComponent />,
+  //   document.getElementById('display-iframe')
+  // );
+  //
+  // ReactDOM.render(
+  //   <SurveyComponent />,
+  //   document.getElementById('survey')
+  // );
+}
+
+if (isAdmin) {
+  ReactDOM.render(
+    <UserSignupComponent />,
+    document.getElementById('admin-signup')
+  );
+
+  ReactDOM.render(
+    <ToggleComponent />,
+    document.getElementById('header-login')
+  );
+
+  ReactDOM.render(
+    <UserLoginComponent />,
+    document.getElementById('user-login')
+  );
+
+  // ReactDOM.render(
+  //   <EditorComponent />,
+  //   document.getElementById('text-editor')
+  // );
+
+  ReactDOM.render(
+    <EditorLinkComponent />,
+    document.getElementById('admin-display-link')
+  );
+
+  ReactDOM.render(
+    <AdminResultsComponent />,
+    document.getElementById('admin-results')
+  );
+}
+
+if (isCritic) {
   ReactDOM.render(
     <UserSignupComponent />,
     document.getElementById('user-signup')
@@ -51,38 +111,6 @@ if (isIndex) {
   ReactDOM.render(
     <SurveyComponent />,
     document.getElementById('survey')
-  );
-}
-
-if (isAdmin) {
-  ReactDOM.render(
-    <UserSignupComponent />,
-    document.getElementById('user-signup')
-  );
-
-  ReactDOM.render(
-    <ToggleComponent />,
-    document.getElementById('header-login')
-  );
-
-  ReactDOM.render(
-    <UserLoginComponent />,
-    document.getElementById('user-login')
-  );
-
-  ReactDOM.render(
-    <EditorComponent />,
-    document.getElementById('text-editor')
-  );
-
-  ReactDOM.render(
-    <EditorLinkComponent />,
-    document.getElementById('admin-display-link')
-  );
-
-  ReactDOM.render(
-    <AdminResultsComponent />,
-    document.getElementById('admin-results')
   );
 }
 

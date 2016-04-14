@@ -15,8 +15,8 @@ var ToggleComponent = React.createClass({
 
   displayForm: function(e){
     e.preventDefault();
-    console.log('displaying form');
     $('#user-signup').addClass('invisible');
+    $('#admin-signup').addClass('invisible');
     $('#user-login').removeClass('invisible');
   },
 

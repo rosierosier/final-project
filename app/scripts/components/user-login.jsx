@@ -19,6 +19,11 @@ var UserLoginComponent = React.createClass({
           $('#result').removeClass('invisible');
           $('#feedback-button').removeClass('invisible');
           $('#user-login').addClass('invisible');
+          $('#critic-signup-left').addClass('invisible');
+          $('#admin-signup-left').addClass('invisible');
+          $('#admin-results').removeClass('invisible');
+          $('#admin-display-link').removeClass('invisible');
+
         },
         error: function(user, error) {
           // The login failed. Check error to see why.
