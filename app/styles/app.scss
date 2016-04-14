@@ -28,12 +28,18 @@ p {
 .header,
 .footer {
   background-color: #f3f3f3;
-  width: 100%;
   height: 50px;
 }
 
 .header {
   margin-bottom: 15px;
+}
+
+.full-width-header {
+  position: absolute;
+  height: 50px;
+  background-color: #f3f3f3;
+  width: 100%;
 }
 
 .header a {
