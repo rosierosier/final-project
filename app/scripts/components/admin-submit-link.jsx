@@ -32,6 +32,7 @@ var EditorLinkComponent = React.createClass({
         <form>
           <label htmlFor="project-name">Project Name</label><br/>
           <input type="text" name="new-project-name" placeholder="Project name here" id="new-project-name" className=""/><br/>
+          <label htmlFor="project-link">Link to Project</label><br/>
           <input type="text" name="admin-link" placeholder="Embed link here" id="admin-link" className=""/><br/>
           <input type="submit" id="submit-url" value="POST LINK"/>
         </form>

@@ -118,6 +118,7 @@ var EditorLinkComponent = React.createClass({displayName: "EditorLinkComponent",
         React.createElement("form", null, 
           React.createElement("label", {htmlFor: "project-name"}, "Project Name"), React.createElement("br", null), 
           React.createElement("input", {type: "text", name: "new-project-name", placeholder: "Project name here", id: "new-project-name", className: ""}), React.createElement("br", null), 
+          React.createElement("label", {htmlFor: "project-link"}, "Link to Project"), React.createElement("br", null), 
           React.createElement("input", {type: "text", name: "admin-link", placeholder: "Embed link here", id: "admin-link", className: ""}), React.createElement("br", null), 
           React.createElement("input", {type: "submit", id: "submit-url", value: "POST LINK"})
         )

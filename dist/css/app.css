@@ -6111,6 +6111,12 @@ p {
   margin-left: 0;
   display: inline-block; }
 
+#admin-display-link {
+  min-height: 200px;
+  background-color: #000;
+  color: #fff;
+  padding: 15px; }
+
 #log-in-header {
   margin-right: 10px;
   border-radius: 4px;
