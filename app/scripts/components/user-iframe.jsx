@@ -1,4 +1,3 @@
-console.log('Hello Iframe Component');
 var Backbone = require('backbone');
 var React = require('react');
 var ReactDOM = require('react-dom');

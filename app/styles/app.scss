@@ -37,48 +37,68 @@ p {
 }
 
 .header a {
+  line-height: 50px;
+  vertical-align: top;
   display: inline-block;
   padding-left: 10px;
   text-decoration: none;
   color: #000;
-  margin-top: 15px;
 }
 
 .header a:hover {
-  color: #f3f3f3;
+  color: #ff3388;
 }
 
 .header ::after {
   clear: both;
 }
 
+.header-logo {
+  display: inline-block;
+  height: 50px;
+  width: 50px;
+  background-repeat: no-repeat;
+  background-image: url("../images/DC_Favicon_1.png");
+  background-position: center;
+  background-size: contain;
+}
+
 #logo {
   margin: 0 20px;
   height: 210px;
-  width: 350px;
+  // width: 35%;
   background-image: url("../images/DC_Logo.png");
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
   display: inline-block;
   float: left;
-  position: relative;
+  // position: relative;
 }
 
 .welcome {
-  width: 75%;
+  // width: 60%;
   padding: 15px;
   margin-top: 15px;
   color: #282c34;
   margin-bottom: 15px;
 }
 
+#header-login {
+  display: inline-block;
+  width: 5%;
+  float: right;
+  margin-right: 10px;
+  height: 50px;
+}
+
 .slogans {
   margin-top: 15px;
+  min-height: 200px;
 }
 
 #critic-slogan {
-  height: 200px;
+  min-height: 200px;
   background-color: #ff3388;
   color: #fff;
   padding: 15px;
@@ -92,10 +112,23 @@ p {
 }
 
 #designer-slogan {
-  height: 200px;
+  min-height: 200px;
   background-color: #000;
   color: #fff;
   padding: 15px;
+}
+
+#admin-signup-left {
+  min-height: 200px;
+  background-color: #000;
+  color: #fff;
+  padding: 15px;
+}
+
+#admin-signup-left h1 {
+  padding-top: 15px;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: normal;
 }
 
 .slogan p,
@@ -166,13 +199,6 @@ p {
   display: inline-block;
 }
 
-#header-login {
-  display: inline-block;
-  float: right;
-  margin-right: 10px;
-  height: 50px;
-}
-
 #log-in-button {
   margin-right: 5px;
   border-radius: 4px;
@@ -188,7 +214,7 @@ p {
   border-radius: 4px;
   background-color: #fff;
   color: #ff3388;
-  height: 50px;
+  min-height: 50px;
   padding: 15px 20px;
   border: none;
   box-shadow: none;
@@ -198,10 +224,16 @@ p {
   border-radius: 4px;
   background-color: #fff;
   color: #000;
-  height: 50px;
+  min-height: 50px;
   padding: 15px 20px;
   border: none;
   box-shadow: none;
+  display: inline-block;
+}
+
+.slogans a:hover {
+  text-decoration: none;
+  color: #000;
 }
 
 #feedback-button {

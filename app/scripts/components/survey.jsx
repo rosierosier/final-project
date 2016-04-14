@@ -1,4 +1,3 @@
-console.log('Hello Survey');
 var Backbone = require('backbone');
 var React = require('react');
 var ReactDOM = require('react-dom');
@@ -12,9 +11,6 @@ var SurveyComponent = React.createClass({
   handleSubmit: function(e){
     e.preventDefault();
     console.log('survey submit working');
-    // var surveyInput = {
-    //   'text': hello world!
-    // };
     var surveyData = new models.SurveyData();
     surveyData.set("answer1", document.getElementById("answer1").value);
     surveyData.set("answer2", document.getElementById("answer2").value);

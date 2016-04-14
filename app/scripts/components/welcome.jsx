@@ -1,4 +1,3 @@
-console.log('Hello Welcome');
 var Backbone = require('backbone');
 var React = require('react');
 var ReactDOM = require('react-dom');
@@ -18,13 +17,13 @@ var WelcomeComponent = React.createClass({
     return (
       <div className="wrapper">
         <div className="row slogans">
-          <div id="critic-slogan" className="text-center col-md-6 col-sm-6 col-xs-6">
+          <div id="critic-slogan" className="text-center col-md-6 col-sm-6 col-xs-12">
             <p>Provide evaluation for other designer&apos;s projects!</p>
             <input type="submit" id="give-critiques" value="GIVE CRITIQUES"/>
           </div>
-          <div id="designer-slogan" className="text-center col-md-6 col-sm-6 col-xs-6">
-            <p>Want to know what other people think of your designs?</p>
-            <input type="submit" id="get-feedback" value="GET FEEDBACK"/>
+          <div id="designer-slogan" className="text-center col-md-6 col-sm-6 col-xs-12">
+            <p>Want to know what people think of your designs?</p>
+            <a href="admin.html" role="button" type="submit" id="get-feedback">GET FEEDBACK</a>
           </div>
         </div>
 

@@ -1,6 +1,5 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 "use strict";
-console.log('Hello Admin Results View');
 var Backbone = require('backbone');
 var React = require('react');
 var ReactDOM = require('react-dom');
@@ -136,7 +135,6 @@ module.exports = EditorLinkComponent;
 
 },{"../models/model":11,"backbone":28,"backbone-react-component":27,"jquery":127,"parse":128,"react":300,"react-dom":171}],3:[function(require,module,exports){
 "use strict";
-console.log('Hello Editor');
 var Parse = require('parse');
 var Backbone = require('backbone');
 var React = require('react');
@@ -198,7 +196,6 @@ module.exports = EditorComponent;
 
 },{"../models/model":11,"backbone":28,"backbone-react-component":27,"jquery":127,"parse":128,"react":300,"react-dom":171}],4:[function(require,module,exports){
 "use strict";
-console.log('Hello Survey');
 var Backbone = require('backbone');
 var React = require('react');
 var ReactDOM = require('react-dom');
@@ -212,9 +209,6 @@ var SurveyComponent = React.createClass({displayName: "SurveyComponent",
   handleSubmit: function(e){
     e.preventDefault();
     console.log('survey submit working');
-    // var surveyInput = {
-    //   'text': hello world!
-    // };
     var surveyData = new models.SurveyData();
     surveyData.set("answer1", document.getElementById("answer1").value);
     surveyData.set("answer2", document.getElementById("answer2").value);
@@ -286,7 +280,6 @@ module.exports = ToggleComponent
 
 },{"../models/model":11,"./survey.jsx":4,"./user-signup.jsx":8,"backbone":28,"backbone-react-component":27,"jquery":127,"react":300,"react-dom":171}],6:[function(require,module,exports){
 "use strict";
-console.log('Hello Iframe Component');
 var Backbone = require('backbone');
 var React = require('react');
 var ReactDOM = require('react-dom');
@@ -321,7 +314,6 @@ module.exports = UserIframeComponent;
 
 },{"../models/model":11,"backbone":28,"backbone-react-component":27,"jquery":127,"react":300,"react-dom":171}],7:[function(require,module,exports){
 "use strict";
-console.log('Hello Log In');
 var Parse = require('parse');
 var Backbone = require('backbone');
 var React = require('react');
@@ -366,7 +358,6 @@ module.exports = UserLoginComponent;
 
 },{"../models/model":11,"backbone":28,"backbone-react-component":27,"jquery":127,"parse":128,"react":300,"react-dom":171}],8:[function(require,module,exports){
 "use strict";
-console.log('Hello Sign Up');
 var Parse = require('parse');
 var Backbone = require('backbone');
 var React = require('react');
@@ -413,7 +404,6 @@ module.exports = UserSignupComponent;
 
 },{"../models/model":11,"backbone":28,"backbone-react-component":27,"jquery":127,"parse":128,"react":300,"react-dom":171}],9:[function(require,module,exports){
 "use strict";
-console.log('Hello Welcome');
 var Backbone = require('backbone');
 var React = require('react');
 var ReactDOM = require('react-dom');
@@ -433,13 +423,13 @@ var WelcomeComponent = React.createClass({displayName: "WelcomeComponent",
     return (
       React.createElement("div", {className: "wrapper"}, 
         React.createElement("div", {className: "row slogans"}, 
-          React.createElement("div", {id: "critic-slogan", className: "text-center col-md-6 col-sm-6 col-xs-6"}, 
+          React.createElement("div", {id: "critic-slogan", className: "text-center col-md-6 col-sm-6 col-xs-12"}, 
             React.createElement("p", null, "Provide evaluation for other designer's projects!"), 
             React.createElement("input", {type: "submit", id: "give-critiques", value: "GIVE CRITIQUES"})
           ), 
-          React.createElement("div", {id: "designer-slogan", className: "text-center col-md-6 col-sm-6 col-xs-6"}, 
-            React.createElement("p", null, "Want to know what other people think of your designs?"), 
-            React.createElement("input", {type: "submit", id: "get-feedback", value: "GET FEEDBACK"})
+          React.createElement("div", {id: "designer-slogan", className: "text-center col-md-6 col-sm-6 col-xs-12"}, 
+            React.createElement("p", null, "Want to know what people think of your designs?"), 
+            React.createElement("a", {href: "admin.html", role: "button", type: "submit", id: "get-feedback"}, "GET FEEDBACK")
           )
         ), 
 

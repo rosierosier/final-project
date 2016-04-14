@@ -1,4 +1,3 @@
-console.log('Hello Admin Results View');
 var Backbone = require('backbone');
 var React = require('react');
 var ReactDOM = require('react-dom');

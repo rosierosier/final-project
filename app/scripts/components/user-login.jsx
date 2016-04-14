@@ -1,4 +1,3 @@
-console.log('Hello Log In');
 var Parse = require('parse');
 var Backbone = require('backbone');
 var React = require('react');
