@@ -82,15 +82,20 @@ p {
   background-color: #ff3388;
   color: #fff;
   padding: 15px;
-  border: 5px solid white;
+}
+
+#critic-slogan p,
+#designer-slogan p {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 36px;
+  margin-bottom: 15px;
 }
 
 #designer-slogan {
   height: 200px;
-  background-color: teal;
+  background-color: #000;
   color: #fff;
   padding: 15px;
-  border: 5px solid white;
 }
 
 .slogan p,
@@ -179,6 +184,26 @@ p {
   display: inline-block;
 }
 
+#give-critiques {
+  border-radius: 4px;
+  background-color: #fff;
+  color: #ff3388;
+  height: 50px;
+  padding: 15px 20px;
+  border: none;
+  box-shadow: none;
+}
+
+#get-feedback {
+  border-radius: 4px;
+  background-color: #fff;
+  color: #000;
+  height: 50px;
+  padding: 15px 20px;
+  border: none;
+  box-shadow: none;
+}
+
 #feedback-button {
   margin-right: 5px;
   margin-top: 15px;
@@ -220,7 +245,7 @@ p {
 #log-in-header {
   margin-right: 0;
   border-radius: 4px;
-  background-color: #028482;
+  background-color: #000;
   color: #fff;
   border: none;
   height: 50px;
@@ -229,6 +254,14 @@ p {
   display: inline-block;
   float: right;
   // vertical-align: middle;
+}
+
+#welcome-image {
+  height: 200px;
+  background-image: url("../images/Pic_Office.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .footer {
