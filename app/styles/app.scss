@@ -182,6 +182,46 @@ p {
   text-align: center;
 }
 
+#designer-projects {
+  min-height: 200px;
+  background-color: #ff3388;
+  color: #fff;
+  padding: 15px;
+}
+
+#past-projects-button {
+  margin-right: 5px;
+  border-radius: 4px;
+  background-color: #fff;
+  border: none;
+  color: #ff3388;
+  height: 50px;
+  padding: 15px 20px;
+  display: inline-block;
+}
+
+#designer-new {
+  min-height: 200px;
+  background-color: #000;
+  color: #fff;
+  padding: 15px;
+}
+
+#start-fresh-button {
+  margin-right: 5px;
+  border-radius: 4px;
+  background-color: #fff;
+  border: none;
+  color: #000;
+  height: 50px;
+  padding: 15px 20px;
+  display: inline-block;
+}
+
+.project-options {
+  margin-bottom: 15px;
+}
+
 .slogan p,
 .slogan h3 {
   text-align: center;

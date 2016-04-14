@@ -40,7 +40,7 @@ var AdminResultsComponent = React.createClass({
             console.log("received result:", parseResultIndex, parseCriticResponse);
 
           var criticHeaderAndResponse = surveyAnswers.append("<div class=\"criticHeaderAndResponse\"></div>");
-          criticHeaderAndResponse.append("<div class=\"criticHeader\"></div>").text(parseCriticResponse.get("username"));
+          $(".criticHeaderAndResponse", criticHeaderAndResponse).append("<div class=\"criticHeader\"></div>").text(parseCriticResponse.get("username"));
 
           var criticResponse = criticHeaderAndResponse.append("<div class=\"criticResponse\"></div>");
 
@@ -48,7 +48,7 @@ var AdminResultsComponent = React.createClass({
           var numericAttractiveness = oneToThreeFromAnswer(parseCriticResponse.get("answer2"));
           var numericUsability = oneToThreeFromAnswer(parseCriticResponse.get("answer3"));
 
-          criticResponse.append("<div class=\"criticQuestionsAndAnswers\"><table><tr><td class=\"criticQuestion\">Functionality</td><td class=\"criticAnswer\">" + numericFunctionality + "</td></tr>"
+          $(".criticResponse", criticResponse).append("<div class=\"criticQuestionsAndAnswers\"><table><tr><td class=\"criticQuestion\">Functionality</td><td class=\"criticAnswer\">" + numericFunctionality + "</td></tr>"
           + "<tr><td class=\"criticQuestion\">Attractiveness</td><td class=\"criticAnswer\">" + numericAttractiveness + "</td></tr>"
           + "<tr><td class=\"criticQuestion\">Usability</td><td class=\"criticAnswer\">" + numericUsability + "</td></tr></table></div>");
 
@@ -56,9 +56,9 @@ var AdminResultsComponent = React.createClass({
           var functionalityConclusion = Math.floor(numericFunctionality);// + (0.5 * numericUsability));
           var attractivenessConclusion = Math.floor(numericAttractiveness);// + (0.5 * numericUsability));
 
-          criticResponse.append("<div class=\"criticSummary functionality" + functionalityConclusion + " attractiveness" + attractivenessConclusion + "\"></div>");
+          $(".criticResponse", criticResponse).append("<div class=\"criticSummary functionality" + functionalityConclusion + " attractiveness" + attractivenessConclusion + "\"></div>");
 
-          criticResponse.append("<div style=\"clear: both;\"></div>");
+          $(".criticResponse", criticResponse).append("<div style=\"clear: both;\"></div>");
         }
 
       },

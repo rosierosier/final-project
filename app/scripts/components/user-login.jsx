@@ -21,8 +21,10 @@ var UserLoginComponent = React.createClass({
           $('#user-login').addClass('invisible');
           $('#critic-signup-left').addClass('invisible');
           $('#admin-signup-left').addClass('invisible');
-          $('#admin-results').removeClass('invisible');
-          $('#admin-display-link').removeClass('invisible');
+          $('#designer-new').removeClass('invisible');
+          $('#designer-projects').removeClass('invisible');
+          // $('#admin-results').removeClass('invisible');
+          // $('#admin-display-link').removeClass('invisible');
 
         },
         error: function(user, error) {
