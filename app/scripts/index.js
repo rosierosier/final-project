@@ -28,31 +28,14 @@ if (isIndex) {
     <WelcomeComponent />,
     document.getElementById('welcome-packet')
   );
-
-  // ReactDOM.render(
-  //   <UserSignupComponent />,
-  //   document.getElementById('user-signup')
-  // );
-
   // ReactDOM.render(
   //   <ToggleComponent />,
   //   document.getElementById('home-header-login')
   // );
-
   ReactDOM.render(
     <UserLoginComponent />,
     document.getElementById('user-login')
   );
-
-  // ReactDOM.render(
-  //   <UserIframeComponent />,
-  //   document.getElementById('display-iframe')
-  // );
-  //
-  // ReactDOM.render(
-  //   <SurveyComponent />,
-  //   document.getElementById('survey')
-  // );
 }
 
 if (isAdmin) {
@@ -60,27 +43,22 @@ if (isAdmin) {
     <UserSignupComponent />,
     document.getElementById('admin-signup')
   );
-
   ReactDOM.render(
     <ToggleComponent />,
     document.getElementById('header-login')
   );
-
   ReactDOM.render(
     <UserLoginComponent />,
     document.getElementById('user-login')
   );
-
   // ReactDOM.render(
   //   <EditorComponent />,
   //   document.getElementById('text-editor')
   // );
-
   ReactDOM.render(
     <EditorLinkComponent />,
     document.getElementById('admin-display-link')
   );
-
   ReactDOM.render(
     <AdminResultsComponent />,
     document.getElementById('admin-results')
@@ -92,22 +70,18 @@ if (isCritic) {
     <UserSignupComponent />,
     document.getElementById('user-signup')
   );
-
   ReactDOM.render(
     <ToggleComponent />,
     document.getElementById('header-login')
   );
-
   ReactDOM.render(
     <UserLoginComponent />,
     document.getElementById('user-login')
   );
-
   ReactDOM.render(
     <UserIframeComponent />,
     document.getElementById('display-iframe')
   );
-
   ReactDOM.render(
     <SurveyComponent />,
     document.getElementById('survey')

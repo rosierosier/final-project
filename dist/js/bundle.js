@@ -37,7 +37,6 @@ var AdminResultsComponent = React.createClass({displayName: "AdminResultsCompone
         // }
         var surveyAnswers = $("#admin-results");
 
-
         for (var parseResultIndex = 0; parseResultIndex < results.length; parseResultIndex++) {
           var parseCriticResponse = results[parseResultIndex];
             console.log("received result:", parseResultIndex, parseCriticResponse);
@@ -213,6 +212,7 @@ module.exports = ToggleComponent
 
 },{"../models/model":10,"./survey.jsx":3,"./user-signup.jsx":7,"backbone":27,"backbone-react-component":26,"jquery":126,"react":299,"react-dom":170}],5:[function(require,module,exports){
 "use strict";
+var Parse = require('parse');
 var Backbone = require('backbone');
 var React = require('react');
 var ReactDOM = require('react-dom');
@@ -232,6 +232,20 @@ var UserIframeComponent = React.createClass({displayName: "UserIframeComponent",
   },
 
   render: function(){
+    // var AdminLink = new models.AdminLink();
+    // var query = new Parse.Query(AdminLink);
+    //
+    // query.find({
+    //   success: function(results){
+    //     var project = $("#result");
+    //
+    //     for (var parseResultIndex = 0; parseResultIndex < results.length; parseResultIndex++) {
+    //       var parseResponse = results[parseResultIndex];
+    //         console.log("received result:", parseResultIndex, parseResponse);
+    //       var AdminLinkCriticView = project.append('<div class="AdminLinkCriticView"></div>');
+    //     }
+    //   },
+    // },
     return (
       React.createElement("div", {id: "wrapper"}, 
         React.createElement("div", {id: "button", onClick: this.displaySurvey}, 
@@ -245,7 +259,7 @@ var UserIframeComponent = React.createClass({displayName: "UserIframeComponent",
 
 module.exports = UserIframeComponent;
 
-},{"../models/model":10,"backbone":27,"backbone-react-component":26,"jquery":126,"react":299,"react-dom":170}],6:[function(require,module,exports){
+},{"../models/model":10,"backbone":27,"backbone-react-component":26,"jquery":126,"parse":127,"react":299,"react-dom":170}],6:[function(require,module,exports){
 "use strict";
 var Parse = require('parse');
 var Backbone = require('backbone');
@@ -362,7 +376,7 @@ var WelcomeComponent = React.createClass({displayName: "WelcomeComponent",
       React.createElement("div", {className: "wrapper"}, 
         React.createElement("div", {className: "row slogans"}, 
           React.createElement("div", {id: "critic-slogan", className: "text-center col-md-6 col-sm-6 col-xs-12"}, 
-            React.createElement("p", null, "Provide evaluation for other designer's projects!"), 
+            React.createElement("p", null, "Provide evaluation for other designers' projects!"), 
             React.createElement("a", {href: "critic.html", role: "button", type: "submit", id: "give-critiques"}, "GIVE CRITIQUES")
           ), 
           React.createElement("div", {id: "designer-slogan", className: "text-center col-md-6 col-sm-6 col-xs-12"}, 
@@ -412,31 +426,14 @@ if (isIndex) {
     React.createElement(WelcomeComponent, null),
     document.getElementById('welcome-packet')
   );
-
-  // ReactDOM.render(
-  //   <UserSignupComponent />,
-  //   document.getElementById('user-signup')
-  // );
-
   // ReactDOM.render(
   //   <ToggleComponent />,
   //   document.getElementById('home-header-login')
   // );
-
   ReactDOM.render(
     React.createElement(UserLoginComponent, null),
     document.getElementById('user-login')
   );
-
-  // ReactDOM.render(
-  //   <UserIframeComponent />,
-  //   document.getElementById('display-iframe')
-  // );
-  //
-  // ReactDOM.render(
-  //   <SurveyComponent />,
-  //   document.getElementById('survey')
-  // );
 }
 
 if (isAdmin) {
@@ -444,27 +441,22 @@ if (isAdmin) {
     React.createElement(UserSignupComponent, null),
     document.getElementById('admin-signup')
   );
-
   ReactDOM.render(
     React.createElement(ToggleComponent, null),
     document.getElementById('header-login')
   );
-
   ReactDOM.render(
     React.createElement(UserLoginComponent, null),
     document.getElementById('user-login')
   );
-
   // ReactDOM.render(
   //   <EditorComponent />,
   //   document.getElementById('text-editor')
   // );
-
   ReactDOM.render(
     React.createElement(EditorLinkComponent, null),
     document.getElementById('admin-display-link')
   );
-
   ReactDOM.render(
     React.createElement(AdminResultsComponent, null),
     document.getElementById('admin-results')
@@ -476,22 +468,18 @@ if (isCritic) {
     React.createElement(UserSignupComponent, null),
     document.getElementById('user-signup')
   );
-
   ReactDOM.render(
     React.createElement(ToggleComponent, null),
     document.getElementById('header-login')
   );
-
   ReactDOM.render(
     React.createElement(UserLoginComponent, null),
     document.getElementById('user-login')
   );
-
   ReactDOM.render(
     React.createElement(UserIframeComponent, null),
     document.getElementById('display-iframe')
   );
-
   ReactDOM.render(
     React.createElement(SurveyComponent, null),
     document.getElementById('survey')

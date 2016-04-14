@@ -1,3 +1,4 @@
+var Parse = require('parse');
 var Backbone = require('backbone');
 var React = require('react');
 var ReactDOM = require('react-dom');
@@ -17,6 +18,20 @@ var UserIframeComponent = React.createClass({
   },
 
   render: function(){
+    // var AdminLink = new models.AdminLink();
+    // var query = new Parse.Query(AdminLink);
+    //
+    // query.find({
+    //   success: function(results){
+    //     var project = $("#result");
+    //
+    //     for (var parseResultIndex = 0; parseResultIndex < results.length; parseResultIndex++) {
+    //       var parseResponse = results[parseResultIndex];
+    //         console.log("received result:", parseResultIndex, parseResponse);
+    //       var AdminLinkCriticView = project.append('<div class="AdminLinkCriticView"></div>');
+    //     }
+    //   },
+    // },
     return (
       <div id="wrapper">
         <div id="button" onClick={this.displaySurvey}>

@@ -18,7 +18,7 @@ var WelcomeComponent = React.createClass({
       <div className="wrapper">
         <div className="row slogans">
           <div id="critic-slogan" className="text-center col-md-6 col-sm-6 col-xs-12">
-            <p>Provide evaluation for other designer&apos;s projects!</p>
+            <p>Provide evaluation for other designers&apos; projects!</p>
             <a href="critic.html" role="button" type="submit" id="give-critiques">GIVE CRITIQUES</a>
           </div>
           <div id="designer-slogan" className="text-center col-md-6 col-sm-6 col-xs-12">

@@ -26,7 +26,7 @@
     </div>
 
     <div class="container-fluid">
-      <div class="row welcome-admin">
+      <div id="welcome-admin" class="row welcome-admin">
         <div id="admin-signup-left" class="col-md-6 col-sm-6 col-xs-12 text-center">
           <p class="box-heading">Hello Designer!</p>
           <p>Please sign up using your email address.</p>
@@ -38,46 +38,21 @@
 
         <div id="welcome-admin-photo"></div>
       </div>
-        <!-- <form id="logout">
-          <input type="submit" id="logout-button" value="LOG OUT"/>
-        </form> -->
+
 
       <div id="admin-results" class="invisible"></div>
 
       <div id="admin-display-link" class="invisible"></div>
 
-      <div id="display-iframe" class="row editor">
-          <!-- <textarea id="editor"></textarea>
-          <button onclick="submit_html();">Submit</button> -->
-          <!-- <iframe frameborder="0" border="0" id="result"></iframe> -->
-      </div>
-
     </div><!--end of container-->
 
 
-    <div id="text-editor">
-        <!-- <textarea id="editor"></textarea>
-        <button id="submit-text" onclick="submit_html();">Submit</button>
-        <iframe id="result"></iframe> -->
-    </div>
+    <!-- <div id="text-editor"></div> -->
 
     <div class="row footer text-center">
-      <p>copyright Design Critic 2016. graphics by HalSmithStudio.</p>
+      <p>copyright DesignCritic 2016. graphics by Halisms.</p>
     </div>
 
-    <!-- <script>
-        var editor = CodeMirror.fromTextArea(document.getElementById("editor"), {
-            lineNumbers: true,
-            mode: "xml"
-        });
-
-        function submit_html(){
-            editor.save();
-            var code = document.getElementById("editor").value;
-            var data_url = "data:text/html;charset=utf-8;base64," + $.base64.encode(code);
-            document.getElementById("result").src = data_url;
-        }
-    </script> -->
 
     <script src="js/bundle.js"></script>
   </body>

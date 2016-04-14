@@ -35,7 +35,6 @@ var AdminResultsComponent = React.createClass({
         // }
         var surveyAnswers = $("#admin-results");
 
-
         for (var parseResultIndex = 0; parseResultIndex < results.length; parseResultIndex++) {
           var parseCriticResponse = results[parseResultIndex];
             console.log("received result:", parseResultIndex, parseCriticResponse);

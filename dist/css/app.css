@@ -5856,7 +5856,7 @@ p {
   background-size: contain; }
 
 #logo {
-  margin: 0 20px;
+  margin: 0 20px 0 0;
   height: 210px;
   background-image: url("../images/DC_Logo.png");
   background-position: center;
@@ -6090,7 +6090,8 @@ p {
   background-repeat: no-repeat; }
 
 .footer {
-  padding: 15px; }
+  padding: 15px;
+  margin-bottom: 10px; }
 
 .footer p {
   color: #000;
