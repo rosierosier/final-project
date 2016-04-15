@@ -1,3 +1,4 @@
+var Parse = require('parse');
 var Backbone = require('backbone');
 var React = require('react');
 var ReactDOM = require('react-dom');
@@ -16,7 +17,7 @@ var SurveyComponent = React.createClass({
     surveyData.set("answer2", document.getElementById("answer2").value);
     surveyData.set("answer3", document.getElementById("answer3").value);
     surveyData.set("user", Parse.User.current());
-    surveyData.set("username", Parse.User.current().username);
+    surveyData.set("username", Parse.User.current().get("username"));
     // surveyData.set("project", Parse.Object.);
     surveyData.save(null, {
       success: function(surveyData){

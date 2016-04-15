@@ -16,16 +16,17 @@ var UserIframeComponent = React.createClass({
     $('#survey').removeClass('invisible');
     $('#result').addClass('invisible');
     $('#feedback-button').addClass('invisible');
+    $('#display-iframe').addClass('invisible');
   },
 
   render: function(){
-    
+
     return (
       <div id="wrapper">
         <div id="button" onClick={this.displaySurvey}>
           <input type="submit" id="feedback-button" className="invisible" value="GIVE FEEDBACK"/>
         </div>
-        <iframe frameBorder="0" border="0" id="result" className="invisible"></iframe>
+        <iframe frameBorder="0" border="0" id="critic-iframe" className="invisible"></iframe>
       </div>
     );
   }

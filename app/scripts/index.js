@@ -18,12 +18,13 @@ var WelcomeComponent = require('./components/welcome.jsx');
 var NewProjectComponent = require('./components/designer-new-post.jsx');
 var DesignerProjectsComponent = require('./components/designer-projects.jsx');
 var SelectProjectComponent = require('./components/select-project.jsx');
+var CriticProjectsComponent = require('./components/critic-project-list.jsx');
 var models = require('./models/model');
 
 
 var isAdmin = ("" + window.location.href).indexOf("/admin.html") > 0;
 var isCritic = ("" + window.location.href).indexOf("/critic.html") > 0;
-var isIndex = ("" + window.location.href).indexOf("/index.html") > 0;
+var isIndex = ("" + window.location.href).indexOf("/index.html") > 0 || ("" + window.location.href).endsWith("/dist/");
 // alert("" + window.location.href + "\n\nisAdmin: " + isAdmin);
 
 if (isIndex) {

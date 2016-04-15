@@ -7,6 +7,9 @@ var $ = require('jquery');
 
 var models = require('../models/model')
 
+var CriticProjectsComponent = require('./critic-project-list.jsx')
+
+
 var isAdmin = ("" + window.location.href).indexOf("/admin.html") > 0;
 var isCritic = ("" + window.location.href).indexOf("/critic.html") > 0;
 var isIndex = ("" + window.location.href).indexOf("/index.html") > 0;
@@ -32,19 +35,11 @@ var UserLoginComponent = React.createClass({
           $('#feedback-button').removeClass('invisible');
 
           if(isCritic) {
-            var innerQuery = new Parse.query(models.SurveyData());
-            innerQuery.equalTo("user", Parse.User.current());
-            var projectsNotAnswered = new Parse.Query(models.Project());
-            projectsNotAnswered.doesNotMatchQuery("project", innerQuery);
-            projectsNotAnswered.find({
-              success: function(projectsNotAnswered) {
-                console.log("success for innerQuery:", projectsNotAnswered);
-                // comments now contains the comments for posts without images.
-              },
-              error: function(projectsNotAnswered, error){
-                console.log(error);
-              }
-            });
+            console.log("critic login loading projects");
+            ReactDOM.render(
+              <CriticProjectsComponent />,
+              document.getElementById('critic-new-projects')
+            );
           };
           $('#critic-projects').removeClass('invisible');
 
