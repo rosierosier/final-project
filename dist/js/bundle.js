@@ -16,7 +16,7 @@ var AdminResultsComponent = React.createClass({displayName: "AdminResultsCompone
     console.log('results view submit working', this.state.currentProject);
     var SurveyData = new models.SurveyData();
     var query = new Parse.Query(SurveyData);
-    query.set("project", this.state.currentProject);
+    query.equalTo("project", this.state.currentProject);
     query.find({
       success: function(results){
         function oneToThreeFromAnswer(textResponse) {
@@ -40,18 +40,18 @@ var AdminResultsComponent = React.createClass({displayName: "AdminResultsCompone
 
         for (var parseResultIndex = 0; parseResultIndex < results.length; parseResultIndex++) {
           var parseCriticResponse = results[parseResultIndex];
-            console.log("received result:", parseResultIndex, parseCriticResponse);
+          console.log("received result:", parseResultIndex, parseCriticResponse);
 
-          var criticHeaderAndResponse = surveyAnswers.append("<div class=\"criticHeaderAndResponse\"></div>");
-          $(".criticHeaderAndResponse", criticHeaderAndResponse).append("<div class=\"criticHeader\"></div>").text(parseCriticResponse.get("username"));
+          var criticHeaderAndResponse = surveyAnswers.append("<div class=\"criticHeaderAndResponse criticHeaderAndResponse-" + parseResultIndex + "\"></div>");
+          $(".criticHeaderAndResponse-" + parseResultIndex, criticHeaderAndResponse).append("<div class=\"criticHeader\"></div>").text(parseCriticResponse.get("username"));
 
-          var criticResponse = criticHeaderAndResponse.append("<div class=\"criticResponse\"></div>");
+          var criticResponse = criticHeaderAndResponse.append("<div class=\"criticResponse criticResponse-" + parseResultIndex + "\"></div>");
 
           var numericFunctionality = oneToThreeFromAnswer(parseCriticResponse.get("answer1"));
           var numericAttractiveness = oneToThreeFromAnswer(parseCriticResponse.get("answer2"));
           var numericUsability = oneToThreeFromAnswer(parseCriticResponse.get("answer3"));
 
-          $(".criticResponse", criticResponse).append("<div class=\"criticQuestionsAndAnswers\"><table><tr><td class=\"criticQuestion\">Functionality</td><td class=\"criticAnswer\">" + numericFunctionality + "</td></tr>"
+          $(".criticResponse-" + parseResultIndex, criticResponse).append("<div class=\"criticQuestionsAndAnswers\"><table><tr><td class=\"criticQuestion\">Functionality</td><td class=\"criticAnswer\">" + numericFunctionality + "</td></tr>"
           + "<tr><td class=\"criticQuestion\">Attractiveness</td><td class=\"criticAnswer\">" + numericAttractiveness + "</td></tr>"
           + "<tr><td class=\"criticQuestion\">Usability</td><td class=\"criticAnswer\">" + numericUsability + "</td></tr></table></div>");
 
@@ -59,9 +59,9 @@ var AdminResultsComponent = React.createClass({displayName: "AdminResultsCompone
           var functionalityConclusion = Math.floor(numericFunctionality);// + (0.5 * numericUsability));
           var attractivenessConclusion = Math.floor(numericAttractiveness);// + (0.5 * numericUsability));
 
-          $(".criticResponse", criticResponse).append("<div class=\"criticSummary functionality" + functionalityConclusion + " attractiveness" + attractivenessConclusion + "\"></div>");
+          $(".criticResponse-" + parseResultIndex, criticResponse).append("<div class=\"criticSummary functionality" + functionalityConclusion + " attractiveness" + attractivenessConclusion + "\"></div>");
 
-          $(".criticResponse", criticResponse).append("<div style=\"clear: both;\"></div>");
+          $(".criticResponse-" + parseResultIndex, criticResponse).append("<div style=\"clear: both;\"></div>");
         }
 
       },
@@ -213,14 +213,14 @@ var DesignerProjectsComponent = React.createClass({displayName: "DesignerProject
     var projects = this.state.projects;
     if (projects && projects.length) {
       return (
-        React.createElement("ul", null, 
+        React.createElement("div", {className: "project-list-div"}, 
           projects.map(function(project, index) {
-            return React.createElement("li", {key: index}, React.createElement(SelectProjectComponent, {key: index, project: project}));
+            return React.createElement("div", {key: index}, React.createElement(SelectProjectComponent, {key: index, project: project}));
           })
         )
       );
     } else {
-      return React.createElement("button", {onClick: this.handleSubmit}, "Load Me Up Some Projects");
+      return React.createElement("button", {id: "my-project-button", onClick: this.handleSubmit}, "MY PROJECTS");
     }
   }
 });
@@ -242,9 +242,9 @@ var SelectProjectComponent = React.createClass({displayName: "SelectProjectCompo
   mixins: [Backbone.React.Component.mixin],
 
   handleSubmit: function(e){
-    alert("gonna be current project: " + e.target.value);
+    // alert("gonna be current project: " + e.target.value);
     e.preventDefault();
-    this.setState({"currentProject": e.target.value}, function() { alert("current project: " + this.state.currentProject); });
+    this.setState({"currentProject": e.target.value});
     console.log('past project submit working');
     $('.project-options').addClass('invisible');
     // return {items: designerProjectsArray};

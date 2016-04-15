@@ -218,6 +218,24 @@ p {
   display: inline-block;
 }
 
+#my-project-button {
+  margin-right: 5px;
+  border-radius: 4px;
+  background-color: #fff;
+  border: none;
+  color: #ff3388;
+  height: 50px;
+  padding: 15px 20px;
+  display: inline-block;
+}
+
+.project-list-div {
+  color: #000;
+  height: 50px;
+  padding: 15px 20px;
+  // display: inline-block;
+}
+
 .project-options {
   margin-bottom: 15px;
 }
@@ -425,13 +443,23 @@ iframe {
   margin-bottom: 15px;
 }
 
+
+
+
+
+
 .criticHeaderAndResponse {
   margin-bottom: 10px;
+  border-bottom: 1px solid #ff3388;
 }
 
 .criticQuestionsAndAnswers,
 .criticSummary {
+  padding: 5px 10px;
   float: left;
+}
+.criticQuestion {
+  padding-right: 8px;
 }
 
 .criticSummary.functionality0 {

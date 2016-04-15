@@ -45,14 +45,14 @@ var DesignerProjectsComponent = React.createClass({
     var projects = this.state.projects;
     if (projects && projects.length) {
       return (
-        <ul>
+        <div className="project-list-div">
           {projects.map(function(project, index) {
-            return <li key={index}><SelectProjectComponent key={index} project={project}/></li>;
+            return <div key={index}><SelectProjectComponent key={index} project={project}/></div>;
           })}
-        </ul>
+        </div>
       );
     } else {
-      return <button onClick={this.handleSubmit}>Load Me Up Some Projects</button>;
+      return <button id="my-project-button" onClick={this.handleSubmit}>MY PROJECTS</button>;
     }
   }
 });

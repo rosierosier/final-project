@@ -11,9 +11,9 @@ var SelectProjectComponent = React.createClass({
   mixins: [Backbone.React.Component.mixin],
 
   handleSubmit: function(e){
-    alert("gonna be current project: " + e.target.value);
+    // alert("gonna be current project: " + e.target.value);
     e.preventDefault();
-    this.setState({"currentProject": e.target.value}, function() { alert("current project: " + this.state.currentProject); });
+    this.setState({"currentProject": e.target.value});
     console.log('past project submit working');
     $('.project-options').addClass('invisible');
     // return {items: designerProjectsArray};
