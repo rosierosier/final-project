@@ -540,8 +540,8 @@ var UserLoginComponent = React.createClass({displayName: "UserLoginComponent",
   render: function(){
     return (
       React.createElement("form", {onSubmit: this.handleSubmit}, 
-        React.createElement("input", {type: "email", name: "login-email", placeholder: "Email Address", id: "login-email", className: "", value: "admin@example.com"}), React.createElement("br", null), 
-        React.createElement("input", {type: "password", name: "login-user-password", placeholder: "Password", id: "login-user-password", className: "", value: "12345"}), React.createElement("br", null), 
+        React.createElement("input", {type: "email", name: "login-email", placeholder: "Email Address", id: "login-email", className: ""}), React.createElement("br", null), 
+        React.createElement("input", {type: "password", name: "login-user-password", placeholder: "Password", id: "login-user-password", className: ""}), React.createElement("br", null), 
         React.createElement("input", {type: "reset", id: "cancel-button", value: "CANCEL"}), 
         React.createElement("input", {type: "submit", id: "log-in-button", value: "LOG IN"})
       )
