@@ -6,12 +6,6 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 require('backbone-react-component');
 
-var isAdmin = ("" + window.location.href).indexOf("/admin.html") > 0;
-var isCritic = ("" + window.location.href).indexOf("/critic.html") > 0;
-var isIndex = ("" + window.location.href).indexOf("/index.html") > 0;
-// alert("" + window.location.href + "\n\nisAdmin: " + isAdmin);
-
-// var ImageListing = require('./components/listing.jsx');
 var UserSignupComponent = require('./components/user-signup.jsx');
 var UserLoginComponent = require('./components/user-login.jsx');
 var ToggleComponent = require('./components/toggle.jsx');
@@ -22,7 +16,15 @@ var EditorLinkComponent = require('./components/admin-submit-link.jsx');
 var AdminResultsComponent = require('./components/admin-results.jsx');
 var WelcomeComponent = require('./components/welcome.jsx');
 var NewProjectComponent = require('./components/designer-new-post.jsx');
+var DesignerProjectsComponent = require('./components/designer-projects.jsx');
+var SelectProjectComponent = require('./components/select-project.jsx');
 var models = require('./models/model');
+
+
+var isAdmin = ("" + window.location.href).indexOf("/admin.html") > 0;
+var isCritic = ("" + window.location.href).indexOf("/critic.html") > 0;
+var isIndex = ("" + window.location.href).indexOf("/index.html") > 0;
+// alert("" + window.location.href + "\n\nisAdmin: " + isAdmin);
 
 if (isIndex) {
   ReactDOM.render(
@@ -59,6 +61,10 @@ if (isAdmin) {
   ReactDOM.render(
     <NewProjectComponent />,
     document.getElementById('start-fresh')
+  );
+  ReactDOM.render(
+    <DesignerProjectsComponent />,
+    document.getElementById('past-projects')
   );
   ReactDOM.render(
     <EditorLinkComponent />,

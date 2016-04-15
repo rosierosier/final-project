@@ -11,9 +11,10 @@ var AdminResultsComponent = React.createClass({
   mixins: [Backbone.React.Component.mixin],
   handleSubmit: function(e){
     e.preventDefault();
-    console.log('results view submit working');
+    console.log('results view submit working', this.state.currentProject);
     var SurveyData = new models.SurveyData();
     var query = new Parse.Query(SurveyData);
+    query.set("project", this.state.currentProject);
     query.find({
       success: function(results){
         function oneToThreeFromAnswer(textResponse) {

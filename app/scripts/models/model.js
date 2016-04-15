@@ -17,12 +17,12 @@ var TextEditor = Parse.Object.extend("TextEditor");
 
 var SurveyData = Parse.Object.extend("SurveyData");
 
-var AdminLink = Parse.Object.extend("AdminLink");
+var Project = Parse.Object.extend("Project");
 
 module.exports = {
   'SingleModel': SingleModel,
   'ModelCollection': ModelCollection,
   'TextEditor': TextEditor,
   'SurveyData': SurveyData,
-  'AdminLink': AdminLink
+  'Project': Project
 };
