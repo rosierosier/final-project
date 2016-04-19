@@ -393,14 +393,48 @@ var SurveyComponent = React.createClass({displayName: "SurveyComponent",
 
   render: function(){
     return (
-      React.createElement("form", {onSubmit: this.handleSubmit}, 
-        React.createElement("label", {htmlFor: "question1"}, "Would you recommend our product (website) to a friend?"), React.createElement("br", null), 
-        React.createElement("input", {type: "text", name: "survey-1", placeholder: "Answer here", id: "answer1", className: ""}), React.createElement("br", null), 
-        React.createElement("label", {htmlFor: "question2"}, "How easy is our product (website) to use?"), React.createElement("br", null), 
-        React.createElement("input", {type: "text", name: "survey-2", placeholder: "Answer 2 here", id: "answer2", className: ""}), React.createElement("br", null), 
+      React.createElement("div", {onSubmit: this.handleSubmit, className: "wrapper"}, 
+        React.createElement("div", {id: "survey-info"}, 
+          React.createElement("p", null, "Please rate the following answers with 1 being least and 5 being greatest.")
+        ), 
+          React.createElement("label", {htmlFor: "question1"}, "Would you recommend our product (website) to a friend?"), React.createElement("br", null), 
+          React.createElement("form", null, 
+            React.createElement("input", {type: "radio", name: "question1", value: "1"}, React.createElement("br", null), "1"), 
+            React.createElement("input", {type: "radio", name: "question1", value: "2"}, "2"), 
+            React.createElement("input", {type: "radio", name: "question1", value: "3"}, "3"), 
+            React.createElement("input", {type: "radio", name: "question1", value: "4"}, "4"), 
+            React.createElement("input", {type: "radio", name: "question1", value: "5"}, "5")
+          ), 
+
+          React.createElement("div", {className: "btn-group", role: "group"}, 
+            React.createElement("button", {type: "button", className: "btn btn-default"}, "1"), 
+            React.createElement("button", {type: "button", className: "btn btn-default"}, "2"), 
+            React.createElement("button", {type: "button", className: "btn btn-default"}, "3"), 
+            React.createElement("button", {type: "button", className: "btn btn-default"}, "4"), 
+            React.createElement("button", {type: "button", className: "btn btn-default"}, "5")
+          ), 
+          "// ", React.createElement("input", {type: "text", name: "survey-1", placeholder: "Answer here", id: "answer1", className: ""}), React.createElement("br", null), 
+
+          React.createElement("label", {htmlFor: "question2"}, "How easy is our product (website) to use?"), React.createElement("br", null), 
+          React.createElement("div", {className: "btn-group", role: "group"}, 
+            React.createElement("button", {type: "button", className: "btn btn-default"}, "1"), 
+            React.createElement("button", {type: "button", className: "btn btn-default"}, "2"), 
+            React.createElement("button", {type: "button", className: "btn btn-default"}, "3"), 
+            React.createElement("button", {type: "button", className: "btn btn-default"}, "4"), 
+            React.createElement("button", {type: "button", className: "btn btn-default"}, "5")
+          ), 
+          "// ", React.createElement("input", {type: "text", name: "survey-2", placeholder: "Answer 2 here", id: "answer2", className: ""}), React.createElement("br", null), 
+
           React.createElement("label", {htmlFor: "question3"}, "What do you like least about our product (website)?"), React.createElement("br", null), 
-          React.createElement("input", {type: "text", name: "survey-3", placeholder: "Answer 3 here", id: "answer3", className: ""}), React.createElement("br", null), 
-        React.createElement("input", {type: "submit", id: "submit-survey-button", value: "SUBMIT"})
+          React.createElement("div", {className: "btn-group", role: "group"}, 
+            React.createElement("button", {type: "button", className: "btn btn-default"}, "1"), 
+            React.createElement("button", {type: "button", className: "btn btn-default"}, "2"), 
+            React.createElement("button", {type: "button", className: "btn btn-default"}, "3"), 
+            React.createElement("button", {type: "button", className: "btn btn-default"}, "4"), 
+            React.createElement("button", {type: "button", className: "btn btn-default"}, "5")
+          ), 
+          "// ", React.createElement("input", {type: "text", name: "survey-3", placeholder: "Answer 3 here", id: "answer3", className: ""}), React.createElement("br", null), 
+          React.createElement("input", {type: "submit", id: "submit-survey-button", value: "SUBMIT"})
       )
     );
   }

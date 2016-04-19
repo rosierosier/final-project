@@ -6202,6 +6202,10 @@ iframe {
 #admin-results {
   margin-bottom: 15px; }
 
+.btn-group button:active {
+  background-color: #ff3388;
+  color: #fff; }
+
 .criticHeaderAndResponse {
   margin-bottom: 10px;
   border-bottom: 1px solid #ff3388; }
