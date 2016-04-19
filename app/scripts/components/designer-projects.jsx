@@ -5,8 +5,8 @@ var ReactDOM = require('react-dom');
 require('backbone-react-component');
 var $ = require('jquery');
 
-var models = require('../models/model')
-var SelectProjectComponent = require('./select-project.jsx')
+var models = require('../models/model');
+var SelectProjectComponent = require('./select-project.jsx');
 
 var DesignerProjectsComponent = React.createClass({
   mixins: [Backbone.React.Component.mixin],
@@ -44,6 +44,7 @@ var DesignerProjectsComponent = React.createClass({
   render: function(){
     var projects = this.state.projects;
     if (projects && projects.length) {
+      $('#designer-new').addClass('invisible');
       return (
         <div className="project-list-div">
           {projects.map(function(project, index) {

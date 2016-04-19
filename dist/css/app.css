@@ -5954,7 +5954,8 @@ p {
   min-height: 200px;
   background-color: #ff3388;
   color: #fff;
-  padding: 15px; }
+  padding: 15px;
+  overflow: scroll; }
 
 #past-projects-button {
   margin-right: 5px;
@@ -5996,6 +5997,17 @@ p {
   color: #000;
   height: 50px;
   padding: 15px 20px; }
+
+.project-list-div button {
+  margin-right: 5px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  background-color: #fff;
+  border: none;
+  color: #ff3388;
+  height: 50px;
+  padding: 15px 20px;
+  display: inline-block; }
 
 .project-options {
   margin-bottom: 15px; }

@@ -187,6 +187,7 @@ p {
   background-color: #ff3388;
   color: #fff;
   padding: 15px;
+  overflow: scroll;
 }
 
 #past-projects-button {
@@ -234,6 +235,22 @@ p {
   height: 50px;
   padding: 15px 20px;
   // display: inline-block;
+}
+
+#designer-project-list {
+
+}
+
+.project-list-div button {
+  margin-right: 5px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  background-color: #fff;
+  border: none;
+  color: #ff3388;
+  height: 50px;
+  padding: 15px 20px;
+  display: inline-block;
 }
 
 .project-options {
