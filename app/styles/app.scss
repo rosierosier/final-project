@@ -384,12 +384,18 @@ p {
 
 #admin-display-link {
   min-height: 200px;
-  background-color: #000;
-  color: #ff3388;
+  background-color: #f3f3f3;
+  color: #000;
   padding: 15px;
+  margin-bottom: 15px;
 }
+
+#admin-display-link label {
+  margin-top: 15px;
+}
+
 #admin-display-link input p {
-  color: #ff3388;
+  color: #000;
 }
 
 #log-in-header {
@@ -561,6 +567,10 @@ iframe {
 //   background-size: cover;
 //   // content: "awesome---high-functionality---high-attractiveness";
 // }
+
+#newProjectDiv {
+
+}
 
 .invisible {
   display: none;

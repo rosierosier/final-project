@@ -57,11 +57,9 @@ var AdminResultsComponent = React.createClass({
           var functionalityConclusion = Math.floor(numericFunctionality);// + (0.5 * numericUsability));
           var attractivenessConclusion = Math.floor(numericAttractiveness);// + (0.5 * numericUsability));
 
-          $(".criticResponse-" + parseResultIndex, criticResponse).append("<div class=\"criticSummary functionality" + functionalityConclusion + " attractiveness" + attractivenessConclusion + "\"></div>");
-
+          $(".criticResponse-" + parseResultIndex, criticResponse).append("<div class=\"criticSummary functionality" + functionalityConclusion + " attractiveness" + attractivenessConclusion + "\"></div>");2
           $(".criticResponse-" + parseResultIndex, criticResponse).append("<div style=\"clear: both;\"></div>");
         }
-
       },
       error: function(results, error){
         alert('Failed to create new object, with error code: ' + error.message);

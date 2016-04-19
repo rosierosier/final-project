@@ -32,7 +32,7 @@ var EditorLinkComponent = React.createClass({
   },
   render: function(){
     return (
-      <div onSubmit={this.handleSubmit} className="wrapper">
+      <div onSubmit={this.handleSubmit} id="newProjectDiv" className="wrapper">
         <form>
           <label htmlFor="project-name">Project Name</label><br/>
           <input type="text" name="new-project-name" placeholder="Project name here" id="new-project-name" className=""/><br/>
