@@ -13,7 +13,7 @@ var UserIframeComponent = require('./components/user-iframe.jsx');
 var SurveyComponent = require('./components/survey.jsx');
 // var EditorComponent = require('./components/editor.jsx');
 var EditorLinkComponent = require('./components/admin-submit-link.jsx');
-var AdminResultsComponent = require('./components/admin-results.jsx');
+// var AdminResultsComponent = require('./components/admin-results.jsx');
 var WelcomeComponent = require('./components/welcome.jsx');
 var NewProjectComponent = require('./components/designer-new-post.jsx');
 var DesignerProjectsComponent = require('./components/designer-projects.jsx');
@@ -36,10 +36,10 @@ if (isIndex) {
   //   <ToggleComponent />,
   //   document.getElementById('home-header-login')
   // );
-  ReactDOM.render(
-    <UserLoginComponent />,
-    document.getElementById('user-login')
-  );
+  // ReactDOM.render(
+  //   <UserLoginComponent />,
+  //   document.getElementById('user-login')
+  // );
 }
 
 if (isAdmin) {
@@ -70,10 +70,6 @@ if (isAdmin) {
   ReactDOM.render(
     <EditorLinkComponent />,
     document.getElementById('admin-display-link')
-  );
-  ReactDOM.render(
-    <AdminResultsComponent />,
-    document.getElementById('admin-results')
   );
 }
 
