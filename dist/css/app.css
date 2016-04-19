@@ -6162,6 +6162,17 @@ p {
   display: inline-block;
   float: right; }
 
+#log-out-header {
+  margin-right: 10px;
+  border-radius: 4px;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  height: 50px;
+  padding: 0 20px;
+  display: inline-block;
+  float: right; }
+
 #welcome-image {
   height: 200px;
   background-image: url("../images/Pic_Office.jpeg");

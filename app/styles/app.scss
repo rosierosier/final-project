@@ -423,10 +423,20 @@ p {
   border: none;
   height: 50px;
   padding: 15px 20px;
-  // margin-left: 5px;
   display: inline-block;
   float: right;
-  // vertical-align: middle;
+}
+
+#log-out-header {
+  margin-right: 10px;
+  border-radius: 4px;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  height: 50px;
+  padding: 0 20px;
+  display: inline-block;
+  float: right;
 }
 
 #welcome-image {
@@ -467,10 +477,6 @@ iframe {
 }
 
 
-
-
-
-
 .criticHeaderAndResponse {
   margin-bottom: 10px;
   border-bottom: 1px solid #ff3388;
@@ -491,7 +497,6 @@ iframe {
   width: 50px;
   background-position: center center;
   background-size: cover;
-  // content: "zombie";
 }
 .criticSummary.functionality1 {
   background-image: url("../images/DC_Emoji_Happy.png");
@@ -506,7 +511,6 @@ iframe {
   width: 50px;
   background-position: center center;
   background-size: cover;
-  // content: "boring-pro---high-functionality---low-attractiveness)";
 }
 .criticSummary.functionality3 {
   background-image: url("../images/DC_Emoji_Happy.png");
@@ -514,79 +518,6 @@ iframe {
   width: 50px;
   background-position: center center;
   background-size: cover;
-  // content: "low-functionality---medium-attractiveness";
-}
-
-// .criticSummary.functionality0.attractiveness0 span:after {
-//   content: "zombie";
-// }
-// .criticSummary.functionality1.attractiveness0 span:after {
-//   background-image: url("../images/DC_Emoji_Happy.png");
-//   height: 50px;
-//   width: 50px;
-//   background-position: center center;
-//   background-size: cover;
-// }
-// .criticSummary.functionality2.attractiveness0 span:after,
-// .criticSummary.functionality3.attractiveness0 span:after {
-//   background-image: url("../images/DC_Emoji_Happy.png");
-//   height: 50px;
-//   width: 50px;
-//   background-position: center center;
-//   background-size: cover;
-//   content: "boring-pro---high-functionality---low-attractiveness)";
-// }
-// .criticSummary.functionality0.attractiveness1 span:after {
-//   background-image: url("../images/DC_Emoji_Happy.png");
-//   height: 50px;
-//   width: 50px;
-//   background-position: center center;
-//   background-size: cover;
-//   content: "low-functionality---medium-attractiveness";
-// }
-// .criticSummary.functionality1.attractiveness1 span:after {
-//   background-image: url("../images/DC_Emoji_Happy.png");
-//   height: 50px;
-//   width: 50px;
-//   background-position: center center;
-//   background-size: cover;
-//   content: "medium-functionality---medium-attractiveness";
-// }
-// .criticSummary.functionality2.attractiveness1 span:after {
-//   background-image: url("../images/DC_Emoji_Happy.png");
-//   height: 50px;
-//   width: 50px;
-//   background-position: center center;
-//   background-size: cover;
-//   content: "high-functionality---medium-attractiveness";
-// }
-// .criticSummary.functionality0.attractiveness2 span:after {
-//   background-image: url("../images/DC_Emoji_Happy.png");
-//   height: 50px;
-//   width: 50px;
-//   background-position: center center;
-//   background-size: cover;
-//   // content: "artsy---low-functionality---high-attractiveness";
-// }
-// .criticSummary.functionality1.attractiveness2 span:after {
-//   background-image: url("../images/DC_Emoji_Happy.png");
-//   height: 50px;
-//   width: 50px;
-//   background-position: center center;
-//   background-size: cover;
-//   // content: "medium-functionality---high-attractiveness";
-// }
-// .criticSummary.functionality2.attractiveness2 span:after {
-//   background-image: url("../images/DC_Emoji_Happy.png");
-//   height: 50px;
-//   width: 50px;
-//   background-position: center center;
-//   background-size: cover;
-//   // content: "awesome---high-functionality---high-attractiveness";
-// }
-
-#newProjectDiv {
-
 }
 
 .invisible {

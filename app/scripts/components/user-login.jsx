@@ -5,9 +5,10 @@ var ReactDOM = require('react-dom');
 require('backbone-react-component');
 var $ = require('jquery');
 
-var models = require('../models/model')
+var models = require('../models/model');
 
-var CriticProjectsComponent = require('./critic-project-list.jsx')
+var CriticProjectsComponent = require('./critic-project-list.jsx');
+var LogoutComponent = require('./logout.jsx');
 
 
 var isAdmin = ("" + window.location.href).indexOf("/admin.html") > 0;
@@ -33,6 +34,11 @@ var UserLoginComponent = React.createClass({
           $('#designer-projects').removeClass('invisible');
 
           $('#feedback-button').removeClass('invisible');
+
+          ReactDOM.render(
+            <LogoutComponent />,
+            document.getElementById('header-login')
+          );
 
           if(isCritic) {
             console.log("critic login loading projects");
