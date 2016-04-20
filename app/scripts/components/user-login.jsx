@@ -59,8 +59,8 @@ var UserLoginComponent = React.createClass({
   render: function(){
     return (
       <form onSubmit={this.handleSubmit}>
-        <input type="email" name="login-email" placeholder="Email Address" id="login-email" className="" value="admin@example.com"/><br/>
-        <input type="password" name="login-user-password" placeholder="Password" id="login-user-password" className="" value="12345"/><br/>
+        <input type="email" name="login-email" placeholder="Email Address" id="login-email" className="" /><br/>
+        <input type="password" name="login-user-password" placeholder="Password" id="login-user-password" className="" /><br/>
         <input type="reset" id="cancel-button" value="CANCEL"/>
         <input type="submit" id="log-in-button" value="LOG IN"/>
       </form>
