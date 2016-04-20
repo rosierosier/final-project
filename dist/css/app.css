@@ -6202,7 +6202,15 @@ iframe {
 #admin-results {
   margin-bottom: 15px; }
 
-.btn-group:active {
+.btn-group button:active {
+  background-color: #ff3388;
+  color: #fff; }
+
+.survey-info button:focus {
+  background-color: #ff3388;
+  color: #fff; }
+
+.btn:focus, .btn:active:focus, .btn.active:focus {
   background-color: #ff3388;
   color: #fff; }
 
