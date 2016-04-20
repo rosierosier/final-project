@@ -7,6 +7,8 @@ var $ = require('jquery');
 
 var models = require('../models/model')
 
+var SurveyComponent = require('./survey.jsx');
+
 
 var UserIframeComponent = React.createClass({
   mixins: [Backbone.React.Component.mixin],
@@ -18,10 +20,15 @@ var UserIframeComponent = React.createClass({
     $('#result').addClass('invisible');
     $('#feedback-button').addClass('invisible');
     $('#display-iframe').addClass('invisible');
+
+    
+    ReactDOM.render(
+      <SurveyComponent projectKey={project.id}/>,
+      document.getElementById('survey')
+    );
   },
 
   render: function(){
-
     return (
       <div id="wrapper">
         <div id="button" onClick={this.displaySurvey}>

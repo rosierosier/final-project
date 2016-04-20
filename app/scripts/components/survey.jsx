@@ -11,24 +11,29 @@ var Button = ReactBootstrap.Button;
 
 var models = require('../models/model');
 
+
 var SurveyComponent = React.createClass({
   mixins: [Backbone.React.Component.mixin],
   handleSubmit: function(e){
     e.preventDefault();
     console.log('survey submit working');
+
     var surveyData = new models.SurveyData();
-    var project = new models.Project();
+    var projectKey = this.props.project.objectId;
+
     surveyData.set("answer1", document.getElementById("answer1").value);
     surveyData.set("answer2", document.getElementById("answer2").value);
     surveyData.set("answer3", document.getElementById("answer3").value);
     surveyData.set("user", Parse.User.current());
     surveyData.set("username", Parse.User.current().get("username"));
-    surveyData.set("parent", project);
+    surveyData.set("project", projectKey);
+    // surveyData.set("parent", project);
+
     surveyData.save({
       success: function(surveyData){
-        // Execute any logic that should take place after the object is saved.
         alert('Thank you for completing this survey!');
         $('#survey').addClass('invisible');
+        console.log("getting parent:", surveyData.get("parent"));
       },
       error: function(surveyData, error){
         alert('Failed to create new object, with error code: ' + error.message);
@@ -37,6 +42,8 @@ var SurveyComponent = React.createClass({
   },
 
   render: function(){
+    var project = this.props.project;
+    console.log(project);
     return (
       <div>
         <div id="survey-info">

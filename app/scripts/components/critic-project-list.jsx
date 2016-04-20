@@ -13,6 +13,7 @@ var CriticProjectsComponent = React.createClass({
 
   handleSubmit: function(e) {
     e.preventDefault();
+    console.log("currentProject", e.target.value);
     var Project = new models.Project();
     var query = new Parse.Query(Project);
     console.log("querying for projects");

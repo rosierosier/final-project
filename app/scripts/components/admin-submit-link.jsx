@@ -1,4 +1,3 @@
-console.log('Hello Editor');
 var Parse = require('parse');
 var Backbone = require('backbone');
 var React = require('react');
@@ -19,11 +18,11 @@ var EditorLinkComponent = React.createClass({
     project.set("url", adminUrl);
     var newProjectName = document.getElementById("new-project-name").value;
     project.set("projectName", newProjectName);
+    project.set("projectKey", project.id);
     project.set("user", Parse.User.current());
     project.save(null, {
       success: function(project){
-        alert('New object created for admin link');
-
+        console.log('New object created for admin link');
       },
       error: function(project, error){
         alert('Failed to create new object, with error code: ' + error.message);
