@@ -5957,6 +5957,12 @@ p {
   padding: 15px;
   overflow: scroll; }
 
+#critic-projects {
+  min-height: 200px;
+  background-color: #fff;
+  padding: 15px;
+  overflow: scroll; }
+
 #past-projects-button {
   margin-right: 5px;
   border-radius: 4px;
@@ -6021,8 +6027,10 @@ p {
   margin-top: 15px;
   padding-top: 25px;
   text-align: center;
-  padding-bottom: 50px;
   background-color: #fff;
+  margin-bottom: 15px; }
+
+#critic-project-list {
   margin-bottom: 15px; }
 
 #user-login {

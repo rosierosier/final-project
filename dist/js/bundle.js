@@ -431,17 +431,17 @@ var SurveyComponent = React.createClass({displayName: "SurveyComponent",
     return (
       React.createElement("div", null, 
         React.createElement("div", {id: "survey-info"}, 
-          React.createElement("p", null, "Please rate the following answers when 1 is least and 5 is greatest.")
+          React.createElement("p", null, "Please rate the functionality, attractiveness, and usability of the website with 1 being the least and 3 being the greatest.")
         ), 
         React.createElement("form", {onSubmit: this.handleSubmit}, 
-          React.createElement("label", {htmlFor: "question1"}, "Would you recommend our website to a friend?"), React.createElement("br", null), 
-          React.createElement("input", {type: "text", name: "survey-1", placeholder: "Answer here", id: "answer1", className: ""}), React.createElement("br", null), 
+          React.createElement("label", {htmlFor: "question1"}, "How functional is the website?"), React.createElement("br", null), 
+          React.createElement("input", {type: "text", name: "survey-1", placeholder: "Functionality answer", id: "answer1", className: ""}), React.createElement("br", null), 
 
-          React.createElement("label", {htmlFor: "question2"}, "How easy is our website to use?"), React.createElement("br", null), 
-          React.createElement("input", {type: "text", name: "survey-2", placeholder: "Answer 2 here", id: "answer2", className: ""}), React.createElement("br", null), 
+          React.createElement("label", {htmlFor: "question2"}, "How attractive is this website?"), React.createElement("br", null), 
+          React.createElement("input", {type: "text", name: "survey-2", placeholder: "Attractiveness answer", id: "answer2", className: ""}), React.createElement("br", null), 
 
-          React.createElement("label", {htmlFor: "question3"}, "What do you like least about our website?"), React.createElement("br", null), 
-          React.createElement("input", {type: "text", name: "survey-3", placeholder: "Answer 3 here", id: "answer3", className: ""}), React.createElement("br", null), 
+          React.createElement("label", {htmlFor: "question3"}, "How usable is this website?"), React.createElement("br", null), 
+          React.createElement("input", {type: "text", name: "survey-3", placeholder: "Usability answer", id: "answer3", className: ""}), React.createElement("br", null), 
 
           React.createElement("input", {type: "submit", id: "submit-survey-button", value: "SUBMIT"})
         )

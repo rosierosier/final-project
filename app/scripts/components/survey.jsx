@@ -49,17 +49,17 @@ var SurveyComponent = React.createClass({
     return (
       <div>
         <div id="survey-info">
-          <p>Please rate the following answers when 1 is least and 5 is greatest.</p>
+          <p>Please rate the functionality, attractiveness, and usability of the website with 1 being the least and 3 being the greatest.</p>
         </div>
         <form onSubmit={this.handleSubmit}>
-          <label htmlFor="question1">Would you recommend our website to a friend?</label><br/>
-          <input type="text" name="survey-1" placeholder="Answer here" id="answer1" className=""/><br/>
+          <label htmlFor="question1">How functional is the website?</label><br/>
+          <input type="text" name="survey-1" placeholder="Functionality answer" id="answer1" className=""/><br/>
 
-          <label htmlFor="question2">How easy is our website to use?</label><br/>
-          <input type="text" name="survey-2" placeholder="Answer 2 here" id="answer2" className=""/><br/>
+          <label htmlFor="question2">How attractive is this website?</label><br/>
+          <input type="text" name="survey-2" placeholder="Attractiveness answer" id="answer2" className=""/><br/>
 
-          <label htmlFor="question3">What do you like least about our website?</label><br/>
-          <input type="text" name="survey-3" placeholder="Answer 3 here" id="answer3" className=""/><br/>
+          <label htmlFor="question3">How usable is this website?</label><br/>
+          <input type="text" name="survey-3" placeholder="Usability answer" id="answer3" className=""/><br/>
 
           <input type="submit" id="submit-survey-button" value="SUBMIT"/>
         </form>
