@@ -22,19 +22,21 @@ var SelectProjectComponent = React.createClass({
     var query = new Parse.Query(SurveyData);
     var project = this.props.project;
     console.log("hello select project world: ", project);
-    query.include("project", project);
+
+    query.include("project.projectKey");
+
     console.log("this.props.project", this.props.project);
     console.log("this.props.project.objectId", this.props.project.objectId);
     var projectKey = this.props.project.objectId;
     console.log("hello select admin world: " + "project here:" + project + "projectKey:" + projectKey);
-    query.include("id", projectKey);
-    // query.equalTo("project", this.state.currentProject);
+
     query.find({
       success: function(results){
+        console.log("this.props.project.objectId", this.props.project.objectId);
         function oneToThreeFromAnswer(textResponse) {
           console.log(this.props.project.objectId);
           console.log(results.id);
-          if(this.props.project.objectId == results.id){
+          // if(this.props.project.objectId == results.id){
             if (textResponse == "1") {
               return 1;
             } else if (textResponse == "2") {
@@ -72,10 +74,10 @@ var SelectProjectComponent = React.createClass({
               $(".criticResponse-" + parseResultIndex, criticResponse).append("<div class=\"criticSummary functionality" + functionalityConclusion + " attractiveness" + attractivenessConclusion + "\"></div>");
               $(".criticResponse-" + parseResultIndex, criticResponse).append("<div style=\"clear: both;\"></div>");
             }
-          } else {
-            console.log(error.message);
-          }
         }
+      },
+      error: function(results, error){
+        console.log(error.message);
       }
     });
   },

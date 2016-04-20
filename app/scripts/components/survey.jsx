@@ -28,8 +28,8 @@ var SurveyComponent = React.createClass({
     surveyData.set("user", Parse.User.current());
     surveyData.set("username", Parse.User.current().get("username"));
     surveyData.set("projectName", this.props.project);
-    surveyData.set("parent", project);
-    surveyData.set("project", projectKey);
+    surveyData.set("parent", projectKey);
+    surveyData.set("project", project);
     // surveyData.set("parent", project);
     surveyData.save({
       success: function(surveyData){
