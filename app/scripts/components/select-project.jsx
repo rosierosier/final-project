@@ -13,22 +13,21 @@ var SelectProjectComponent = React.createClass({
   handleSubmit: function(e){
     e.preventDefault();
     // this.setState({"currentProject": e.target.projectKey});
-    console.log("currentProject:", e.target.getAttribute("projectKey"));
+    console.log("currentProject:", this.props.project.objectId);
     $('.project-options').addClass('invisible');
     $('#admin-results').removeClass('invisible');
 
-    console.log('results view submit working', this.state.current);
     var SurveyData = new models.SurveyData();
     var query = new Parse.Query(SurveyData);
     var project = this.props.project;
-    console.log("hello select project world: ", project);
-
-    query.include("project.projectKey");
-
-    console.log("this.props.project", this.props.project);
-    console.log("this.props.project.objectId", this.props.project.objectId);
     var projectKey = this.props.project.objectId;
-    console.log("hello select admin world: " + "project here:" + project + "projectKey:" + projectKey);
+
+    console.log("hello select project world: ", project);
+    console.log("this.props.project.objectId", this.props.project.objectId);
+
+    query.include(project);
+
+    // query.include("this.props.project.objectId", projectKey);
 
     query.find({
       success: function(results){

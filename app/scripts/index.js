@@ -70,10 +70,14 @@ if (isCritic) {
     <UserLoginComponent />,
     document.getElementById('user-login')
   );
-  // ReactDOM.render(
-  //   <UserIframeComponent />,
-  //   document.getElementById('display-iframe')
-  // );
+  ReactDOM.render(
+    <UserIframeComponent />,
+    document.getElementById('display-iframe')
+  );
+  ReactDOM.render(
+    <SurveyComponent />,
+    document.getElementById('survey')
+  );
 }
 
 

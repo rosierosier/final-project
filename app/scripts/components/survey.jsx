@@ -20,17 +20,15 @@ var SurveyComponent = React.createClass({
 
     var surveyData = new models.SurveyData();
     var project = new models.Project();
-    var projectKey = this.props.project.objectId;
+    var projectKey = project.objectId;
+    console.log("survey projectKey", projectKey);
 
     surveyData.set("answer1", document.getElementById("answer1").value);
     surveyData.set("answer2", document.getElementById("answer2").value);
     surveyData.set("answer3", document.getElementById("answer3").value);
     surveyData.set("user", Parse.User.current());
     surveyData.set("username", Parse.User.current().get("username"));
-    surveyData.set("projectName", this.props.project);
-    surveyData.set("parent", projectKey);
-    surveyData.set("project", project);
-    // surveyData.set("parent", project);
+    surveyData.set("projectKey", projectKey);
     surveyData.save({
       success: function(surveyData){
         alert('Thank you for completing this survey!');
@@ -44,8 +42,8 @@ var SurveyComponent = React.createClass({
   },
 
   render: function(){
-    var project = this.props.project;
-    console.log(project);
+    // var project = this.props.project;
+    // console.log(project);
     return (
       <div>
         <div id="survey-info">

@@ -65,14 +65,14 @@ var CriticProjectsComponent = React.createClass({displayName: "CriticProjectsCom
 
   handleSubmit: function(e) {
     e.preventDefault();
-    console.log("currentProject", e.target.value);
     var Project = new models.Project();
     var query = new Parse.Query(Project);
-    console.log("querying for projects");
+
+    console.log("critic querying for projects");
     // query.equalTo("user", Parse.User.current());
     var outerReactClass = this;
     var callbackAfterQuery = function(designerProjectsArray) {
-      console.log("setting state on: ", outerReactClass);
+      console.log("critic setting state on: ", outerReactClass);
       outerReactClass.setState({"projects": designerProjectsArray});
     }
     query.find({
@@ -82,7 +82,8 @@ var CriticProjectsComponent = React.createClass({displayName: "CriticProjectsCom
 
         for (var parseResultIndex = 0; parseResultIndex < results.length; parseResultIndex++) {
           var parseResponse = results[parseResultIndex];
-          console.log("received project result:", parseResultIndex, parseResponse);
+          // var projectKey = parseResultIndex[0].id;
+          console.log("critic received project result:", parseResultIndex, parseResponse);
           designerProjectsArray.push({"objectId": parseResponse.id, "url": parseResponse.get("url"), "projectName": parseResponse.get("projectName")});
         }
         callbackAfterQuery(designerProjectsArray);
@@ -100,7 +101,7 @@ var CriticProjectsComponent = React.createClass({displayName: "CriticProjectsCom
       return (
         React.createElement("div", {className: "project-list-div"}, 
           projects.map(function(project, index) {
-            return React.createElement("div", {key: index}, React.createElement(CriticSelectProjectComponent, {key: index, project: project}));
+            return React.createElement("div", {key: index}, React.createElement(CriticSelectProjectComponent, {projectKey: project.id, project: project}));
           })
         )
       );
@@ -130,7 +131,12 @@ var CriticSelectProjectComponent = React.createClass({displayName: "CriticSelect
     e.preventDefault();
     this.setState({"currentProject": e.target.value});
     var projectUrl = e.target.getAttribute("data-url");
-    console.log('working', projectUrl);
+    console.log('critic working', projectUrl);
+
+    var projectKey = e.target.getAttribute("objectId");
+    console.log('critic project getAttribute', projectKey);
+    // var projectKey = this.props.project.objectId;
+
     $('#critic-project-list').addClass('invisible');
     $('#display-iframe').removeClass('invisible');
     $('#critic-iframe').removeClass('invisible');
@@ -139,8 +145,10 @@ var CriticSelectProjectComponent = React.createClass({displayName: "CriticSelect
 
   render: function(){
     var project = this.props.project;
-    console.log("hello select critic project world: " + "project here:" + project + "projectKey:" + projectKey);
-    return React.createElement("button", {onClick: this.handleSubmit, value: project.objectId, "data-url": project.url}, project.projectName);
+    var projectKey = this.props.project.objectId;
+    console.log("critic select project world: ", project);
+    console.log("critic projectKey", projectKey);
+    return React.createElement("button", {onClick: this.handleSubmit, projectKey: project.id, project: project, value: projectKey, "data-url": project.url}, project.projectName);
   }
 });
 
@@ -288,22 +296,21 @@ var SelectProjectComponent = React.createClass({displayName: "SelectProjectCompo
   handleSubmit: function(e){
     e.preventDefault();
     // this.setState({"currentProject": e.target.projectKey});
-    console.log("currentProject:", e.target.getAttribute("projectKey"));
+    console.log("currentProject:", this.props.project.objectId);
     $('.project-options').addClass('invisible');
     $('#admin-results').removeClass('invisible');
 
-    console.log('results view submit working', this.state.current);
     var SurveyData = new models.SurveyData();
     var query = new Parse.Query(SurveyData);
     var project = this.props.project;
-    console.log("hello select project world: ", project);
-
-    query.include("project.projectKey");
-
-    console.log("this.props.project", this.props.project);
-    console.log("this.props.project.objectId", this.props.project.objectId);
     var projectKey = this.props.project.objectId;
-    console.log("hello select admin world: " + "project here:" + project + "projectKey:" + projectKey);
+
+    console.log("hello select project world: ", project);
+    console.log("this.props.project.objectId", this.props.project.objectId);
+
+    query.include(project);
+
+    // query.include("this.props.project.objectId", projectKey);
 
     query.find({
       success: function(results){
@@ -390,17 +397,15 @@ var SurveyComponent = React.createClass({displayName: "SurveyComponent",
 
     var surveyData = new models.SurveyData();
     var project = new models.Project();
-    var projectKey = this.props.project.objectId;
+    var projectKey = project.objectId;
+    console.log("survey projectKey", projectKey);
 
     surveyData.set("answer1", document.getElementById("answer1").value);
     surveyData.set("answer2", document.getElementById("answer2").value);
     surveyData.set("answer3", document.getElementById("answer3").value);
     surveyData.set("user", Parse.User.current());
     surveyData.set("username", Parse.User.current().get("username"));
-    surveyData.set("projectName", this.props.project);
-    surveyData.set("parent", projectKey);
-    surveyData.set("project", project);
-    // surveyData.set("parent", project);
+    surveyData.set("projectKey", projectKey);
     surveyData.save({
       success: function(surveyData){
         alert('Thank you for completing this survey!');
@@ -414,8 +419,8 @@ var SurveyComponent = React.createClass({displayName: "SurveyComponent",
   },
 
   render: function(){
-    var project = this.props.project;
-    console.log(project);
+    // var project = this.props.project;
+    // console.log(project);
     return (
       React.createElement("div", null, 
         React.createElement("div", {id: "survey-info"}, 
@@ -490,6 +495,9 @@ var UserIframeComponent = React.createClass({displayName: "UserIframeComponent",
   mixins: [Backbone.React.Component.mixin],
   displaySurvey: function(e){
     e.preventDefault();
+    console.log('give feedback button working');
+    // var project = this.props.project;
+    // var projectKey = this.props.project.objectId;
     this.setState({"currentProject": e.target.value});
     console.log('toggle from iframe to survey');
     $('#survey').removeClass('invisible');
@@ -497,11 +505,6 @@ var UserIframeComponent = React.createClass({displayName: "UserIframeComponent",
     $('#feedback-button').addClass('invisible');
     $('#display-iframe').addClass('invisible');
 
-    
-    ReactDOM.render(
-      React.createElement(SurveyComponent, {projectKey: project.id}),
-      document.getElementById('survey')
-    );
   },
 
   render: function(){
@@ -748,10 +751,14 @@ if (isCritic) {
     React.createElement(UserLoginComponent, null),
     document.getElementById('user-login')
   );
-  // ReactDOM.render(
-  //   <UserIframeComponent />,
-  //   document.getElementById('display-iframe')
-  // );
+  ReactDOM.render(
+    React.createElement(UserIframeComponent, null),
+    document.getElementById('display-iframe')
+  );
+  ReactDOM.render(
+    React.createElement(SurveyComponent, null),
+    document.getElementById('survey')
+  );
 }
 
 

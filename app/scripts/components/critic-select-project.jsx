@@ -14,7 +14,12 @@ var CriticSelectProjectComponent = React.createClass({
     e.preventDefault();
     this.setState({"currentProject": e.target.value});
     var projectUrl = e.target.getAttribute("data-url");
-    console.log('working', projectUrl);
+    console.log('critic working', projectUrl);
+
+    var projectKey = e.target.getAttribute("objectId");
+    console.log('critic project getAttribute', projectKey);
+    // var projectKey = this.props.project.objectId;
+
     $('#critic-project-list').addClass('invisible');
     $('#display-iframe').removeClass('invisible');
     $('#critic-iframe').removeClass('invisible');
@@ -23,8 +28,10 @@ var CriticSelectProjectComponent = React.createClass({
 
   render: function(){
     var project = this.props.project;
-    console.log("hello select critic project world: " + "project here:" + project + "projectKey:" + projectKey);
-    return <button onClick={this.handleSubmit} value={project.objectId} data-url={project.url}>{project.projectName}</button>;
+    var projectKey = this.props.project.objectId;
+    console.log("critic select project world: ", project);
+    console.log("critic projectKey", projectKey);
+    return <button onClick={this.handleSubmit} projectKey={project.id} project={project} value={projectKey} data-url={project.url}>{project.projectName}</button>;
   }
 });
 

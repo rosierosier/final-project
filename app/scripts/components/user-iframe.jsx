@@ -14,6 +14,9 @@ var UserIframeComponent = React.createClass({
   mixins: [Backbone.React.Component.mixin],
   displaySurvey: function(e){
     e.preventDefault();
+    console.log('give feedback button working');
+    // var project = this.props.project;
+    // var projectKey = this.props.project.objectId;
     this.setState({"currentProject": e.target.value});
     console.log('toggle from iframe to survey');
     $('#survey').removeClass('invisible');
@@ -21,11 +24,6 @@ var UserIframeComponent = React.createClass({
     $('#feedback-button').addClass('invisible');
     $('#display-iframe').addClass('invisible');
 
-    
-    ReactDOM.render(
-      <SurveyComponent projectKey={project.id}/>,
-      document.getElementById('survey')
-    );
   },
 
   render: function(){

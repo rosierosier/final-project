@@ -13,14 +13,14 @@ var CriticProjectsComponent = React.createClass({
 
   handleSubmit: function(e) {
     e.preventDefault();
-    console.log("currentProject", e.target.value);
     var Project = new models.Project();
     var query = new Parse.Query(Project);
-    console.log("querying for projects");
+
+    console.log("critic querying for projects");
     // query.equalTo("user", Parse.User.current());
     var outerReactClass = this;
     var callbackAfterQuery = function(designerProjectsArray) {
-      console.log("setting state on: ", outerReactClass);
+      console.log("critic setting state on: ", outerReactClass);
       outerReactClass.setState({"projects": designerProjectsArray});
     }
     query.find({
@@ -30,7 +30,8 @@ var CriticProjectsComponent = React.createClass({
 
         for (var parseResultIndex = 0; parseResultIndex < results.length; parseResultIndex++) {
           var parseResponse = results[parseResultIndex];
-          console.log("received project result:", parseResultIndex, parseResponse);
+          // var projectKey = parseResultIndex[0].id;
+          console.log("critic received project result:", parseResultIndex, parseResponse);
           designerProjectsArray.push({"objectId": parseResponse.id, "url": parseResponse.get("url"), "projectName": parseResponse.get("projectName")});
         }
         callbackAfterQuery(designerProjectsArray);
@@ -48,7 +49,7 @@ var CriticProjectsComponent = React.createClass({
       return (
         <div className="project-list-div">
           {projects.map(function(project, index) {
-            return <div key={index}><CriticSelectProjectComponent key={index} project={project}/></div>;
+            return <div key={index}><CriticSelectProjectComponent projectKey={project.id} project={project}/></div>;
           })}
         </div>
       );
