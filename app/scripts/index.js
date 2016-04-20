@@ -74,10 +74,6 @@ if (isCritic) {
     <UserIframeComponent />,
     document.getElementById('display-iframe')
   );
-  ReactDOM.render(
-    <SurveyComponent />,
-    document.getElementById('survey')
-  );
 }
 
 
@@ -85,3 +81,24 @@ $(function(){
   Parse.initialize("final_project");
   Parse.serverURL = 'http://tiy-gvl-demo-day.herokuapp.com/';
 });
+
+window.getCookie = function(cookieName) {
+	if (document.cookie.length > 0) {
+		var indexOfCookieStart = document.cookie.indexOf(cookieName + "=");
+		if (indexOfCookieStart != -1) {
+			var cookieNameValuePairs = document.cookie.split("; ");
+			for (var cookieNameValuePairIndex = 0; cookieNameValuePairIndex < cookieNameValuePairs.length; cookieNameValuePairIndex++) {
+				var cookieNameValuePair = cookieNameValuePairs[cookieNameValuePairIndex];
+				if (cookieNameValuePair.indexOf(cookieName + "=") === 0) {
+					return decodeURIComponent(cookieNameValuePair.substring(cookieName.length + 1));
+				}
+			}
+		}
+	}
+	return "";
+};
+
+window.setCookie = function(cookieName, value, daysToKeep) {
+	document.cookie = cookieName + "=" + encodeURIComponent(value) + ";path=/" +
+					((daysToKeep) ? ";max-age=" + (daysToKeep * 60 * 60 * 24) : "");
+};

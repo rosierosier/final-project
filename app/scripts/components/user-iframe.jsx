@@ -15,15 +15,20 @@ var UserIframeComponent = React.createClass({
   displaySurvey: function(e){
     e.preventDefault();
     console.log('give feedback button working');
-    // var project = this.props.project;
-    // var projectKey = this.props.project.objectId;
+    var projectKey = window.getCookie("currentProject");
+
     this.setState({"currentProject": e.target.value});
+
     console.log('toggle from iframe to survey');
     $('#survey').removeClass('invisible');
     $('#result').addClass('invisible');
     $('#feedback-button').addClass('invisible');
     $('#display-iframe').addClass('invisible');
 
+    ReactDOM.render(
+      <SurveyComponent projectKey={projectKey}/>,
+      document.getElementById('survey')
+    );
   },
 
   render: function(){

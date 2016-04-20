@@ -25,54 +25,52 @@ var SelectProjectComponent = React.createClass({
     console.log("hello select project world: ", project);
     console.log("this.props.project.objectId", this.props.project.objectId);
 
-    query.include(project);
+    query.equalTo("projectKey", projectKey);
 
     // query.include("this.props.project.objectId", projectKey);
 
     query.find({
       success: function(results){
-        console.log("this.props.project.objectId", this.props.project.objectId);
+        console.log("in query projectKey", projectKey);
+        console.log("results.id", results.id);
         function oneToThreeFromAnswer(textResponse) {
-          console.log(this.props.project.objectId);
-          console.log(results.id);
-          // if(this.props.project.objectId == results.id){
-            if (textResponse == "1") {
-              return 1;
-            } else if (textResponse == "2") {
-              return 2;
-            } else if (textResponse == "3") {
-              return 3;
-            } else {
-              return 0
-            }
+          if (textResponse == "1") {
+            return 1;
+          } else if (textResponse == "2") {
+            return 2;
+          } else if (textResponse == "3") {
+            return 3;
+          } else {
+            return 0
+          }
+        }
 
-            var surveyAnswers = $("#admin-results");
+        var surveyAnswers = $("#admin-results");
 
-            for (var parseResultIndex = 0; parseResultIndex < results.length; parseResultIndex++) {
-              var parseCriticResponse = results[parseResultIndex];
-              console.log("received result:", parseResultIndex, parseCriticResponse);
+        for (var parseResultIndex = 0; parseResultIndex < results.length; parseResultIndex++) {
+          var parseCriticResponse = results[parseResultIndex];
+          console.log("received result:", parseResultIndex, parseCriticResponse);
 
-              var criticHeaderAndResponse = surveyAnswers.append("<div class=\"criticHeaderAndResponse criticHeaderAndResponse-" + parseResultIndex + "\"></div>");
-              $(".criticHeaderAndResponse-" + parseResultIndex, criticHeaderAndResponse).append("<div class=\"criticHeader\"></div>").text(parseCriticResponse.get("username"));
-              $(".criticHeaderAndResponse-" + parseResultIndex, criticHeaderAndResponse).append("<div class=\"criticHeader\"></div>").text(parseCriticResponse.get("projectName"));
+          var criticHeaderAndResponse = surveyAnswers.append("<div class=\"criticHeaderAndResponse criticHeaderAndResponse-" + parseResultIndex + "\"></div>");
+          $(".criticHeaderAndResponse-" + parseResultIndex, criticHeaderAndResponse).append("<div class=\"criticHeader\"></div>").text(parseCriticResponse.get("username"));
+          $(".criticHeaderAndResponse-" + parseResultIndex, criticHeaderAndResponse).append("<div class=\"criticHeader\"></div>").text(parseCriticResponse.get("projectName"));
 
-              var criticResponse = criticHeaderAndResponse.append("<div class=\"criticResponse criticResponse-" + parseResultIndex + "\"></div>");
+          var criticResponse = criticHeaderAndResponse.append("<div class=\"criticResponse criticResponse-" + parseResultIndex + "\"></div>");
 
-              var numericFunctionality = oneToThreeFromAnswer(parseCriticResponse.get("answer1"));
-              var numericAttractiveness = oneToThreeFromAnswer(parseCriticResponse.get("answer2"));
-              var numericUsability = oneToThreeFromAnswer(parseCriticResponse.get("answer3"));
+          var numericFunctionality = oneToThreeFromAnswer(parseCriticResponse.get("answer1"));
+          var numericAttractiveness = oneToThreeFromAnswer(parseCriticResponse.get("answer2"));
+          var numericUsability = oneToThreeFromAnswer(parseCriticResponse.get("answer3"));
 
-              $(".criticResponse-" + parseResultIndex, criticResponse).append("<div class=\"criticQuestionsAndAnswers\"><table><tr><td class=\"criticQuestion\">Functionality</td><td class=\"criticAnswer\">" + numericFunctionality + "</td></tr>"
-              + "<tr><td class=\"criticQuestion\">Attractiveness</td><td class=\"criticAnswer\">" + numericAttractiveness + "</td></tr>"
-              + "<tr><td class=\"criticQuestion\">Usability</td><td class=\"criticAnswer\">" + numericUsability + "</td></tr></table></div>");
+          $(".criticResponse-" + parseResultIndex, criticResponse).append("<div class=\"criticQuestionsAndAnswers\"><table><tr><td class=\"criticQuestion\">Functionality</td><td class=\"criticAnswer\">" + numericFunctionality + "</td></tr>"
+          + "<tr><td class=\"criticQuestion\">Attractiveness</td><td class=\"criticAnswer\">" + numericAttractiveness + "</td></tr>"
+          + "<tr><td class=\"criticQuestion\">Usability</td><td class=\"criticAnswer\">" + numericUsability + "</td></tr></table></div>");
 
-              //TODO: better handling for when answers are incomplete or unexpected values
-              var functionalityConclusion = Math.floor(numericFunctionality);// + (0.5 * numericUsability));
-              var attractivenessConclusion = Math.floor(numericAttractiveness);// + (0.5 * numericUsability));
+          //TODO: better handling for when answers are incomplete or unexpected values
+          var functionalityConclusion = Math.floor(numericFunctionality);// + (0.5 * numericUsability));
+          var attractivenessConclusion = Math.floor(numericAttractiveness);// + (0.5 * numericUsability));
 
-              $(".criticResponse-" + parseResultIndex, criticResponse).append("<div class=\"criticSummary functionality" + functionalityConclusion + " attractiveness" + attractivenessConclusion + "\"></div>");
-              $(".criticResponse-" + parseResultIndex, criticResponse).append("<div style=\"clear: both;\"></div>");
-            }
+          $(".criticResponse-" + parseResultIndex, criticResponse).append("<div class=\"criticSummary functionality" + functionalityConclusion + " attractiveness" + attractivenessConclusion + "\"></div>");
+          $(".criticResponse-" + parseResultIndex, criticResponse).append("<div style=\"clear: both;\"></div>");
         }
       },
       error: function(results, error){

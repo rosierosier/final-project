@@ -16,12 +16,14 @@ var SurveyComponent = React.createClass({
   mixins: [Backbone.React.Component.mixin],
   handleSubmit: function(e){
     e.preventDefault();
+    this.setState({"currentProject": e.target.value});
+    var projectKey = e.target.getAttribute("data-url");
     console.log('survey submit working');
 
     var surveyData = new models.SurveyData();
-    var project = new models.Project();
-    var projectKey = project.objectId;
-    console.log("survey projectKey", projectKey);
+    // var project = new models.Project();
+    console.log("survey projectKey", this.props.projectKey);
+    var projectKey = this.props.projectKey;
 
     surveyData.set("answer1", document.getElementById("answer1").value);
     surveyData.set("answer2", document.getElementById("answer2").value);

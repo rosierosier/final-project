@@ -7,12 +7,18 @@ var $ = require('jquery');
 
 var models = require('../models/model')
 
+var UserIframeComponent = require('./user-iframe.jsx');
+
+
 var CriticSelectProjectComponent = React.createClass({
   mixins: [Backbone.React.Component.mixin],
 
   handleSubmit: function(e){
     e.preventDefault();
+
     this.setState({"currentProject": e.target.value});
+    window.setCookie("currentProject", e.target.value);
+    console.log("getting cookie", window.getCookie("currentProject"));
     var projectUrl = e.target.getAttribute("data-url");
     console.log('critic working', projectUrl);
 
@@ -24,6 +30,7 @@ var CriticSelectProjectComponent = React.createClass({
     $('#display-iframe').removeClass('invisible');
     $('#critic-iframe').removeClass('invisible');
     $('#critic-iframe').attr("src", projectUrl);
+
   },
 
   render: function(){
