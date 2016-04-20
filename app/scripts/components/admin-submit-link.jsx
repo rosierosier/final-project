@@ -1,4 +1,3 @@
-console.log('Hello Editor');
 var Parse = require('parse');
 var Backbone = require('backbone');
 var React = require('react');

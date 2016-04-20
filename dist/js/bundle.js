@@ -1,6 +1,5 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 "use strict";
-console.log('Hello Editor');
 var Parse = require('parse');
 var Backbone = require('backbone');
 var React = require('react');
@@ -294,7 +293,10 @@ var SelectProjectComponent = React.createClass({displayName: "SelectProjectCompo
     console.log('results view submit working', this.state.current);
     var SurveyData = new models.SurveyData();
     var query = new Parse.Query(SurveyData);
-    query.equalTo("project", this.state.currentProject);
+    var project = this.props.project;
+    console.log("hello select project world: ", project);
+    query.include("project", project);
+    // query.equalTo("project", this.state.currentProject);
     query.find({
       success: function(results){
         function oneToThreeFromAnswer(textResponse) {
@@ -333,7 +335,7 @@ var SelectProjectComponent = React.createClass({displayName: "SelectProjectCompo
           var functionalityConclusion = Math.floor(numericFunctionality);// + (0.5 * numericUsability));
           var attractivenessConclusion = Math.floor(numericAttractiveness);// + (0.5 * numericUsability));
 
-          $(".criticResponse-" + parseResultIndex, criticResponse).append("<div class=\"criticSummary functionality" + functionalityConclusion + " attractiveness" + attractivenessConclusion + "\"></div>");2
+          $(".criticResponse-" + parseResultIndex, criticResponse).append("<div class=\"criticSummary functionality" + functionalityConclusion + " attractiveness" + attractivenessConclusion + "\"></div>");
           $(".criticResponse-" + parseResultIndex, criticResponse).append("<div style=\"clear: both;\"></div>");
         }
       },
@@ -372,17 +374,19 @@ var SurveyComponent = React.createClass({displayName: "SurveyComponent",
   handleSubmit: function(e){
     e.preventDefault();
     console.log('survey submit working');
+
     var surveyData = new models.SurveyData();
     var project = new models.Project();
+
     surveyData.set("answer1", document.getElementById("answer1").value);
     surveyData.set("answer2", document.getElementById("answer2").value);
     surveyData.set("answer3", document.getElementById("answer3").value);
     surveyData.set("user", Parse.User.current());
     surveyData.set("username", Parse.User.current().get("username"));
+    surveyData.set("projectName", this.props.project);
     surveyData.set("parent", project);
     surveyData.save({
       success: function(surveyData){
-        // Execute any logic that should take place after the object is saved.
         alert('Thank you for completing this survey!');
         $('#survey').addClass('invisible');
       },

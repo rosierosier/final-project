@@ -16,17 +16,19 @@ var SurveyComponent = React.createClass({
   handleSubmit: function(e){
     e.preventDefault();
     console.log('survey submit working');
+
     var surveyData = new models.SurveyData();
     var project = new models.Project();
+
     surveyData.set("answer1", document.getElementById("answer1").value);
     surveyData.set("answer2", document.getElementById("answer2").value);
     surveyData.set("answer3", document.getElementById("answer3").value);
     surveyData.set("user", Parse.User.current());
     surveyData.set("username", Parse.User.current().get("username"));
+    surveyData.set("projectName", this.props.project);
     surveyData.set("parent", project);
     surveyData.save({
       success: function(surveyData){
-        // Execute any logic that should take place after the object is saved.
         alert('Thank you for completing this survey!');
         $('#survey').addClass('invisible');
       },

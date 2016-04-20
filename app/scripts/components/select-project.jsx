@@ -19,7 +19,10 @@ var SelectProjectComponent = React.createClass({
     console.log('results view submit working', this.state.current);
     var SurveyData = new models.SurveyData();
     var query = new Parse.Query(SurveyData);
-    query.equalTo("project", this.state.currentProject);
+    var project = this.props.project;
+    console.log("hello select project world: ", project);
+    query.include("project", project);
+    // query.equalTo("project", this.state.currentProject);
     query.find({
       success: function(results){
         function oneToThreeFromAnswer(textResponse) {
@@ -58,7 +61,7 @@ var SelectProjectComponent = React.createClass({
           var functionalityConclusion = Math.floor(numericFunctionality);// + (0.5 * numericUsability));
           var attractivenessConclusion = Math.floor(numericAttractiveness);// + (0.5 * numericUsability));
 
-          $(".criticResponse-" + parseResultIndex, criticResponse).append("<div class=\"criticSummary functionality" + functionalityConclusion + " attractiveness" + attractivenessConclusion + "\"></div>");2
+          $(".criticResponse-" + parseResultIndex, criticResponse).append("<div class=\"criticSummary functionality" + functionalityConclusion + " attractiveness" + attractivenessConclusion + "\"></div>");
           $(".criticResponse-" + parseResultIndex, criticResponse).append("<div style=\"clear: both;\"></div>");
         }
       },
