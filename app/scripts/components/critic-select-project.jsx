@@ -11,7 +11,6 @@ var CriticSelectProjectComponent = React.createClass({
   mixins: [Backbone.React.Component.mixin],
 
   handleSubmit: function(e){
-    // alert("gonna be current project: " + e.target.value);
     e.preventDefault();
     this.setState({"currentProject": e.target.value});
     var projectUrl = e.target.getAttribute("data-url");
@@ -24,7 +23,7 @@ var CriticSelectProjectComponent = React.createClass({
 
   render: function(){
     var project = this.props.project;
-    console.log("hello select project world: ", project);
+    console.log("hello select critic project world: " + "project here:" + project + "projectKey:" + projectKey);
     return <button onClick={this.handleSubmit} value={project.objectId} data-url={project.url}>{project.projectName}</button>;
   }
 });

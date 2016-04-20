@@ -48,7 +48,7 @@ var DesignerProjectsComponent = React.createClass({
       return (
         <div className="project-list-div">
           {projects.map(function(project, index) {
-            return <div key={index}><SelectProjectComponent key={index} project={project}/></div>;
+            return <div key={index}><SelectProjectComponent projectKey={project.id} project={project} /></div>;
           })}
         </div>
       );
