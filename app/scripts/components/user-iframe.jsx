@@ -12,6 +12,7 @@ var UserIframeComponent = React.createClass({
   mixins: [Backbone.React.Component.mixin],
   displaySurvey: function(e){
     e.preventDefault();
+    this.setState({"currentProject": e.target.value});
     console.log('toggle from iframe to survey');
     $('#survey').removeClass('invisible');
     $('#result').addClass('invisible');

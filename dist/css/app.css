@@ -6206,6 +6206,14 @@ iframe {
   background-color: #ff3388;
   color: #fff; }
 
+.survey-info button:focus {
+  background-color: #ff3388;
+  color: #fff; }
+
+.btn:focus, .btn:active:focus, .btn.active:focus {
+  background-color: #ff3388;
+  color: #fff; }
+
 .criticHeaderAndResponse {
   margin-bottom: 10px;
   border-bottom: 1px solid #ff3388; }

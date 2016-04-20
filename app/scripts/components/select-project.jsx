@@ -5,23 +5,18 @@ var ReactDOM = require('react-dom');
 require('backbone-react-component');
 var $ = require('jquery');
 
-var models = require('../models/model')
+var models = require('../models/model');
 
 var SelectProjectComponent = React.createClass({
   mixins: [Backbone.React.Component.mixin],
 
   handleSubmit: function(e){
-    // alert("gonna be current project: " + e.target.value);
     e.preventDefault();
     this.setState({"currentProject": e.target.value});
-    console.log('past project submit working');
     $('.project-options').addClass('invisible');
-    // return {items: designerProjectsArray};
     $('#admin-results').removeClass('invisible');
 
-
-
-    console.log('results view submit working', this.state.currentProject);
+    console.log('results view submit working', this.state.current);
     var SurveyData = new models.SurveyData();
     var query = new Parse.Query(SurveyData);
     query.equalTo("project", this.state.currentProject);
@@ -47,6 +42,7 @@ var SelectProjectComponent = React.createClass({
 
           var criticHeaderAndResponse = surveyAnswers.append("<div class=\"criticHeaderAndResponse criticHeaderAndResponse-" + parseResultIndex + "\"></div>");
           $(".criticHeaderAndResponse-" + parseResultIndex, criticHeaderAndResponse).append("<div class=\"criticHeader\"></div>").text(parseCriticResponse.get("username"));
+          $(".criticHeaderAndResponse-" + parseResultIndex, criticHeaderAndResponse).append("<div class=\"criticHeader\"></div>").text(parseCriticResponse.get("projectName"));
 
           var criticResponse = criticHeaderAndResponse.append("<div class=\"criticResponse criticResponse-" + parseResultIndex + "\"></div>");
 
