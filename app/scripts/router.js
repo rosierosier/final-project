@@ -33,6 +33,8 @@ var Router = Backbone.Router.extend({
     "critic": "critic",
     "critic/signup": "criticSignup",
     "critic/login": "criticLogin",
+    "critic/dasboard": "criticDashboard",
+    "critic/projects": "criticProjects"
   },
   index: function() {
     this.current = "index";
@@ -86,7 +88,11 @@ var Router = Backbone.Router.extend({
     );
   },
   critic: function() {
-    this.current = "critic";
+    this.current = "critic-dashboard";
+    // If user is not logged in, require login/signup
+    if(!Parse.User.current()){
+      this.navigate('critic/critic-login', {trigger: true});
+    }
     ReactDOM.render(
       React.createElement(CriticComponent, {router: this}),
       document.getElementById('app')
@@ -101,23 +107,21 @@ var Router = Backbone.Router.extend({
   },
   criticLogin: function() {
     this.current = "critic-login";
+    if(Parse.User.current()){
+      this.navigate('critic', {trigger: true});
+    }
+    ReactDOM.render(
+      React.createElement(CriticComponent, {router: this}),
+      document.getElementById('app')
+    );
+  },
+  criticProjects: function() {
+    this.current = "critic-projects";
     ReactDOM.render(
       React.createElement(CriticComponent, {router: this}),
       document.getElementById('app')
     );
   }
-    // ReactDOM.render(
-    //   React.createElement(UserSignupComponent),
-    //   document.getElementById('user-signup')
-    // );
-    // ReactDOM.render(
-    //   React.createElement(ToggleComponent),
-    //   document.getElementById('header-login')
-    // );
-    // ReactDOM.render(
-    //   React.createElement(UserLoginComponent),
-    //   document.getElementById('user-login')
-    // );
     // ReactDOM.render(
     //   React.createElement(UserIframeComponent),
     //   document.getElementById('display-iframe')

@@ -16,11 +16,9 @@ var DesignerProjectsComponent = React.createClass({
     var Project = new models.Project();
     var query = new Parse.Query(Project);
 
-    // TODO: fix this so we only have user's projects
     query.equalTo("user", Parse.User.current());
     query.find({
       success: function(results){
-        // console.log("found me some projects", results);
         var designerProjectsArray = [];
 
         for (var parseResultIndex = 0; parseResultIndex < results.length; parseResultIndex++) {
@@ -54,7 +52,7 @@ var DesignerProjectsComponent = React.createClass({
         {projects.map(function(project, index) {
           return (
             <div key={project.id}>
-              <SelectProjectComponent projectKey={project.id} project={project} router={router}/>    
+              <SelectProjectComponent projectKey={project.id} project={project} router={router}/>
             </div>
           );
         })}

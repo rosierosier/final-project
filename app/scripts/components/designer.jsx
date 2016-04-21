@@ -104,17 +104,16 @@ render: function(){
       );
       break;
 
-      case "design-results":
-        componentToDisplay = (
-          <div className="row project-options">
-            <div id="welcome-admin-photo"></div>
+    case "design-results":
+      componentToDisplay = (
+        <div className="row project-options">
+          <div id="welcome-admin-photo"></div>
 
-            <DesignResults router={this.props.router} />
-          </div>
-        );
-        break;
+          <DesignResults router={this.props.router} />
+        </div>
+      );
+      break;
   }
-
 
   return (
     <div>
@@ -130,20 +129,6 @@ render: function(){
       <div className="container-fluid">
         {componentToDisplay}
       </div>
-
-      {/*
-        <div id="designer-project-list" className="col-md-6 col-sm-6 col-xs-12 text-center"></div>
-
-        <div id="admin-results" className="invisible"></div>
-
-        <div id="admin-display-link" className="col-md-6 col-sm-6 col-xs-12 text-center invisible">
-          <EditorLinkComponent />
-        </div>
-        <div id="new-project-redirect" className="col-md-6 col-sm-6 col-xs-12 text-center invisible">
-          <a href="admin.html" role="button">Home</a>
-        </div>
-      */}
-
     </div>
     )
   }
