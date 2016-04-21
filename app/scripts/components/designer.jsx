@@ -16,7 +16,6 @@ var DesignResults = require('./design-results.jsx');
 
 var models = require('../models/model');
 
-
 var DesignerComponent = React.createClass({
 
 render: function(){

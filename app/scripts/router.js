@@ -34,7 +34,8 @@ var Router = Backbone.Router.extend({
     "critic/signup": "criticSignup",
     "critic/login": "criticLogin",
     "critic/dasboard": "criticDashboard",
-    "critic/projects": "criticProjects"
+    "critic/project": "criticProject",
+    "critic/survey": "criticSurvey"
   },
   index: function() {
     this.current = "index";
@@ -115,17 +116,20 @@ var Router = Backbone.Router.extend({
       document.getElementById('app')
     );
   },
-  criticProjects: function() {
-    this.current = "critic-projects";
+  criticProject: function() {
+    this.current = "critic-project";
+    ReactDOM.render(
+      React.createElement(CriticComponent, {router: this}),
+      document.getElementById('app')
+    );
+  },
+  criticSurvey: function(){
+    this.current = "survey";
     ReactDOM.render(
       React.createElement(CriticComponent, {router: this}),
       document.getElementById('app')
     );
   }
-    // ReactDOM.render(
-    //   React.createElement(UserIframeComponent),
-    //   document.getElementById('display-iframe')
-    // );
 });
 
 var router = new Router();

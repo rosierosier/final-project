@@ -6,7 +6,7 @@ require('backbone-react-component');
 var $ = require('jquery');
 
 var models = require('../models/model');
-var SelectProjectComponent = require('./select-project.jsx');
+var CriticSelectProjectComponent = require('./critic-select-project.jsx');
 
 var CriticProjectsComponent = React.createClass({
   mixins: [Backbone.React.Component.mixin],
@@ -51,7 +51,7 @@ var CriticProjectsComponent = React.createClass({
         {projects.map(function(project, index) {
           return (
             <div key={project.id}>
-              <SelectProjectComponent projectKey={project.id} project={project} router={router}/>
+              <CriticSelectProjectComponent projectKey={project.id} project={project} router={router}/>
             </div>
           );
         })}

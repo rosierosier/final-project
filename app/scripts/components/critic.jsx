@@ -1,6 +1,7 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 
+var UserSignupComponent = require('./user-signup.jsx');
 var UserLoginComponent = require('./user-login.jsx');
 var ToggleComponent = require('./toggle.jsx');
 var UserIframeComponent = require('./user-iframe.jsx');
@@ -75,20 +76,25 @@ render: function(){
       </div>
     );
     break;
+
+    case "critic-project":
+    componentToDisplay = (
+      <div id="display-iframe" className="row editor">
+        <CriticDisplayComponent router={router}/>
+      </div>
+    );
+    break;
+
+    case "survey":
+    componentToDisplay = (
+      <div id="survey" className="row">
+        <SurveyComponent router={router}/>
+      </div>
+    );
+    break;
   }
 
-
-
-
   return (
-    <div>
-    <div>
-
-      <div id="display-iframe" className="row editor"></div>
-
-      <div id="survey" className="row"></div>
-    </div>
-    {/*##########################*/}
     <div>
       <div className="row header">
         <div className="header-logo" />
@@ -102,7 +108,6 @@ render: function(){
       <div className="container-fluid">
         {componentToDisplay}
       </div>
-    </div>
     </div>
   )
 }
