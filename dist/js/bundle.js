@@ -191,6 +191,7 @@ module.exports = CriticSelectProjectComponent;
 "use strict";
 var React = require('react');
 var ReactDOM = require('react-dom');
+var Parse = require('parse');
 
 var UserSignupComponent = require('./user-signup.jsx');
 var UserLoginComponent = require('./user-login.jsx');
@@ -288,30 +289,48 @@ render: function(){
     break;
   }
 
-  return (
-    React.createElement("div", null, 
-      React.createElement("div", {className: "row header"}, 
-        React.createElement("div", {className: "header-logo"}), 
-        React.createElement("a", {href: "#", role: "button"}, "Home"), 
-        React.createElement("a", {href: "#designer", role: "button"}, "Designer"), 
-        React.createElement("div", {id: "header-login"}, 
-          React.createElement(ToggleComponent, {router: this.props.router}), 
-          React.createElement(LogoutComponent, {router: this.props.router})
-        )
-      ), 
+  if(!Parse.User.current()){
+    return (
+      React.createElement("div", null, 
+        React.createElement("div", {className: "row header"}, 
+          React.createElement("div", {className: "header-logo"}), 
+          React.createElement("a", {href: "#", role: "button"}, "Home"), 
+          React.createElement("a", {href: "#designer", role: "button"}, "Designer"), 
+          React.createElement("div", {id: "header-login"}, 
+            React.createElement(ToggleComponent, {router: this.props.router})
+          )
+        ), 
 
-      React.createElement("div", {className: "container-fluid"}, 
-        componentToDisplay
+        React.createElement("div", {className: "container-fluid"}, 
+          componentToDisplay
+        )
       )
     )
-  )
+  } else {
+    return (
+      React.createElement("div", null, 
+        React.createElement("div", {className: "row header"}, 
+          React.createElement("div", {className: "header-logo"}), 
+          React.createElement("a", {href: "#", role: "button"}, "Home"), 
+          React.createElement("a", {href: "#designer", role: "button"}, "Designer"), 
+          React.createElement("div", {id: "header-login"}, 
+            React.createElement(LogoutComponent, {router: this.props.router})
+          )
+        ), 
+
+        React.createElement("div", {className: "container-fluid"}, 
+          componentToDisplay
+        )
+      )
+    )
+  }
 }
 
-})
+});
 
 module.exports = CriticComponent
 
-},{"../models/model":19,"./admin-submit-link.jsx":1,"./critic-display-project.jsx":2,"./critic-project-list.jsx":3,"./design-results.jsx":6,"./designer-new-post.jsx":7,"./designer-projects.jsx":8,"./logout.jsx":10,"./select-project.jsx":11,"./survey.jsx":12,"./toggle.jsx":13,"./user-iframe.jsx":14,"./user-login.jsx":15,"./user-signup.jsx":16,"./welcome.jsx":17,"react":531,"react-dom":378}],6:[function(require,module,exports){
+},{"../models/model":19,"./admin-submit-link.jsx":1,"./critic-display-project.jsx":2,"./critic-project-list.jsx":3,"./design-results.jsx":6,"./designer-new-post.jsx":7,"./designer-projects.jsx":8,"./logout.jsx":10,"./select-project.jsx":11,"./survey.jsx":12,"./toggle.jsx":13,"./user-iframe.jsx":14,"./user-login.jsx":15,"./user-signup.jsx":16,"./welcome.jsx":17,"parse":244,"react":531,"react-dom":378}],6:[function(require,module,exports){
 "use strict";
 var Parse = require('parse');
 var Backbone = require('backbone');
@@ -515,6 +534,7 @@ module.exports = DesignerProjectsComponent;
 "use strict";
 var React = require('react');
 var ReactDOM = require('react-dom');
+var Parse = require('parse');
 
 var UserSignupComponent = require('./user-signup.jsx');
 var UserLoginComponent = require('./user-login.jsx');
@@ -629,30 +649,47 @@ render: function(){
       );
       break;
   }
+  if(!Parse.User.current()){
+    return (
+      React.createElement("div", null, 
+        React.createElement("div", {className: "row header"}, 
+          React.createElement("div", {className: "header-logo"}), 
+          React.createElement("a", {href: "#", role: "button"}, "Home"), 
+          React.createElement("a", {href: "#critic", role: "button"}, "Critic"), 
+          React.createElement("div", {id: "header-login"}, 
+            React.createElement(ToggleComponent, {router: this.props.router})
+          )
+        ), 
 
-  return (
-    React.createElement("div", null, 
-      React.createElement("div", {className: "row header"}, 
-        React.createElement("div", {className: "header-logo"}), 
-        React.createElement("a", {href: "#", role: "button"}, "Home"), 
-        React.createElement("a", {href: "#critic", role: "button"}, "Critic"), 
-        React.createElement("div", {id: "header-login"}, 
-          React.createElement(ToggleComponent, {router: this.props.router}), 
-          React.createElement(LogoutComponent, {router: this.props.router})
+        React.createElement("div", {className: "container-fluid"}, 
+          componentToDisplay
         )
-      ), 
-
-      React.createElement("div", {className: "container-fluid"}, 
-        componentToDisplay
       )
     )
+  } else {
+    return (
+      React.createElement("div", null, 
+        React.createElement("div", {className: "row header"}, 
+          React.createElement("div", {className: "header-logo"}), 
+          React.createElement("a", {href: "#", role: "button"}, "Home"), 
+          React.createElement("a", {href: "#critic", role: "button"}, "Critic"), 
+          React.createElement("div", {id: "header-login"}, 
+            React.createElement(LogoutComponent, {router: this.props.router})
+          )
+        ), 
+
+        React.createElement("div", {className: "container-fluid"}, 
+          componentToDisplay
+        )
+      )
     )
   }
+}
 });
 
 module.exports = DesignerComponent
 
-},{"../models/model":19,"./admin-submit-link.jsx":1,"./critic-project-list.jsx":3,"./design-results.jsx":6,"./designer-new-post.jsx":7,"./designer-projects.jsx":8,"./logout.jsx":10,"./select-project.jsx":11,"./survey.jsx":12,"./toggle.jsx":13,"./user-iframe.jsx":14,"./user-login.jsx":15,"./user-signup.jsx":16,"./welcome.jsx":17,"react":531,"react-dom":378}],10:[function(require,module,exports){
+},{"../models/model":19,"./admin-submit-link.jsx":1,"./critic-project-list.jsx":3,"./design-results.jsx":6,"./designer-new-post.jsx":7,"./designer-projects.jsx":8,"./logout.jsx":10,"./select-project.jsx":11,"./survey.jsx":12,"./toggle.jsx":13,"./user-iframe.jsx":14,"./user-login.jsx":15,"./user-signup.jsx":16,"./welcome.jsx":17,"parse":244,"react":531,"react-dom":378}],10:[function(require,module,exports){
 "use strict";
 var Parse = require('parse');
 var Backbone = require('backbone');

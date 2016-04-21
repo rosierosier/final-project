@@ -1,5 +1,6 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
+var Parse = require('parse');
 
 var UserSignupComponent = require('./user-signup.jsx');
 var UserLoginComponent = require('./user-login.jsx');
@@ -97,25 +98,43 @@ render: function(){
     break;
   }
 
-  return (
-    <div>
-      <div className="row header">
-        <div className="header-logo" />
-        <a href="#" role="button">Home</a>
-        <a href="#designer" role="button">Designer</a>
-        <div id="header-login">
-          <ToggleComponent router={this.props.router} />
-          <LogoutComponent router={this.props.router} />
+  if(!Parse.User.current()){
+    return (
+      <div>
+        <div className="row header">
+          <div className="header-logo" />
+          <a href="#" role="button">Home</a>
+          <a href="#designer" role="button">Designer</a>
+          <div id="header-login">
+            <ToggleComponent router={this.props.router} />
+          </div>
+        </div>
+
+        <div className="container-fluid">
+          {componentToDisplay}
         </div>
       </div>
+    )
+  } else {
+    return (
+      <div>
+        <div className="row header">
+          <div className="header-logo" />
+          <a href="#" role="button">Home</a>
+          <a href="#designer" role="button">Designer</a>
+          <div id="header-login">
+            <LogoutComponent router={this.props.router} />
+          </div>
+        </div>
 
-      <div className="container-fluid">
-        {componentToDisplay}
+        <div className="container-fluid">
+          {componentToDisplay}
+        </div>
       </div>
-    </div>
-  )
+    )
+  }
 }
 
-})
+});
 
 module.exports = CriticComponent
