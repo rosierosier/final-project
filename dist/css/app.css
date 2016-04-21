@@ -5837,7 +5837,8 @@ p {
   background-color: #f3f3f3;
   width: 100%; }
 
-.header a {
+.header a,
+#new-project-redirect a {
   line-height: 50px;
   vertical-align: top;
   display: inline-block;
@@ -6000,8 +6001,7 @@ p {
   display: inline-block; }
 
 .project-list-div {
-  color: #000;
-  height: 50px; }
+  color: #000; }
 
 .project-list-div button {
   margin-right: 5px;
@@ -6033,7 +6033,8 @@ p {
 #critic-project-list {
   margin-bottom: 15px; }
 
-#user-login {
+#user-login,
+#admin-login {
   margin-top: 15px;
   padding-top: 25px;
   display: block; }

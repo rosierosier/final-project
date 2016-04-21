@@ -20,12 +20,16 @@ var UserLoginComponent = React.createClass({
   mixins: [Backbone.React.Component.mixin],
   handleSubmit: function(e){
     e.preventDefault();
+    var self = this;
+
     console.log('submit working');
+
     Parse.User
       .logIn($('#login-email').val(), $('#login-user-password').val(), {
         success: function(user) {
           console.log("login", user);
           $('#user-login').addClass('invisible');
+          $('#admin-login').addClass('invisible');
           $('#critic-signup-left').addClass('invisible');
           $('#admin-signup-left').addClass('invisible');
 
@@ -35,20 +39,13 @@ var UserLoginComponent = React.createClass({
 
           $('#feedback-button').removeClass('invisible');
 
-          ReactDOM.render(
-            <LogoutComponent />,
-            document.getElementById('header-login')
-          );
-
-          if(isCritic) {
-            console.log("critic login loading projects");
-            ReactDOM.render(
-              <CriticProjectsComponent />,
-              document.getElementById('critic-new-projects')
-            );
-          };
           $('#critic-projects').removeClass('invisible');
 
+          // Critic logged in
+          var router = self.props.router;
+          if(router.current == "critic"){
+            router.navigate('critic', {trigger: true});
+          }
         },
         error: function(user, error) {
           // The login failed. Check error to see why.

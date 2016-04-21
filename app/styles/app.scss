@@ -42,7 +42,8 @@ p {
   width: 100%;
 }
 
-.header a {
+.header a,
+#new-project-redirect a {
   line-height: 50px;
   vertical-align: top;
   display: inline-block;
@@ -239,7 +240,7 @@ p {
 
 .project-list-div {
   color: #000;
-  height: 50px;
+  //height: 50px;
   // display: inline-block;
 }
 
@@ -282,7 +283,8 @@ p {
   margin-bottom: 15px;
 }
 
-#user-login {
+#user-login,
+#admin-login {
   margin-top: 15px;
   padding-top: 25px;
   display: block;

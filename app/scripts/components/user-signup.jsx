@@ -20,7 +20,9 @@ var UserSignupComponent = React.createClass({
       'success': function(results){
         console.log("results: ", results);
         $('#user-signup').addClass('invisible');
+        $('#admin-signup').addClass('invisible');
         $('#user-login').removeClass('invisible');
+        $('#admin-login').removeClass('invisible');
       },
       'error': function(user, error){
         console.log(user, error);

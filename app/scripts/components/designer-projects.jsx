@@ -11,17 +11,13 @@ var SelectProjectComponent = require('./select-project.jsx');
 var DesignerProjectsComponent = React.createClass({
   mixins: [Backbone.React.Component.mixin],
 
-  handleSubmit: function(e) {
-    e.preventDefault();
+  componentDidMount: function() {
+    var self = this;
     var Project = new models.Project();
     var query = new Parse.Query(Project);
-    console.log("querying for projects");
-    // query.equalTo("user", Parse.User.current());
-    var outerReactClass = this;
-    var callbackAfterQuery = function(designerProjectsArray) {
-      console.log("setting state on: ", outerReactClass);
-      outerReactClass.setState({"projects": designerProjectsArray});
-    }
+
+    // TODO: fix this so we only have user's projects
+    query.equalTo("user", Parse.User.current());
     query.find({
       success: function(results){
         // console.log("found me some projects", results);
@@ -29,10 +25,14 @@ var DesignerProjectsComponent = React.createClass({
 
         for (var parseResultIndex = 0; parseResultIndex < results.length; parseResultIndex++) {
           var parseResponse = results[parseResultIndex];
-          console.log("received project result:", parseResultIndex, parseResponse);
-          designerProjectsArray.push({"objectId": parseResponse.id, "projectName": parseResponse.get("projectName")});
+
+          designerProjectsArray.push({
+            "objectId": parseResponse.id,
+            "projectName": parseResponse.get("projectName")
+          });
         }
-        callbackAfterQuery(designerProjectsArray);
+
+        self.setState({"projects": designerProjectsArray});
         console.log("querying for projects received:", designerProjectsArray);
       },
       error: function() {
@@ -42,19 +42,24 @@ var DesignerProjectsComponent = React.createClass({
   },
 
   render: function(){
+    var router = this.props.router;
     var projects = this.state.projects;
-    if (projects && projects.length) {
-      $('#designer-new').addClass('invisible');
-      return (
-        <div className="project-list-div">
-          {projects.map(function(project, index) {
-            return <div key={index}><SelectProjectComponent projectKey={project.id} project={project} /></div>;
-          })}
-        </div>
-      );
-    } else {
-      return <button id="my-project-button" onClick={this.handleSubmit}>MY PROJECTS</button>;
+
+    if (!projects || projects.length == 0) {
+      return (<div/>);
     }
+
+    return (
+      <div className="project-list-div">
+        {projects.map(function(project, index) {
+          return (
+            <div key={project.id}>
+              <SelectProjectComponent projectKey={project.id} project={project} router={router}/>    
+            </div>
+          );
+        })}
+      </div>
+    );
   }
 });
 
