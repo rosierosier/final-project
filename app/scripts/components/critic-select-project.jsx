@@ -13,7 +13,7 @@ var CriticSelectProjectComponent = React.createClass({
   handleProjectSelection: function(e){
     e.preventDefault();
     var projectKey = this.props.project.objectId;
-    this.props.router.navigate('critic/project', {trigger: true});
+    this.props.router.navigate('critic/project/' + projectKey, {trigger: true});
   },
   render: function(){
     var project = this.props.project;

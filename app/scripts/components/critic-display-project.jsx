@@ -10,27 +10,23 @@ var models = require('../models/model')
 
 var CriticDisplayComponent = React.createClass({
   mixins: [Backbone.React.Component.mixin],
-  componentDidMount: function(e){
-    var self = this;
-    var router = this.props.router;
-    var projectKey = router.projectId;
-    // window.setCookie("currentProject", e.target.value);
-    var projectUrl = e.target.getAttribute("data-url");
-    // var projectKey = e.target.getAttribute("objectId");
-    $('#critic-iframe').attr("src", projectUrl);
-  },
 
   displaySurvey: function(){
+    this.props.router.navigate("critic/survey", {trigger: true})
   },
 
   render: function(){
-    var self = this;
+    var projectUrl = "";
+    if (this.props.project){
+      var projectUrl = this.props.project.get("url");
+    }
+
     return (
       <div id="wrapper">
-        <div id="button" onClick={this.displaySurvey}>
-          <input type="submit" id="feedback-button" className="invisible" value="GIVE FEEDBACK"/>
+        <div id="button">
+          <a id="feedback-button" href={"#critic/survey"}>GIVE FEEDBACK</a>
         </div>
-        <iframe frameBorder="0" border="0" id="critic-iframe" className="invisible"></iframe>
+        <iframe frameBorder="0" src={projectUrl} border="0" id="critic-iframe" className=""></iframe>
       </div>
     );
   }

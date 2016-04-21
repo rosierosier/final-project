@@ -10,14 +10,20 @@ var models = require('../models/model');
 var LogoutComponent = React.createClass({
   mixins: [Backbone.React.Component.mixin],
 
-  displayForm: function(e){
-    // e.preventDefault();
-
+  logout: function(e){
+    Parse.User.logOut({
+      success: function(){
+        console.log("log out successful");
+      },
+      error: function(user, error) {
+        // The logout failed. Check error to see why.
+      }
+    });
   },
 
   render: function(){
     return (
-      <div id="header" onClick={this.displayForm}>
+      <div id="header" onClick={this.logout}>
         <a href="index.html" id="log-out-header" role="button">LOG OUT</a>
       </div>
     )

@@ -64,27 +64,23 @@ var models = require('../models/model')
 
 var CriticDisplayComponent = React.createClass({displayName: "CriticDisplayComponent",
   mixins: [Backbone.React.Component.mixin],
-  componentDidMount: function(e){
-    var self = this;
-    var router = this.props.router;
-    var projectKey = router.projectId;
-    // window.setCookie("currentProject", e.target.value);
-    var projectUrl = e.target.getAttribute("data-url");
-    // var projectKey = e.target.getAttribute("objectId");
-    $('#critic-iframe').attr("src", projectUrl);
-  },
 
   displaySurvey: function(){
+    this.props.router.navigate("critic/survey", {trigger: true})
   },
 
   render: function(){
-    var self = this;
+    var projectUrl = "";
+    if (this.props.project){
+      var projectUrl = this.props.project.get("url");
+    }
+
     return (
       React.createElement("div", {id: "wrapper"}, 
-        React.createElement("div", {id: "button", onClick: this.displaySurvey}, 
-          React.createElement("input", {type: "submit", id: "feedback-button", className: "invisible", value: "GIVE FEEDBACK"})
+        React.createElement("div", {id: "button"}, 
+          React.createElement("a", {id: "feedback-button", href: "#critic/survey"}, "GIVE FEEDBACK")
         ), 
-        React.createElement("iframe", {frameBorder: "0", border: "0", id: "critic-iframe", className: "invisible"})
+        React.createElement("iframe", {frameBorder: "0", src: projectUrl, border: "0", id: "critic-iframe", className: ""})
       )
     );
   }
@@ -175,7 +171,7 @@ var CriticSelectProjectComponent = React.createClass({displayName: "CriticSelect
   handleProjectSelection: function(e){
     e.preventDefault();
     var projectKey = this.props.project.objectId;
-    this.props.router.navigate('critic/project', {trigger: true});
+    this.props.router.navigate('critic/project/' + projectKey, {trigger: true});
   },
   render: function(){
     var project = this.props.project;
@@ -208,6 +204,7 @@ var DesignerProjectsComponent = require('./designer-projects.jsx');
 var SelectProjectComponent = require('./select-project.jsx');
 var CriticProjectsComponent = require('./critic-project-list.jsx');
 var CriticDisplayComponent = require('./critic-display-project.jsx');
+var LogoutComponent = require('./logout.jsx');
 var DesignResults = require('./design-results.jsx');
 
 var models = require('../models/model');
@@ -218,6 +215,7 @@ render: function(){
   var self = this;
   var router = this.props.router;
   var componentToDisplay;
+  console.log(this.props);
 
   switch(router.current){
     case "critic-signup":
@@ -276,7 +274,7 @@ render: function(){
     case "critic-project":
     componentToDisplay = (
       React.createElement("div", {id: "display-iframe", className: "row editor"}, 
-        React.createElement(CriticDisplayComponent, {router: router})
+        React.createElement(CriticDisplayComponent, {router: router, project: this.props.project})
       )
     );
     break;
@@ -297,7 +295,8 @@ render: function(){
         React.createElement("a", {href: "#", role: "button"}, "Home"), 
         React.createElement("a", {href: "#designer", role: "button"}, "Designer"), 
         React.createElement("div", {id: "header-login"}, 
-          React.createElement(ToggleComponent, {router: this.props.router})
+          React.createElement(ToggleComponent, {router: this.props.router}), 
+          React.createElement(LogoutComponent, {router: this.props.router})
         )
       ), 
 
@@ -312,7 +311,7 @@ render: function(){
 
 module.exports = CriticComponent
 
-},{"../models/model":19,"./admin-submit-link.jsx":1,"./critic-display-project.jsx":2,"./critic-project-list.jsx":3,"./design-results.jsx":6,"./designer-new-post.jsx":7,"./designer-projects.jsx":8,"./select-project.jsx":11,"./survey.jsx":12,"./toggle.jsx":13,"./user-iframe.jsx":14,"./user-login.jsx":15,"./user-signup.jsx":16,"./welcome.jsx":17,"react":531,"react-dom":378}],6:[function(require,module,exports){
+},{"../models/model":19,"./admin-submit-link.jsx":1,"./critic-display-project.jsx":2,"./critic-project-list.jsx":3,"./design-results.jsx":6,"./designer-new-post.jsx":7,"./designer-projects.jsx":8,"./logout.jsx":10,"./select-project.jsx":11,"./survey.jsx":12,"./toggle.jsx":13,"./user-iframe.jsx":14,"./user-login.jsx":15,"./user-signup.jsx":16,"./welcome.jsx":17,"react":531,"react-dom":378}],6:[function(require,module,exports){
 "use strict";
 var Parse = require('parse');
 var Backbone = require('backbone');
@@ -528,6 +527,7 @@ var NewProjectComponent = require('./designer-new-post.jsx');
 var DesignerProjectsComponent = require('./designer-projects.jsx');
 var SelectProjectComponent = require('./select-project.jsx');
 var CriticProjectsComponent = require('./critic-project-list.jsx');
+var LogoutComponent = require('./logout.jsx');
 var DesignResults = require('./design-results.jsx');
 
 var models = require('../models/model');
@@ -637,7 +637,8 @@ render: function(){
         React.createElement("a", {href: "#", role: "button"}, "Home"), 
         React.createElement("a", {href: "#critic", role: "button"}, "Critic"), 
         React.createElement("div", {id: "header-login"}, 
-          React.createElement(ToggleComponent, {router: this.props.router})
+          React.createElement(ToggleComponent, {router: this.props.router}), 
+          React.createElement(LogoutComponent, {router: this.props.router})
         )
       ), 
 
@@ -651,7 +652,7 @@ render: function(){
 
 module.exports = DesignerComponent
 
-},{"../models/model":19,"./admin-submit-link.jsx":1,"./critic-project-list.jsx":3,"./design-results.jsx":6,"./designer-new-post.jsx":7,"./designer-projects.jsx":8,"./select-project.jsx":11,"./survey.jsx":12,"./toggle.jsx":13,"./user-iframe.jsx":14,"./user-login.jsx":15,"./user-signup.jsx":16,"./welcome.jsx":17,"react":531,"react-dom":378}],10:[function(require,module,exports){
+},{"../models/model":19,"./admin-submit-link.jsx":1,"./critic-project-list.jsx":3,"./design-results.jsx":6,"./designer-new-post.jsx":7,"./designer-projects.jsx":8,"./logout.jsx":10,"./select-project.jsx":11,"./survey.jsx":12,"./toggle.jsx":13,"./user-iframe.jsx":14,"./user-login.jsx":15,"./user-signup.jsx":16,"./welcome.jsx":17,"react":531,"react-dom":378}],10:[function(require,module,exports){
 "use strict";
 var Parse = require('parse');
 var Backbone = require('backbone');
@@ -665,14 +666,20 @@ var models = require('../models/model');
 var LogoutComponent = React.createClass({displayName: "LogoutComponent",
   mixins: [Backbone.React.Component.mixin],
 
-  displayForm: function(e){
-    // e.preventDefault();
-
+  logout: function(e){
+    Parse.User.logOut({
+      success: function(){
+        console.log("log out successful");
+      },
+      error: function(user, error) {
+        // The logout failed. Check error to see why.
+      }
+    });
   },
 
   render: function(){
     return (
-      React.createElement("div", {id: "header", onClick: this.displayForm}, 
+      React.createElement("div", {id: "header", onClick: this.logout}, 
         React.createElement("a", {href: "index.html", id: "log-out-header", role: "button"}, "LOG OUT")
       )
     )
@@ -734,12 +741,8 @@ var SurveyComponent = React.createClass({displayName: "SurveyComponent",
   mixins: [Backbone.React.Component.mixin],
   handleSubmit: function(e){
     e.preventDefault();
-    this.setState({"currentProject": e.target.value});
-    var projectKey = e.target.getAttribute("data-url");
-    console.log('survey submit working');
 
     var surveyData = new models.SurveyData();
-    // var project = new models.Project();
     console.log("survey projectKey", this.props.projectKey);
     var projectKey = this.props.projectKey;
 
@@ -752,8 +755,8 @@ var SurveyComponent = React.createClass({displayName: "SurveyComponent",
     surveyData.save({
       success: function(surveyData){
         alert('Thank you for completing this survey!');
-        $('#survey').addClass('invisible');
         console.log("getting parent:", surveyData.get("parent"));
+        this.props.router.navigate('critic/project', {trigger: true});
       },
       error: function(surveyData, error){
         alert('Failed to create new object, with error code: ' + error.message);
@@ -1208,6 +1211,7 @@ var NewProjectComponent = require('./components/designer-new-post.jsx');
 var DesignerProjectsComponent = require('./components/designer-projects.jsx');
 var CriticComponent = require('./components/critic.jsx');
 var DesignerComponent = require('./components/designer.jsx');
+var LogoutComponent = require('./components/logout.jsx');
 var models = require('./models/model');
 
 var Router = Backbone.Router.extend({
@@ -1225,8 +1229,8 @@ var Router = Backbone.Router.extend({
     "critic": "critic",
     "critic/signup": "criticSignup",
     "critic/login": "criticLogin",
-    "critic/dasboard": "criticDashboard",
-    "critic/project": "criticProject",
+    "critic/dashboard": "criticDashboard",
+    "critic/project/:id": "criticProject",
     "critic/survey": "criticSurvey"
   },
   index: function() {
@@ -1308,12 +1312,26 @@ var Router = Backbone.Router.extend({
       document.getElementById('app')
     );
   },
-  criticProject: function() {
-    this.current = "critic-project";
+  criticDashboard: function(){
+    this.current = "critic-dashboard";
     ReactDOM.render(
       React.createElement(CriticComponent, {router: this}),
       document.getElementById('app')
     );
+  },
+  criticProject: function(projectId) {
+    var self = this;
+    this.current = "critic-project";
+    var query = new Parse.Query("Project");
+    query.get(projectId, {
+      success: function(project) {
+        ReactDOM.render(
+          React.createElement(CriticComponent, {router: self, project: project}),
+          document.getElementById('app')
+        );
+      },
+    });
+
   },
   criticSurvey: function(){
     this.current = "survey";
@@ -1328,7 +1346,7 @@ var router = new Router();
 
 module.exports = router
 
-},{"./components/admin-submit-link.jsx":1,"./components/critic.jsx":5,"./components/designer-new-post.jsx":7,"./components/designer-projects.jsx":8,"./components/designer.jsx":9,"./components/survey.jsx":12,"./components/toggle.jsx":13,"./components/user-iframe.jsx":14,"./components/user-login.jsx":15,"./components/user-signup.jsx":16,"./components/welcome.jsx":17,"./models/model":19,"backbone":40,"backbone-react-component":39,"jquery":173,"parse":244,"react":531,"react-dom":378}],21:[function(require,module,exports){
+},{"./components/admin-submit-link.jsx":1,"./components/critic.jsx":5,"./components/designer-new-post.jsx":7,"./components/designer-projects.jsx":8,"./components/designer.jsx":9,"./components/logout.jsx":10,"./components/survey.jsx":12,"./components/toggle.jsx":13,"./components/user-iframe.jsx":14,"./components/user-login.jsx":15,"./components/user-signup.jsx":16,"./components/welcome.jsx":17,"./models/model":19,"backbone":40,"backbone-react-component":39,"jquery":173,"parse":244,"react":531,"react-dom":378}],21:[function(require,module,exports){
 module.exports = { "default": require("core-js/library/fn/get-iterator"), __esModule: true };
 },{"core-js/library/fn/get-iterator":42}],22:[function(require,module,exports){
 module.exports = { "default": require("core-js/library/fn/map"), __esModule: true };

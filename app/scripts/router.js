@@ -16,6 +16,7 @@ var NewProjectComponent = require('./components/designer-new-post.jsx');
 var DesignerProjectsComponent = require('./components/designer-projects.jsx');
 var CriticComponent = require('./components/critic.jsx');
 var DesignerComponent = require('./components/designer.jsx');
+var LogoutComponent = require('./components/logout.jsx');
 var models = require('./models/model');
 
 var Router = Backbone.Router.extend({
@@ -33,8 +34,8 @@ var Router = Backbone.Router.extend({
     "critic": "critic",
     "critic/signup": "criticSignup",
     "critic/login": "criticLogin",
-    "critic/dasboard": "criticDashboard",
-    "critic/project": "criticProject",
+    "critic/dashboard": "criticDashboard",
+    "critic/project/:id": "criticProject",
     "critic/survey": "criticSurvey"
   },
   index: function() {
@@ -116,12 +117,26 @@ var Router = Backbone.Router.extend({
       document.getElementById('app')
     );
   },
-  criticProject: function() {
-    this.current = "critic-project";
+  criticDashboard: function(){
+    this.current = "critic-dashboard";
     ReactDOM.render(
       React.createElement(CriticComponent, {router: this}),
       document.getElementById('app')
     );
+  },
+  criticProject: function(projectId) {
+    var self = this;
+    this.current = "critic-project";
+    var query = new Parse.Query("Project");
+    query.get(projectId, {
+      success: function(project) {
+        ReactDOM.render(
+          React.createElement(CriticComponent, {router: self, project: project}),
+          document.getElementById('app')
+        );
+      },
+    });
+
   },
   criticSurvey: function(){
     this.current = "survey";

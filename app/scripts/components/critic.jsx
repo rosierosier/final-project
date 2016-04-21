@@ -13,6 +13,7 @@ var DesignerProjectsComponent = require('./designer-projects.jsx');
 var SelectProjectComponent = require('./select-project.jsx');
 var CriticProjectsComponent = require('./critic-project-list.jsx');
 var CriticDisplayComponent = require('./critic-display-project.jsx');
+var LogoutComponent = require('./logout.jsx');
 var DesignResults = require('./design-results.jsx');
 
 var models = require('../models/model');
@@ -23,6 +24,7 @@ render: function(){
   var self = this;
   var router = this.props.router;
   var componentToDisplay;
+  console.log(this.props);
 
   switch(router.current){
     case "critic-signup":
@@ -81,7 +83,7 @@ render: function(){
     case "critic-project":
     componentToDisplay = (
       <div id="display-iframe" className="row editor">
-        <CriticDisplayComponent router={router}/>
+        <CriticDisplayComponent router={router} project={this.props.project}/>
       </div>
     );
     break;
@@ -103,6 +105,7 @@ render: function(){
         <a href="#designer" role="button">Designer</a>
         <div id="header-login">
           <ToggleComponent router={this.props.router} />
+          <LogoutComponent router={this.props.router} />
         </div>
       </div>
 

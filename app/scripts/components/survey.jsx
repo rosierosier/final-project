@@ -16,12 +16,8 @@ var SurveyComponent = React.createClass({
   mixins: [Backbone.React.Component.mixin],
   handleSubmit: function(e){
     e.preventDefault();
-    this.setState({"currentProject": e.target.value});
-    var projectKey = e.target.getAttribute("data-url");
-    console.log('survey submit working');
 
     var surveyData = new models.SurveyData();
-    // var project = new models.Project();
     console.log("survey projectKey", this.props.projectKey);
     var projectKey = this.props.projectKey;
 
@@ -34,8 +30,8 @@ var SurveyComponent = React.createClass({
     surveyData.save({
       success: function(surveyData){
         alert('Thank you for completing this survey!');
-        $('#survey').addClass('invisible');
         console.log("getting parent:", surveyData.get("parent"));
+        this.props.router.navigate('critic/project', {trigger: true});
       },
       error: function(surveyData, error){
         alert('Failed to create new object, with error code: ' + error.message);
