@@ -24,7 +24,7 @@ var EditorLinkComponent = React.createClass({
       success: function(project){
         console.log('New object created for admin link');
         alert('New project created!');
-        $('#new-project-redirect').removeClass('invisible');
+        //redirect to dashboard
       },
       error: function(project, error){
         alert('Failed to create new object, with error code: ' + error.message);

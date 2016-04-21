@@ -36,7 +36,11 @@ var DesignResultsComponent = React.createClass({
     var self = this;
 
     if(self.state.critiques.length == 0){
-      return (<div />);
+      return (
+        <div id="no-critiques" className="col-md-6 col-sm-6 col-xs-12 text-center">
+          <p>You don&apos;t have any critiques for this project yet!</p>
+        </div>
+      );
     }
 
     var surveyAnswers = self.state.critiques.map(function(critique, index){
@@ -75,7 +79,7 @@ var DesignResultsComponent = React.createClass({
             </div>
 
             <div
-              className={"criticSummary functionality" + numericFunctionality + " attractiveness" + numericAttractiveness} 
+              className={"criticSummary functionality" + numericFunctionality + " attractiveness" + numericAttractiveness}
             />
             <div style={{"clear": "both"}} />
           </div>

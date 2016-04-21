@@ -12,6 +12,7 @@ var NewProjectComponent = require('./designer-new-post.jsx');
 var DesignerProjectsComponent = require('./designer-projects.jsx');
 var SelectProjectComponent = require('./select-project.jsx');
 var CriticProjectsComponent = require('./critic-project-list.jsx');
+var CriticDisplayComponent = require('./critic-display-project.jsx');
 var DesignResults = require('./design-results.jsx');
 
 var models = require('../models/model');
