@@ -65,20 +65,24 @@ var models = require('../models/model')
 var CriticDisplayComponent = React.createClass({displayName: "CriticDisplayComponent",
   mixins: [Backbone.React.Component.mixin],
 
-  // displaySurvey: function(){
-  //   this.props.router.navigate("critic/survey", {trigger: true})
-  // },
+  displaySurvey: function(){
+    // var projectKey = this.props.project.objectId;
+    console.log("routing to critic/survey/projectKey", this.props.project.id);
+    var projectKey = this.props.project.id;
+    this.props.router.navigate('critic/survey/' + projectKey, {trigger: true});
+  },
 
   render: function(){
     var projectUrl = "";
     if (this.props.project){
       var projectUrl = this.props.project.get("url");
     }
+    var projectKey = this.props.project.id;
 
     return (
       React.createElement("div", {id: "wrapper"}, 
         React.createElement("div", {id: "button"}, 
-          React.createElement("a", {id: "feedback-button", href: "#critic/survey"}, "GIVE FEEDBACK")
+          React.createElement("a", {id: "feedback-button", onClick: this.displaySurvey, href: "#critic/survey/" + projectKey}, "GIVE FEEDBACK")
         ), 
         React.createElement("iframe", {frameBorder: "0", src: projectUrl, border: "0", id: "critic-iframe", className: ""})
       )
@@ -783,7 +787,7 @@ var SurveyComponent = React.createClass({displayName: "SurveyComponent",
     e.preventDefault();
 
     var surveyData = new models.SurveyData();
-    var projectKey = this.props.router.projectId;
+    var projectKey = this.props;
 
     surveyData.set("answer1", document.getElementById("answer1").value);
     surveyData.set("answer2", document.getElementById("answer2").value);
@@ -794,8 +798,8 @@ var SurveyComponent = React.createClass({displayName: "SurveyComponent",
     surveyData.save({
       success: function(surveyData){
         alert('Thank you for completing this survey!');
-        console.log("getting parent:", surveyData.get("parent"));
-        this.props.router.navigate('critic/project', {trigger: true});
+        // console.log("getting parent:", surveyData.get("parent"));
+        // this.props.router.navigate('critic/project', {trigger: true});
       },
       error: function(surveyData, error){
         alert('Failed to create new object, with error code: ' + error.message);
@@ -806,6 +810,10 @@ var SurveyComponent = React.createClass({displayName: "SurveyComponent",
   render: function(){
     // var project = this.props.project;
     // console.log(project);
+    // var projectKey = this.props.project.id;
+    // console.log(projectKey);
+    console.log(this.props);
+    console.log(this);
 
     return (
       React.createElement("div", null, 
@@ -1259,7 +1267,7 @@ var Router = Backbone.Router.extend({
     "critic/login": "criticLogin",
     "critic/dashboard": "criticDashboard",
     "critic/project/:id": "criticProject",
-    "critic/survey": "criticSurvey"
+    "critic/survey/:id": "criticSurvey"
   },
   index: function() {
     this.current = "index";
@@ -1340,13 +1348,6 @@ var Router = Backbone.Router.extend({
       document.getElementById('app')
     );
   },
-  // criticDashboard: function(){
-  //   this.current = "critic-dashboard";
-  //   ReactDOM.render(
-  //     React.createElement(CriticComponent, {router: this}),
-  //     document.getElementById('app')
-  //   );
-  // },
   criticProject: function(projectId) {
     var self = this;
     this.current = "critic-project";
@@ -1361,13 +1362,23 @@ var Router = Backbone.Router.extend({
     });
 
   },
-  criticSurvey: function(){
+  criticSurvey: function(projectId){
+    var self = this;
     this.current = "survey";
-    ReactDOM.render(
-      React.createElement(CriticComponent, {router: this}),
-      document.getElementById('app')
-    );
-  }
+    // var query = new Parse.Query("Project");
+    // query.exists(projectId, {
+    //   success: function(project){
+    //     ReactDOM.render(
+    //       React.createElement(CriticComponent, {router: self, project: project}),
+    //       document.getElementById('app')
+    //     );
+    //   },
+    // });
+      ReactDOM.render(
+        React.createElement(CriticComponent, {router: self, project: self.projectId}),
+        document.getElementById('app')
+      );
+    },
 });
 
 var router = new Router();

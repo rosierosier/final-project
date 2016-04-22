@@ -36,7 +36,7 @@ var Router = Backbone.Router.extend({
     "critic/login": "criticLogin",
     "critic/dashboard": "criticDashboard",
     "critic/project/:id": "criticProject",
-    "critic/survey": "criticSurvey"
+    "critic/survey/:id": "criticSurvey"
   },
   index: function() {
     this.current = "index";
@@ -117,13 +117,6 @@ var Router = Backbone.Router.extend({
       document.getElementById('app')
     );
   },
-  // criticDashboard: function(){
-  //   this.current = "critic-dashboard";
-  //   ReactDOM.render(
-  //     React.createElement(CriticComponent, {router: this}),
-  //     document.getElementById('app')
-  //   );
-  // },
   criticProject: function(projectId) {
     var self = this;
     this.current = "critic-project";
@@ -138,13 +131,23 @@ var Router = Backbone.Router.extend({
     });
 
   },
-  criticSurvey: function(){
+  criticSurvey: function(projectId){
+    var self = this;
     this.current = "survey";
-    ReactDOM.render(
-      React.createElement(CriticComponent, {router: this}),
-      document.getElementById('app')
-    );
-  }
+    // var query = new Parse.Query("Project");
+    // query.exists(projectId, {
+    //   success: function(project){
+    //     ReactDOM.render(
+    //       React.createElement(CriticComponent, {router: self, project: project}),
+    //       document.getElementById('app')
+    //     );
+    //   },
+    // });
+      ReactDOM.render(
+        React.createElement(CriticComponent, {router: self, project: self.projectId}),
+        document.getElementById('app')
+      );
+    },
 });
 
 var router = new Router();

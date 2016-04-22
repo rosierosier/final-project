@@ -18,7 +18,7 @@ var SurveyComponent = React.createClass({
     e.preventDefault();
 
     var surveyData = new models.SurveyData();
-    var projectKey = this.props.router.projectId;
+    var projectKey = this.props;
 
     surveyData.set("answer1", document.getElementById("answer1").value);
     surveyData.set("answer2", document.getElementById("answer2").value);
@@ -29,8 +29,8 @@ var SurveyComponent = React.createClass({
     surveyData.save({
       success: function(surveyData){
         alert('Thank you for completing this survey!');
-        console.log("getting parent:", surveyData.get("parent"));
-        this.props.router.navigate('critic/project', {trigger: true});
+        // console.log("getting parent:", surveyData.get("parent"));
+        // this.props.router.navigate('critic/project', {trigger: true});
       },
       error: function(surveyData, error){
         alert('Failed to create new object, with error code: ' + error.message);
@@ -41,6 +41,10 @@ var SurveyComponent = React.createClass({
   render: function(){
     // var project = this.props.project;
     // console.log(project);
+    // var projectKey = this.props.project.id;
+    // console.log(projectKey);
+    console.log(this.props);
+    console.log(this);
 
     return (
       <div>
