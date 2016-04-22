@@ -287,7 +287,7 @@ render: function(){
     case "survey":
     componentToDisplay = (
       React.createElement("div", {id: "survey", className: "row"}, 
-        React.createElement(SurveyComponent, {router: router})
+        React.createElement(SurveyComponent, {router: this.props.router})
       )
     );
     break;
@@ -787,7 +787,8 @@ var SurveyComponent = React.createClass({displayName: "SurveyComponent",
     e.preventDefault();
 
     var surveyData = new models.SurveyData();
-    var projectKey = this.props;
+    // console.log("survey props", this.props);
+    var projectKey = this.props.router.projectId;
 
     surveyData.set("answer1", document.getElementById("answer1").value);
     surveyData.set("answer2", document.getElementById("answer2").value);
@@ -812,8 +813,8 @@ var SurveyComponent = React.createClass({displayName: "SurveyComponent",
     // console.log(project);
     // var projectKey = this.props.project.id;
     // console.log(projectKey);
-    console.log(this.props);
-    console.log(this);
+    // console.log(this.props.get("projectId"));
+    console.log("survey render", this.props.router);
 
     return (
       React.createElement("div", null, 
@@ -1267,7 +1268,7 @@ var Router = Backbone.Router.extend({
     "critic/login": "criticLogin",
     "critic/dashboard": "criticDashboard",
     "critic/project/:id": "criticProject",
-    "critic/survey/:id": "criticSurvey"
+    "critic/survey/(:id)": "criticSurvey"
   },
   index: function() {
     this.current = "index";
@@ -1362,9 +1363,11 @@ var Router = Backbone.Router.extend({
     });
 
   },
-  criticSurvey: function(projectId){
+  criticSurvey: function(id){
     var self = this;
     this.current = "survey";
+    this.projectId = id;
+    console.log("survey this id", id);
     // var query = new Parse.Query("Project");
     // query.exists(projectId, {
     //   success: function(project){
@@ -1375,7 +1378,7 @@ var Router = Backbone.Router.extend({
     //   },
     // });
       ReactDOM.render(
-        React.createElement(CriticComponent, {router: self, project: self.projectId}),
+        React.createElement(CriticComponent, {router: this}),
         document.getElementById('app')
       );
     },

@@ -36,7 +36,7 @@ var Router = Backbone.Router.extend({
     "critic/login": "criticLogin",
     "critic/dashboard": "criticDashboard",
     "critic/project/:id": "criticProject",
-    "critic/survey/:id": "criticSurvey"
+    "critic/survey/(:id)": "criticSurvey"
   },
   index: function() {
     this.current = "index";
@@ -131,9 +131,11 @@ var Router = Backbone.Router.extend({
     });
 
   },
-  criticSurvey: function(projectId){
+  criticSurvey: function(id){
     var self = this;
     this.current = "survey";
+    this.projectId = id;
+    console.log("survey this id", id);
     // var query = new Parse.Query("Project");
     // query.exists(projectId, {
     //   success: function(project){
@@ -144,7 +146,7 @@ var Router = Backbone.Router.extend({
     //   },
     // });
       ReactDOM.render(
-        React.createElement(CriticComponent, {router: self, project: self.projectId}),
+        React.createElement(CriticComponent, {router: this}),
         document.getElementById('app')
       );
     },

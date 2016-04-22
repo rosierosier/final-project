@@ -92,7 +92,7 @@ render: function(){
     case "survey":
     componentToDisplay = (
       <div id="survey" className="row">
-        <SurveyComponent router={router}/>
+        <SurveyComponent router={this.props.router}/>
       </div>
     );
     break;
