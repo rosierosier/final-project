@@ -632,7 +632,7 @@ render: function(){
     case "new-project":
       componentToDisplay = (
         React.createElement("div", null, 
-          React.createElement("div", {id: "welcome-admin-photo"}), 
+          React.createElement("div", {id: "new-project-photo"}), 
           React.createElement("div", {id: "admin-display-link", className: "col-md-12 col-sm-12 col-xs-12 text-center"}, 
             React.createElement("h2", null, "Create a New Project"), 
 

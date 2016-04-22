@@ -5928,6 +5928,14 @@ p {
   background-position: center;
   background-repeat: no-repeat; }
 
+#new-project-photo {
+  margin-top: 15px;
+  height: 200px;
+  background-image: url("../images/HNCK8458.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; }
+
 #admin-signup-left {
   min-height: 200px;
   background-color: #000;
@@ -6032,7 +6040,11 @@ p {
   margin-bottom: 15px; }
 
 #critic-project-list {
-  margin-bottom: 15px; }
+  margin-bottom: 15px;
+  background-image: url("../images/P1000499.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; }
 
 #user-login,
 #admin-login {

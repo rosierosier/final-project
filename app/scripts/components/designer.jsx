@@ -97,7 +97,7 @@ render: function(){
     case "new-project":
       componentToDisplay = (
         <div>
-          <div id="welcome-admin-photo"></div>
+          <div id="new-project-photo"></div>
           <div id="admin-display-link" className="col-md-12 col-sm-12 col-xs-12 text-center">
             <h2>Create a New Project</h2>
 
