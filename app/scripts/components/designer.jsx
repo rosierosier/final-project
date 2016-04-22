@@ -58,7 +58,7 @@ render: function(){
           </div>
 
           <div id="admin-login" className="col-md-6 col-sm-6 col-xs-12 text-center">
-            <UserLoginComponent />
+            <UserLoginComponent router={this.props.router}/>
           </div>
 
           <div style={{clear: 'both'}} />

@@ -253,7 +253,7 @@ render: function(){
         ), 
 
         React.createElement("div", {id: "user-login", className: "col-md-6 col-sm-6 col-xs-12 text-center"}, 
-          React.createElement(UserLoginComponent, null)
+          React.createElement(UserLoginComponent, {router: this.props.router})
         ), 
 
         React.createElement("div", {style: {clear: 'both'}}), 
@@ -597,7 +597,7 @@ render: function(){
           ), 
 
           React.createElement("div", {id: "admin-login", className: "col-md-6 col-sm-6 col-xs-12 text-center"}, 
-            React.createElement(UserLoginComponent, null)
+            React.createElement(UserLoginComponent, {router: this.props.router})
           ), 
 
           React.createElement("div", {style: {clear: 'both'}}), 
@@ -947,19 +947,21 @@ var UserLoginComponent = React.createClass({displayName: "UserLoginComponent",
   handleSubmit: function(e){
     e.preventDefault();
     var self = this;
-
     console.log('submit working');
 
     Parse.User
       .logIn($('#login-email').val(), $('#login-user-password').val(), {
         success: function(user) {
           console.log("login", user);
+          var router = self.props.router;
 
-          // Critic logged in
-          // var router = self.props.router;
-          // if(router.current == "critic"){
-          //   router.navigate('critic', {trigger: true});
-          // }
+          console.log("router", router.current);
+
+          if(router.current == "critic-login"){
+            router.navigate('critic', {trigger: true});
+          } else if(router.current == "login"){
+            router.navigate('designer', {trigger: true});
+          }
         },
         error: function(user, error) {
           console.log(error);
