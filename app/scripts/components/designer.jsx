@@ -18,6 +18,8 @@ var DesignResults = require('./design-results.jsx');
 
 var models = require('../models/model');
 
+var router = require('../router');
+
 var DesignerComponent = React.createClass({
 
 render: function(){
@@ -68,15 +70,14 @@ render: function(){
 
     case "dashboard":
       componentToDisplay = (
+        <div>
+        <div id="welcome-admin-photo"></div>
         <div className="row project-options">
-          <div id="welcome-admin-photo"></div>
-
           <div id="designer-projects" className="col-md-6 col-sm-6 col-xs-12 text-center">
             <p className="box-heading">Want to check out your past projects?</p>
             <div id="past-projects">
               <DesignerProjectsComponent router={router}/>
             </div>
-
             <div style={{'clear': 'both'}} />
           </div>
 
@@ -89,6 +90,7 @@ render: function(){
             </div>
           </div>
         </div>
+      </div>
       );
       break;
 
@@ -96,7 +98,7 @@ render: function(){
       componentToDisplay = (
         <div>
           <div id="welcome-admin-photo"></div>
-          <div id="admin-display-link" className="col-md-6 col-sm-6 col-xs-12 text-center">
+          <div id="admin-display-link" className="col-md-12 col-sm-12 col-xs-12 text-center">
             <h2>Create a New Project</h2>
 
             <EditorLinkComponent />

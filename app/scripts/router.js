@@ -90,10 +90,10 @@ var Router = Backbone.Router.extend({
     );
   },
   critic: function() {
-    this.current = "critic-dashboard";
+    this.current = "critic";
     // If user is not logged in, require login/signup
     if(!Parse.User.current()){
-      this.navigate('critic/critic-login', {trigger: true});
+      this.navigate('critic/login', {trigger: true});
     }
     ReactDOM.render(
       React.createElement(CriticComponent, {router: this}),
@@ -117,13 +117,13 @@ var Router = Backbone.Router.extend({
       document.getElementById('app')
     );
   },
-  criticDashboard: function(){
-    this.current = "critic-dashboard";
-    ReactDOM.render(
-      React.createElement(CriticComponent, {router: this}),
-      document.getElementById('app')
-    );
-  },
+  // criticDashboard: function(){
+  //   this.current = "critic-dashboard";
+  //   ReactDOM.render(
+  //     React.createElement(CriticComponent, {router: this}),
+  //     document.getElementById('app')
+  //   );
+  // },
   criticProject: function(projectId) {
     var self = this;
     this.current = "critic-project";

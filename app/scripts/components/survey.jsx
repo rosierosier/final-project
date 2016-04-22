@@ -18,8 +18,7 @@ var SurveyComponent = React.createClass({
     e.preventDefault();
 
     var surveyData = new models.SurveyData();
-    console.log("survey projectKey", this.props.projectKey);
-    var projectKey = this.props.projectKey;
+    var projectKey = this.props.router.projectId;
 
     surveyData.set("answer1", document.getElementById("answer1").value);
     surveyData.set("answer2", document.getElementById("answer2").value);
@@ -42,6 +41,7 @@ var SurveyComponent = React.createClass({
   render: function(){
     // var project = this.props.project;
     // console.log(project);
+
     return (
       <div>
         <div id="survey-info">

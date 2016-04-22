@@ -15,7 +15,8 @@ var DesignResultsComponent = React.createClass({
   componentDidMount: function(){
     var self = this;
     var router = this.props.router;
-    var projectKey = router.projectId;
+    var projectKey = this.props.router.projectId;
+    console.log(projectKey);
 
     var SurveyData = new models.SurveyData();
     var query = new Parse.Query(SurveyData);
@@ -37,7 +38,7 @@ var DesignResultsComponent = React.createClass({
 
     if(self.state.critiques.length == 0){
       return (
-        <div id="no-critiques" className="col-md-6 col-sm-6 col-xs-12 text-center">
+        <div id="no-critiques" className="col-md-12 col-sm-12 col-xs-12 text-center">
           <p>You don&apos;t have any critiques for this project yet!</p>
         </div>
       );

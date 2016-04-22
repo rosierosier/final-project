@@ -68,7 +68,7 @@ render: function(){
     );
     break;
 
-    case "critic-dashboard":
+    case "critic":
     componentToDisplay = (
       <div id="critic-project-list" className="row critic-project-list">
         <div id="critic-projects" className="col-md-6 col-sm-6 col-xs-12 text-center">

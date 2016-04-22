@@ -65,9 +65,9 @@ var models = require('../models/model')
 var CriticDisplayComponent = React.createClass({displayName: "CriticDisplayComponent",
   mixins: [Backbone.React.Component.mixin],
 
-  displaySurvey: function(){
-    this.props.router.navigate("critic/survey", {trigger: true})
-  },
+  // displaySurvey: function(){
+  //   this.props.router.navigate("critic/survey", {trigger: true})
+  // },
 
   render: function(){
     var projectUrl = "";
@@ -259,7 +259,7 @@ render: function(){
     );
     break;
 
-    case "critic-dashboard":
+    case "critic":
     componentToDisplay = (
       React.createElement("div", {id: "critic-project-list", className: "row critic-project-list"}, 
         React.createElement("div", {id: "critic-projects", className: "col-md-6 col-sm-6 col-xs-12 text-center"}, 
@@ -349,7 +349,8 @@ var DesignResultsComponent = React.createClass({displayName: "DesignResultsCompo
   componentDidMount: function(){
     var self = this;
     var router = this.props.router;
-    var projectKey = router.projectId;
+    var projectKey = this.props.router.projectId;
+    console.log(projectKey);
 
     var SurveyData = new models.SurveyData();
     var query = new Parse.Query(SurveyData);
@@ -371,7 +372,7 @@ var DesignResultsComponent = React.createClass({displayName: "DesignResultsCompo
 
     if(self.state.critiques.length == 0){
       return (
-        React.createElement("div", {id: "no-critiques", className: "col-md-6 col-sm-6 col-xs-12 text-center"}, 
+        React.createElement("div", {id: "no-critiques", className: "col-md-12 col-sm-12 col-xs-12 text-center"}, 
           React.createElement("p", null, "You don't have any critiques for this project yet!")
         )
       );
@@ -552,6 +553,8 @@ var DesignResults = require('./design-results.jsx');
 
 var models = require('../models/model');
 
+var router = require('../router');
+
 var DesignerComponent = React.createClass({displayName: "DesignerComponent",
 
 render: function(){
@@ -602,15 +605,14 @@ render: function(){
 
     case "dashboard":
       componentToDisplay = (
+        React.createElement("div", null, 
+        React.createElement("div", {id: "welcome-admin-photo"}), 
         React.createElement("div", {className: "row project-options"}, 
-          React.createElement("div", {id: "welcome-admin-photo"}), 
-
           React.createElement("div", {id: "designer-projects", className: "col-md-6 col-sm-6 col-xs-12 text-center"}, 
             React.createElement("p", {className: "box-heading"}, "Want to check out your past projects?"), 
             React.createElement("div", {id: "past-projects"}, 
               React.createElement(DesignerProjectsComponent, {router: router})
             ), 
-
             React.createElement("div", {style: {'clear': 'both'}})
           ), 
 
@@ -623,6 +625,7 @@ render: function(){
             )
           )
         )
+      )
       );
       break;
 
@@ -630,7 +633,7 @@ render: function(){
       componentToDisplay = (
         React.createElement("div", null, 
           React.createElement("div", {id: "welcome-admin-photo"}), 
-          React.createElement("div", {id: "admin-display-link", className: "col-md-6 col-sm-6 col-xs-12 text-center"}, 
+          React.createElement("div", {id: "admin-display-link", className: "col-md-12 col-sm-12 col-xs-12 text-center"}, 
             React.createElement("h2", null, "Create a New Project"), 
 
             React.createElement(EditorLinkComponent, null)
@@ -689,7 +692,7 @@ render: function(){
 
 module.exports = DesignerComponent
 
-},{"../models/model":19,"./admin-submit-link.jsx":1,"./critic-project-list.jsx":3,"./design-results.jsx":6,"./designer-new-post.jsx":7,"./designer-projects.jsx":8,"./logout.jsx":10,"./select-project.jsx":11,"./survey.jsx":12,"./toggle.jsx":13,"./user-iframe.jsx":14,"./user-login.jsx":15,"./user-signup.jsx":16,"./welcome.jsx":17,"parse":244,"react":531,"react-dom":378}],10:[function(require,module,exports){
+},{"../models/model":19,"../router":20,"./admin-submit-link.jsx":1,"./critic-project-list.jsx":3,"./design-results.jsx":6,"./designer-new-post.jsx":7,"./designer-projects.jsx":8,"./logout.jsx":10,"./select-project.jsx":11,"./survey.jsx":12,"./toggle.jsx":13,"./user-iframe.jsx":14,"./user-login.jsx":15,"./user-signup.jsx":16,"./welcome.jsx":17,"parse":244,"react":531,"react-dom":378}],10:[function(require,module,exports){
 "use strict";
 var Parse = require('parse');
 var Backbone = require('backbone');
@@ -780,8 +783,7 @@ var SurveyComponent = React.createClass({displayName: "SurveyComponent",
     e.preventDefault();
 
     var surveyData = new models.SurveyData();
-    console.log("survey projectKey", this.props.projectKey);
-    var projectKey = this.props.projectKey;
+    var projectKey = this.props.router.projectId;
 
     surveyData.set("answer1", document.getElementById("answer1").value);
     surveyData.set("answer2", document.getElementById("answer2").value);
@@ -804,6 +806,7 @@ var SurveyComponent = React.createClass({displayName: "SurveyComponent",
   render: function(){
     // var project = this.props.project;
     // console.log(project);
+
     return (
       React.createElement("div", null, 
         React.createElement("div", {id: "survey-info"}, 
@@ -942,27 +945,15 @@ var UserLoginComponent = React.createClass({displayName: "UserLoginComponent",
       .logIn($('#login-email').val(), $('#login-user-password').val(), {
         success: function(user) {
           console.log("login", user);
-          $('#user-login').addClass('invisible');
-          $('#admin-login').addClass('invisible');
-          $('#critic-signup-left').addClass('invisible');
-          $('#admin-signup-left').addClass('invisible');
-
-          $('#result').removeClass('invisible');
-          $('#designer-new').removeClass('invisible');
-          $('#designer-projects').removeClass('invisible');
-
-          $('#feedback-button').removeClass('invisible');
-
-          $('#critic-projects').removeClass('invisible');
 
           // Critic logged in
-          var router = self.props.router;
-          if(router.current == "critic"){
-            router.navigate('critic', {trigger: true});
-          }
+          // var router = self.props.router;
+          // if(router.current == "critic"){
+          //   router.navigate('critic', {trigger: true});
+          // }
         },
         error: function(user, error) {
-          // The login failed. Check error to see why.
+          console.log(error);
         }
       });
   },
@@ -1322,10 +1313,10 @@ var Router = Backbone.Router.extend({
     );
   },
   critic: function() {
-    this.current = "critic-dashboard";
+    this.current = "critic";
     // If user is not logged in, require login/signup
     if(!Parse.User.current()){
-      this.navigate('critic/critic-login', {trigger: true});
+      this.navigate('critic/login', {trigger: true});
     }
     ReactDOM.render(
       React.createElement(CriticComponent, {router: this}),
@@ -1349,13 +1340,13 @@ var Router = Backbone.Router.extend({
       document.getElementById('app')
     );
   },
-  criticDashboard: function(){
-    this.current = "critic-dashboard";
-    ReactDOM.render(
-      React.createElement(CriticComponent, {router: this}),
-      document.getElementById('app')
-    );
-  },
+  // criticDashboard: function(){
+  //   this.current = "critic-dashboard";
+  //   ReactDOM.render(
+  //     React.createElement(CriticComponent, {router: this}),
+  //     document.getElementById('app')
+  //   );
+  // },
   criticProject: function(projectId) {
     var self = this;
     this.current = "critic-project";

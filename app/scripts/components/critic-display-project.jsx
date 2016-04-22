@@ -11,9 +11,9 @@ var models = require('../models/model')
 var CriticDisplayComponent = React.createClass({
   mixins: [Backbone.React.Component.mixin],
 
-  displaySurvey: function(){
-    this.props.router.navigate("critic/survey", {trigger: true})
-  },
+  // displaySurvey: function(){
+  //   this.props.router.navigate("critic/survey", {trigger: true})
+  // },
 
   render: function(){
     var projectUrl = "";
